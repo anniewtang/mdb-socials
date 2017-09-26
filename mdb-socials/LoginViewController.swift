@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
                    y: view.frame.height * 0.2,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.3))
-        titleLabel.text = "MDB\n SOCIALS"
+        titleLabel.text = "MDB\nSOCIALS"
         titleLabel.numberOfLines = 2
 //        titleLabel.sizeToFit()
         titleLabel.textAlignment = .justified
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
             CGRect(x: view.frame.width * 0.15,
                    y: view.frame.height * 0.6,
                    width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.1))
+                   height: view.frame.height * 0.08))
         loginButton.setTitle("LOGIN", for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
         loginButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
             CGRect(x: view.frame.width * 0.15,
                    y: view.frame.height * 0.7,
                    width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.1))
+                   height: view.frame.height * 0.08))
         signupButton.setTitle("SIGNUP", for: .normal)
         signupButton.setTitleColor(.black, for: .normal)
         signupButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
