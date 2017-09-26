@@ -23,11 +23,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="iWW-K9-e7Z" kind="show" identifier="toFeedFromLogin" id="gV6-W7-VDz"/>
+                        <segue destination="a2W-nw-ju6" kind="show" identifier="toSignupFromLogin" id="5zs-ng-HLR"/>
+                        <segue destination="CtS-Ie-xTv" kind="show" identifier="toFeedFromLogin" id="OfS-o2-HTM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="440" y="137"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="d1A-0P-0qb">
@@ -102,12 +104,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="iWW-K9-e7Z" kind="show" identifier="toFeedFromSignup" id="DYX-cx-RQY"/>
+                        <segue destination="CtS-Ie-xTv" kind="show" identifier="toFeedFromSignup" id="650-41-kOp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTE-9V-xbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="862"/>
+            <point key="canvasLocation" x="440" y="861"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bhy-so-SQN">
@@ -127,6 +129,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gV6-W7-VDz"/>
+        <segue reference="OfS-o2-HTM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,23 +24,47 @@ class LoginViewController: UIViewController {
     
     func setupTitleLabel() {
         titleLabel = UILabel(frame:
-            CGRect(x: view.frame.width * 0.2,
-                   y: view.frame.height * 0.05,
+            CGRect(x: view.frame.width * 0.15,
+                   y: view.frame.height * 0.2,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.3))
-        titleLabel.text = "MDB SOCIALS"
+        titleLabel.text = "MDB\n SOCIALS"
+        titleLabel.numberOfLines = 2
+//        titleLabel.sizeToFit()
+        titleLabel.textAlignment = .justified
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name:"Lato", size: 20)
+        titleLabel.font = UIFont(name:titleLabel.font.fontName, size: 40)
         titleLabel.layer.borderWidth = 1
         titleLabel.layer.borderColor = UIColor.black.cgColor
+        view.addSubview(titleLabel)
     }
     
     func setupLoginButton() {
-        
+        loginButton = UIButton(frame:
+            CGRect(x: view.frame.width * 0.15,
+                   y: view.frame.height * 0.6,
+                   width: view.frame.width * 0.7,
+                   height: view.frame.height * 0.1))
+        loginButton.setTitle("LOGIN", for: .normal)
+        loginButton.setTitleColor(.black, for: .normal)
+        loginButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
+        loginButton.layer.borderColor = UIColor.black.cgColor
+        loginButton.layer.borderWidth = 1
+        view.addSubview(loginButton)
     }
     
     func setupSignupButton() {
-    
+        signupButton = UIButton(frame:
+            CGRect(x: view.frame.width * 0.15,
+                   y: view.frame.height * 0.7,
+                   width: view.frame.width * 0.7,
+                   height: view.frame.height * 0.1))
+        signupButton.setTitle("SIGNUP", for: .normal)
+        signupButton.setTitleColor(.black, for: .normal)
+        signupButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
+        signupButton.layer.borderColor = UIColor.black.cgColor
+        signupButton.layer.borderWidth = 1
+        view.addSubview(signupButton)
     }
 
 }
