@@ -30,11 +30,10 @@ class LoginViewController: UIViewController {
                    height: view.frame.height * 0.3))
         titleLabel.text = "MDB\nSOCIALS"
         titleLabel.numberOfLines = 2
-//        titleLabel.sizeToFit()
-        titleLabel.textAlignment = .justified
+        titleLabel.textAlignment = .center
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name:titleLabel.font.fontName, size: 40)
-        titleLabel.layer.borderWidth = 1
+        titleLabel.font = UIFont(name:titleLabel.font.fontName, size: 50)
+        titleLabel.layer.borderWidth = 2
         titleLabel.layer.borderColor = UIColor.black.cgColor
         view.addSubview(titleLabel)
     }
@@ -56,7 +55,7 @@ class LoginViewController: UIViewController {
     func setupSignupButton() {
         signupButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.7,
+                   y: view.frame.height * 0.75,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.08))
         signupButton.setTitle("SIGNUP", for: .normal)
