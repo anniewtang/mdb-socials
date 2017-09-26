@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     func setupSignupButton() {
         signupButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.73,
+                   y: view.frame.height * 0.70,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.08))
         signupButton.setTitle("SIGNUP", for: .normal)
