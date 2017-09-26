@@ -1,0 +1,6 @@
+framework module Pods_mdb_socialsUITests {
+  umbrella header "Pods-mdb-socialsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

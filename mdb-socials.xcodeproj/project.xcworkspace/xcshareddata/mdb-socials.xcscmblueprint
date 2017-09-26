@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "33B6CB50E4A1159C93D41161ADCB00E03D8502C8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4FD6D6256D8F38A158FE3BD51B9855E046832EFA" : 9223372036854775807,
+    "33B6CB50E4A1159C93D41161ADCB00E03D8502C8" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DD990D60-B12B-4F68-9761-7EFA76CC6BBC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4FD6D6256D8F38A158FE3BD51B9855E046832EFA" : "",
+    "33B6CB50E4A1159C93D41161ADCB00E03D8502C8" : "mdb-socials\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "mdb-socials",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "mdb-socials.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/anniewtang\/mdb-socials.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "33B6CB50E4A1159C93D41161ADCB00E03D8502C8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/anniewtang\/mobile-dev.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4FD6D6256D8F38A158FE3BD51B9855E046832EFA"
+    }
+  ]
+}
