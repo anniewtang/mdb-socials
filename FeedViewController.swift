@@ -32,7 +32,7 @@ class FeedViewController: UIViewController {
         activityIndicator.startAnimating()
         allEvents.append(sampleEvent)
         fetchUser {
-            self.fetchPosts() {
+            self.fetchEvents() {
                 print("done")
                 if self.newEventView != nil {
                     self.newEventView.removeFromSuperview()
@@ -53,11 +53,6 @@ class FeedViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupNavBar() {
@@ -82,6 +77,7 @@ class FeedViewController: UIViewController {
         
     }
     
+    /* setting up button to add a newEvent */
     func setupButton() {
         newEventButton = UIButton(frame: CGRect(x: 10, y: newPostView.frame.maxY + 10, width: UIScreen.main.bounds.width - 20, height: 50))
         newEventButton.setTitle("Add Event", for: .normal)
@@ -95,28 +91,32 @@ class FeedViewController: UIViewController {
         view.addSubview(newEventButton)
     }
     
+    /* presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
         let newEvent = self.storyboard?.instantiateViewControllerWithIdentifier(String(NewEventViewController)) as! NewEventViewController
         newEvent.delegate = self
         self.presentViewController(newEvent, animated: true, completion: nil)
     }
     
+    /* protocol to present NewEventVC modally */
     func dismissViewController() {
         if let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(String(SecondViewController)){
             self.presentViewController(viewController, animated: true, completion: nil)
         }
     }
     
-    func fetchPosts(withBlock: @escaping () -> ()) {
+    /* fetching events from firebase */
+    func fetchEvents(withBlock: @escaping () -> ()) {
         let ref = FIRDatabase.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
-            let post = Post(id: snapshot.key, postDict: snapshot.value as! [String : Any]?)
-            self.posts.append(post)
+            let event = Event(id: snapshot.key, eventDict: snapshot.value as! [String : Any]?)
+            self.allEvents.append(event)
             
             withBlock()
         })
     }
     
+    /* fetching current user from firebase */
     func fetchUser(withBlock: @escaping () -> ()) {
         let ref = FIRDatabase.database().reference()
         ref.child("Users").child((self.auth?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in

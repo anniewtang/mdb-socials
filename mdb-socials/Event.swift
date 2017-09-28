@@ -24,7 +24,7 @@ class Event {
     
     init(id: String, eventDict: [String:Any]?) {
         self.id = id
-        if postDict != nil {
+        if eventDict != nil {
             if let eventName = eventDic["eventName"] as? String {
                 self.eventName = eventName
             }
