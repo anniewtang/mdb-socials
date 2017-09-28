@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>HanekeSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-mdb-socials.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>643B303478E6CFBBC498377F380E5AF2</key>
+		<key>60C1C4BB4178E098BB626691B1467D5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>650E77EC80B31B98642E377D9FB8D822</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AE4759774042D8E013517E82C6F7A058</key>
 		<dict>
 			<key>primary</key>
 			<true/>

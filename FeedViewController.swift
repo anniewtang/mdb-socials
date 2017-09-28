@@ -16,9 +16,9 @@ class FeedViewController: UIViewController {
     var allEvents: [Event] = []
     var eventToPass: Event!
     
-    var auth = FIRAuth.auth()
-    var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Events")
-    var storage: FIRStorageReference = FIRStorage.storage().reference()
+    var auth = Auth.auth()
+    var eventsRef: DatabaseReference = Database.database().reference().child("Events")
+    var storage: StorageReference = Storage.storage().reference()
     var currentUser: User?
     var navBar: UINavigationBar!
     
@@ -34,13 +34,9 @@ class FeedViewController: UIViewController {
         fetchUser {
             self.fetchEvents() {
                 print("done")
-                if self.newEventView != nil {
-                    self.newEventView.removeFromSuperview()
-                }
-                self.setupNewEventView()
                 self.setupButton()
                 
-                self.setupTableView()()
+                self.setupTableView()
                 self.setupNavBar()
                 
                 
@@ -66,9 +62,9 @@ class FeedViewController: UIViewController {
     
     func logOut() {
         print("logging out")
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
             self.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -79,7 +75,7 @@ class FeedViewController: UIViewController {
     
     /* setting up button to add a newEvent */
     func setupButton() {
-        newEventButton = UIButton(frame: CGRect(x: 10, y: newPostView.frame.maxY + 10, width: UIScreen.main.bounds.width - 20, height: 50))
+        newEventButton = UIButton(frame: CGRect(x: -10, y: 10, width: UIScreen.main.bounds.width - 20, height: 50))
         newEventButton.setTitle("Add Event", for: .normal)
         newEventButton.setTitleColor(UIColor.blue, for: .normal)
         newEventButton.layoutIfNeeded()
@@ -93,21 +89,23 @@ class FeedViewController: UIViewController {
     
     /* presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
-        let newEvent = self.storyboard?.instantiateViewControllerWithIdentifier(String(NewEventViewController)) as! NewEventViewController
+        let newEvent = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewEventViewController.self)) as! NewEventViewController
         newEvent.delegate = self
-        self.presentViewController(newEvent, animated: true, completion: nil)
+        newEvent.currentUser = currentUser
+        newEvent.eventsRef = eventsRef
+        self.present(newEvent, animated: true, completion: nil)
     }
     
     /* protocol to present NewEventVC modally */
     func dismissViewController() {
-        if let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(String(SecondViewController)){
-            self.presentViewController(viewController, animated: true, completion: nil)
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: FeedViewController())){
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     
     /* fetching events from firebase */
     func fetchEvents(withBlock: @escaping () -> ()) {
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
             let event = Event(id: snapshot.key, eventDict: snapshot.value as! [String : Any]?)
             self.allEvents.append(event)
@@ -118,8 +116,8 @@ class FeedViewController: UIViewController {
     
     /* fetching current user from firebase */
     func fetchUser(withBlock: @escaping () -> ()) {
-        let ref = FIRDatabase.database().reference()
-        ref.child("Users").child((self.auth?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+        let ref = Database.database().reference()
+        ref.child("Users").child((self.auth.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
             let user = User(id: snapshot.key, userDict: snapshot.value as! [String : Any]?)
             self.currentUser = user
             withBlock()

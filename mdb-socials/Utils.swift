@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Haneke
+//import HanekeSwift
 
 class Utils {
     static func getImage(url: String, withBlock: @escaping (UIImage) -> Void) {

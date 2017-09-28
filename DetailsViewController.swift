@@ -44,11 +44,11 @@ class DetailsViewController: UIViewController {
     }
     
     func setupLabels() {
-        let OFFSET: Int = 0.1
-        let HEIGHT: Int = view.frame.height * 0.08
-        let WIDTH: Int = view.frame.width * 0.495
-        let Y: Int = view.frame.width * 0.47
-        let X: Int = view.frame.width * 0.505
+        let OFFSET: CGFloat = 0.1
+        let HEIGHT: CGFloat = view.frame.height * 0.08
+        let WIDTH: CGFloat = view.frame.width * 0.495
+        let Y: CGFloat = view.frame.width * 0.47
+        let X: CGFloat = view.frame.width * 0.505
         
         let eventName = UILabel(frame:
             CGRect(x: X,
@@ -94,8 +94,12 @@ class DetailsViewController: UIViewController {
         interestedButton.setTitle("RSVP-ed!", for: .selected)
         interestedButton.setTitleColor(darkGray, for: .normal)
         interestedButton.setTitleColor(.green, for: .selected)
-        interestedButton.titleLabel?.font = UIFont(name: (searchButton.titleLabel?.font.fontName)!, size: 14)
-        interestedButton.addTarget(self, action: #selector(rsvpInterested), for: .touchUpInside)
+        interestedButton.titleLabel?.font = UIFont(
+            name: (interestedButton.titleLabel?.font.fontName)!,
+            size: 14)
+        interestedButton.addTarget(self,
+                                   action: #selector(rsvpInterested),
+                                   for: .touchUpInside)
         
         view.addSubview(interestedButton)
     }
@@ -109,7 +113,7 @@ class DetailsViewController: UIViewController {
         desc.text = event.desc
         desc.textColor = .darkGray
         desc.textAlignment = .left
-        desc.font = numInterested.font.withSize(16)
+        desc.font = desc.font.withSize(16)
         view.addSubview(desc)
 
     }

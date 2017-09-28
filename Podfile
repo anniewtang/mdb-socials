@@ -22,5 +22,5 @@ target 'mdb-socials' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
 
-  pod 'HanekeSwift'
+  # pod 'HanekeSwift'
 end

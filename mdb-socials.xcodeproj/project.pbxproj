@@ -193,8 +193,8 @@
 		D104D5091F7D47B400C416C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D104D4FE1F7CA14500C416C0 /* Event.swift */,
 				D104D5001F7CA24500C416C0 /* User.swift */,
+				D104D4FE1F7CA14500C416C0 /* Event.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -470,7 +470,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-mdb-socials/Pods-mdb-socials-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -478,7 +477,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

@@ -7,38 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupViewController: UIViewController {
     
-    var titleLabel: UILabel!
-    var signupButton: UIButton!
+    var signupLabel: UILabel!
+    
     var nameTextField: UITextField!
     var usernameTextField: UITextField!
     var emailTextField: UITextField!
     var passwordTextField: UITextField!
     
+    var signupButton: UIButton!
+    var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTitleLabel()
-        setupSignupButton()
+        setupButtons()
         setupTextFields()
     }
     
     func setupTitleLabel() {
-        titleLabel = UILabel(frame:
+        signupLabel = UILabel(frame:
             CGRect(x: view.frame.width * 0.15,
                    y: view.frame.height * 0.1,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.2))
-        titleLabel.text = "SIGNUP"
-        titleLabel.numberOfLines = 2
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont(name:titleLabel.font.fontName, size: 40)
-        titleLabel.layer.borderWidth = 2
-        titleLabel.layer.borderColor = UIColor.black.cgColor
-        view.addSubview(titleLabel)
+        signupLabel.text = "SIGNUP"
+        signupLabel.numberOfLines = 2
+        signupLabel.textAlignment = .center
+        signupLabel.textColor = .black
+        signupLabel.font = UIFont(name:signupLabel.font.fontName, size: 40)
+        signupLabel.layer.borderWidth = 2
+        signupLabel.layer.borderColor = UIColor.black.cgColor
+        view.addSubview(signupLabel)
     }
     
     func setupTextFields() {
@@ -104,7 +108,7 @@ class SignupViewController: UIViewController {
         view.addSubview(passwordTextField)
     }
     
-    func setupSignupButton() {
+    func setupButtons() {
         signupButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
                    y: view.frame.height * 0.70,
@@ -116,11 +120,49 @@ class SignupViewController: UIViewController {
         signupButton.layer.borderColor = UIColor.black.cgColor
         signupButton.layer.borderWidth = 1
         view.addSubview(signupButton)
-        signupButton.addTarget(self, action: #selector(segueToSignup), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(signupButtonClicked), for: .touchUpInside)
+        
+        backButton = UIButton(frame:
+            CGRect(x: 10,
+                   y: 0.8 * UIScreen.main.bounds.height + 40,
+                   width: UIScreen.main.bounds.width - 20,
+                   height: 30))
+        backButton.layoutIfNeeded()
+        backButton.setTitle("Go Back", for: .normal)
+        backButton.setTitleColor(UIColor.blue, for: .normal)
+        backButton.layer.borderWidth = 2.0
+        backButton.layer.cornerRadius = 3.0
+        backButton.layer.borderColor = UIColor.blue.cgColor
+        backButton.layer.masksToBounds = true
+        backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
+        self.view.addSubview(backButton)
     }
     
-    func segueToSignup() {
-        performSegue(withIdentifier: "toSignupFromLogin", sender: self)
+    func signupButtonClicked() {
+        
+        let name = nameTextField.text!
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error == nil {
+                let ref = Database.database().reference().child("Users").child((Auth.auth().currentUser?.uid)!)
+                ref.setValue(["name": name, "email": email])
+                
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                self.nameTextField.text = ""
+                self.performSegue(withIdentifier: "toFeedFromSignup", sender: self)
+            }
+            else {
+                print(error.debugDescription)
+            }
+        }
+    }
+    
+    func backButtonClicked() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
-protocol NewEventViewController {
+protocol NewEventViewControllerProtocol {
     func dismissViewController()
 }
 
 class NewEventViewController: UIViewController {
     
-    var delegate:FeedViewControllerProtocol!
+    var delegate: FeedViewController!
+    
+    var eventsRef: DatabaseReference!
+    var currentUser: User?
 
     var newEventView: UITextField!
     
@@ -38,13 +42,13 @@ class NewEventViewController: UIViewController {
         let desc = newEventView.text!
         newEventView.removeFromSuperview()
         let newEvent = ["desc": desc, "creator": currentUser?.name, "imageUrl": currentUser?.imageUrl, "creatorID": currentUser?.id] as [String : Any]
-        let key = postsRef.childByAutoId().key
+        let key = eventsRef.childByAutoId().key
         let childUpdates = ["/\(key)/": newEvent]
-        postsRef.updateChildValues(childUpdates)
+        eventsRef.updateChildValues(childUpdates)
     }
     
     func goBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
             self.delegate!.dismissViewController()
         }
     }
