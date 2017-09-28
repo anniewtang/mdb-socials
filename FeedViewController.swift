@@ -13,11 +13,8 @@ class FeedViewController: UIViewController {
     var tableView: UITableView!
     
     /* order of images in pokemonImages should be same as in results */
-    var socials: [Pokemon]!
-    // var pokemonImages: [UIImage]!
-    
-    var pokemonToPass: Pokemon!
-    var pokePicToPass: UIImage!
+    var allEvents: [Event]!
+    var eventToPass: Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +22,7 @@ class FeedViewController: UIViewController {
         
     }
     
-    /* Initializaing table view, and adding it to view */
+    /* Initializing table view, and adding it to view */
     func setupTableView(){
         tableView = UITableView(frame:
             CGRect(x: 0,
@@ -33,17 +30,18 @@ class FeedViewController: UIViewController {
                    width: view.frame.width,
                    height: view.frame.height - UIApplication.shared.statusBarFrame.maxY))
         
-        tableView.register(PokemonTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
+        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50/2, right: 0)
         view.addSubview(tableView)
     }
     
+    /* Overriding prepare function for DetailsVC segue -> pass in events object */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToPokemonDetails" {
-            let pokemonDetails = segue.destination as! PokemonProfileViewController
-            pokemonDetails.p = pokemonToPass
+        if segue.identifier == "toDetails" {
+            let eventDetails = segue.destination as! DetailsViewController
+            eventDetails.event = eventToPass
         }
     }
 }
@@ -59,7 +57,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     /* number of cells in section of tableview */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return allEvents.count
     }
     
     /* dequeue & set up cell at indexPath.row
@@ -67,32 +65,37 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         /* dequeue cell and remove/reset from subview; initialize new cell */
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! PokemonTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! FeedTableViewCell
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
-        let p: Pokemon = results[indexPath.row]
-        
-        cell.pokemonObject = p
-        
+        let event: Event = allEvents[indexPath.row]
+        cell.event = event
         cell.awakeFromNib()
         
-        Utils.getImage(url: p.imageUrl) { img in
-            cell.pokePic.image = img
+        /* setting up the cell; giving it all the info we need 
+         1.) name of member who posted
+         2.) name of event
+         3.) picture of event
+         4.) number of people who RSVP’d “Interested”*/
+        cell.creatorName.text = event.creator
+        cell.eventName.text = event.eventName
+        Utils.getImage(url: event.imageUrl) { img in
+            cell.eventPic.image = img
         }
-        if cell.pokePic.image == nil {
-            cell.pokePic.image = #imageLiteral(resourceName: "pokeball")
+        if cell.eventPic.image == nil {
+            cell.eventPic.image = #imageLiteral(resourceName: "pokeball")
         }
-        cell.nameLabel.text = p.name
-        cell.numberLabel.text = "# " +  String(p.number)
+        cell.numInterested.text = String(event.numInterested)
+        
         return cell
     }
     
     /* action after tableCell is selected
-     "passes" the pokemon object over into the PokemonDetailsVC through segue */
+     "passes" the event object over into the DetailsVC through segue */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pokemonToPass = results[indexPath.row]
-        performSegue(withIdentifier: "segueToPokemonDetails", sender: self)
+        eventToPass = allEvents[indexPath.row]
+        performSegue(withIdentifier: "toDetails", sender: self)
     }
     
     /* sets each row to be 1/10 of frame view */
@@ -100,52 +103,4 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         return view.frame.height / 10
     }
     
-}
-
-/* EXTENSION OF COLLECTIONVIEW */
-extension SearchResultsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    /* number of types of cells in collectionView */
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    /* number of cells in a section */
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    /* dequeue & setting up collectionView cell
-     sets the pokemon's image, name to the collectionView cell */
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        /* dequeue cell and remove/reset from subview; initialize new cell */
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! PokemonCollectionViewCell
-        for subview in cell.contentView.subviews {
-            subview.removeFromSuperview()
-        }
-        let p: Pokemon = results[indexPath.row]
-        cell.awakeFromNib()
-        
-        // cell.pokePic.image = pokemonImages[indexPath.row]
-        Utils.getImage(url: p.imageUrl) { img in
-            cell.pokePic.image = img
-        }
-        if cell.pokePic.image == nil {
-            cell.pokePic.image = #imageLiteral(resourceName: "pokeball")
-        }
-        cell.nameLabel.text = p.name
-        return cell
-    }
-    
-    /* passes the pokemon into PokemonDetails once cell is clicked upon */
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pokemonToPass = results[indexPath.row]
-        performSegue(withIdentifier: "segueToPokemonDetails", sender: self)
-    }
-    
-    /* makes it such that the cells are 1/4 of the view width square */
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
-    }
 }

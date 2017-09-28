@@ -12,19 +12,24 @@ import Firebase
 
 
 class Event {
-    var text: String?
+    var desc: String?
+    var eventName: String?
     var imageUrl: String?
     var creatorID: String?
     var creator: String?
     var id: String?
-    var image: UIImage?
+    var numInterested: Int = 0
+    // do something about this numInterested??
     
     
     init(id: String, eventDict: [String:Any]?) {
         self.id = id
         if postDict != nil {
-            if let text = eventDict!["text"] as? String {
-                self.text = text
+            if let eventName = eventDic["eventName"] as? String {
+                self.eventName = eventName
+            }
+            if let desc = eventDict!["desc"] as? String {
+                self.desc = desc
             }
             if let imageUrl = eventDict!["imageUrl"] as? String {
                 self.imageUrl = imageUrl
