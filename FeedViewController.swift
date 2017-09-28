@@ -7,28 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedViewController: UIViewController {
     
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-        
-    }
-    
-    
-    var newEventView: UITextField!
     var newEventButton: UIButton!
     var tableView: UITableView!
     var allEvents: [Event] = []
     var eventToPass: Event!
     
     var auth = FIRAuth.auth()
-    var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Posts")
+    var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Events")
     var storage: FIRStorageReference = FIRStorage.storage().reference()
     var currentUser: User?
     var navBar: UINavigationBar!
@@ -93,15 +82,6 @@ class FeedViewController: UIViewController {
         
     }
     
-    func setupNewEventView() {
-        newEventView = UITextField(frame: CGRect(x: 10, y: 10, width: UIScreen.main.bounds.width - 20, height: 0.3 * UIScreen.main.bounds.height))
-        newEventView.layoutIfNeeded()
-        newEventView.layer.shadowRadius = 2.0
-        newEventView.layer.masksToBounds = true
-        newEventView.placeholder = "Create a social event!"
-        view.addSubview(newEventView)
-    }
-    
     func setupButton() {
         newEventButton = UIButton(frame: CGRect(x: 10, y: newPostView.frame.maxY + 10, width: UIScreen.main.bounds.width - 20, height: 50))
         newEventButton.setTitle("Add Event", for: .normal)
@@ -111,23 +91,25 @@ class FeedViewController: UIViewController {
         newEventButton.layer.cornerRadius = 3.0
         newEventButton.layer.borderColor = UIColor.blue.cgColor
         newEventButton.layer.masksToBounds = true
-        newEventButton.addTarget(self, action: #selector(addNewEvent), for: .touchUpInside)
+        newEventButton.addTarget(self, action: #selector(goToNewEvent), for: .touchUpInside)
         view.addSubview(newEventButton)
     }
     
-    func addNewEvent(sender: UIButton!) {
-        let desc = newEventView.text!
-        newEventView.removeFromSuperview()
-        let newEvent = ["desc": desc, "creator": currentUser?.name, "imageUrl": currentUser?.imageUrl, "creatorID": currentUser?.id] as [String : Any]
-        let key = postsRef.childByAutoId().key
-        let childUpdates = ["/\(key)/": newPost]
-        postsRef.updateChildValues(childUpdates)
+    func goToNewEvent(sender: UIButton!) {
+        let newEvent = self.storyboard?.instantiateViewControllerWithIdentifier(String(NewEventViewController)) as! NewEventViewController
+        newEvent.delegate = self
+        self.presentViewController(newEvent, animated: true, completion: nil)
+    }
+    
+    func dismissViewController() {
+        if let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(String(SecondViewController)){
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
     }
     
     func fetchPosts(withBlock: @escaping () -> ()) {
-        //TODO: Implement a method to fetch posts with Firebase!
         let ref = FIRDatabase.database().reference()
-        ref.child("Posts").observe(.childAdded, with: { (snapshot) in
+        ref.child("Events").observe(.childAdded, with: { (snapshot) in
             let post = Post(id: snapshot.key, postDict: snapshot.value as! [String : Any]?)
             self.posts.append(post)
             
@@ -136,7 +118,6 @@ class FeedViewController: UIViewController {
     }
     
     func fetchUser(withBlock: @escaping () -> ()) {
-        //TODO: Implement a method to fetch posts with Firebase!
         let ref = FIRDatabase.database().reference()
         ref.child("Users").child((self.auth?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
             let user = User(id: snapshot.key, userDict: snapshot.value as! [String : Any]?)

@@ -20,12 +20,13 @@
 		D104D4F51F7AF2CD00C416C0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4F41F7AF2CD00C416C0 /* SignupViewController.swift */; };
 		D104D4F71F7AF2E800C416C0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */; };
 		D104D4F91F7AF2F000C416C0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */; };
-		D104D4FB1F7AF2FE00C416C0 /* NewSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4FA1F7AF2FE00C416C0 /* NewSocialViewController.swift */; };
+		D104D4FB1F7AF2FE00C416C0 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4FA1F7AF2FE00C416C0 /* NewEventViewController.swift */; };
 		D104D4FD1F7AF36000C416C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D104D4FC1F7AF36000C416C0 /* GoogleService-Info.plist */; };
 		D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4FE1F7CA14500C416C0 /* Event.swift */; };
 		D104D5011F7CA24500C416C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D5001F7CA24500C416C0 /* User.swift */; };
 		D104D5031F7CA2A700C416C0 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */; };
 		D104D5051F7CA5DC00C416C0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D5041F7CA5DC00C416C0 /* Utils.swift */; };
+		D104D5071F7D476D00C416C0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D5061F7D476D00C416C0 /* UIColor.swift */; };
 		D9203DABFC8F59E3584CF039 /* Pods_mdb_socials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7620B59AA1D9DC3EF6D4BE61 /* Pods_mdb_socials.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,12 +74,13 @@
 		D104D4F41F7AF2CD00C416C0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = ../SignupViewController.swift; sourceTree = "<group>"; };
 		D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = ../FeedViewController.swift; sourceTree = "<group>"; };
 		D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
-		D104D4FA1F7AF2FE00C416C0 /* NewSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSocialViewController.swift; path = ../NewSocialViewController.swift; sourceTree = "<group>"; };
+		D104D4FA1F7AF2FE00C416C0 /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewEventViewController.swift; path = ../NewEventViewController.swift; sourceTree = "<group>"; };
 		D104D4FC1F7AF36000C416C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D104D4FE1F7CA14500C416C0 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D104D5001F7CA24500C416C0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		D104D5041F7CA5DC00C416C0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D104D5061F7D476D00C416C0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,15 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				D104D4C11F7AF17B00C416C0 /* AppDelegate.swift */,
-				D104D5041F7CA5DC00C416C0 /* Utils.swift */,
-				D104D4FE1F7CA14500C416C0 /* Event.swift */,
-				D104D5001F7CA24500C416C0 /* User.swift */,
-				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
-				D104D4F41F7AF2CD00C416C0 /* SignupViewController.swift */,
-				D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */,
-				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
-				D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */,
-				D104D4FA1F7AF2FE00C416C0 /* NewSocialViewController.swift */,
+				D104D5081F7D47A200C416C0 /* Utility Files */,
+				D104D5091F7D47B400C416C0 /* Model */,
+				D104D50A1F7D47C400C416C0 /* ViewController */,
 				D104D4CB1F7AF17B00C416C0 /* Assets.xcassets */,
 				D104D4C51F7AF17B00C416C0 /* Main.storyboard */,
 				D104D4CD1F7AF17B00C416C0 /* LaunchScreen.storyboard */,
@@ -183,6 +179,37 @@
 				D104D4E61F7AF17C00C416C0 /* Info.plist */,
 			);
 			path = "mdb-socialsUITests";
+			sourceTree = "<group>";
+		};
+		D104D5081F7D47A200C416C0 /* Utility Files */ = {
+			isa = PBXGroup;
+			children = (
+				D104D5041F7CA5DC00C416C0 /* Utils.swift */,
+				D104D5061F7D476D00C416C0 /* UIColor.swift */,
+			);
+			name = "Utility Files";
+			sourceTree = "<group>";
+		};
+		D104D5091F7D47B400C416C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D104D4FE1F7CA14500C416C0 /* Event.swift */,
+				D104D5001F7CA24500C416C0 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D104D50A1F7D47C400C416C0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
+				D104D4F41F7AF2CD00C416C0 /* SignupViewController.swift */,
+				D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */,
+				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
+				D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */,
+				D104D4FA1F7AF2FE00C416C0 /* NewEventViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		D546CA0AC7057E4586BEAC08 /* Frameworks */ = {
@@ -496,10 +523,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D104D4C41F7AF17B00C416C0 /* LoginViewController.swift in Sources */,
+				D104D5071F7D476D00C416C0 /* UIColor.swift in Sources */,
 				D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */,
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
 				D104D4F71F7AF2E800C416C0 /* FeedViewController.swift in Sources */,
-				D104D4FB1F7AF2FE00C416C0 /* NewSocialViewController.swift in Sources */,
+				D104D4FB1F7AF2FE00C416C0 /* NewEventViewController.swift in Sources */,
 				D104D5011F7CA24500C416C0 /* User.swift in Sources */,
 				D104D4F51F7AF2CD00C416C0 /* SignupViewController.swift in Sources */,
 				D104D5051F7CA5DC00C416C0 /* Utils.swift in Sources */,

@@ -47,17 +47,17 @@
                     <navigationItem key="navigationItem" id="4GL-1r-q5V"/>
                     <connections>
                         <segue destination="FCa-f3-K4R" kind="show" identifier="toDetails" id="ZxU-rv-c2y"/>
-                        <segue destination="PbY-nr-Mxi" kind="presentation" identifier="toNewSocial" id="MFz-Fh-udg"/>
+                        <segue destination="PbY-nr-Mxi" kind="presentation" identifier="toNewEvent" id="MFz-Fh-udg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWP-Qc-uxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1849" y="493"/>
         </scene>
-        <!--New Social View Controller-->
+        <!--New Event View Controller-->
         <scene sceneID="Oon-dl-P4Y">
             <objects>
-                <viewController id="PbY-nr-Mxi" customClass="NewSocialViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PbY-nr-Mxi" customClass="NewEventViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uzR-jN-CX9"/>
                         <viewControllerLayoutGuide type="bottom" id="6NI-YX-tB8"/>
