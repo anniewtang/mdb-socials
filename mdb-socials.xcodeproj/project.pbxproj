@@ -22,6 +22,8 @@
 		D104D4F91F7AF2F000C416C0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */; };
 		D104D4FB1F7AF2FE00C416C0 /* NewSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4FA1F7AF2FE00C416C0 /* NewSocialViewController.swift */; };
 		D104D4FD1F7AF36000C416C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D104D4FC1F7AF36000C416C0 /* GoogleService-Info.plist */; };
+		D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D4FE1F7CA14500C416C0 /* Event.swift */; };
+		D104D5011F7CA24500C416C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104D5001F7CA24500C416C0 /* User.swift */; };
 		D9203DABFC8F59E3584CF039 /* Pods_mdb_socials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7620B59AA1D9DC3EF6D4BE61 /* Pods_mdb_socials.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
 		D104D4FA1F7AF2FE00C416C0 /* NewSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSocialViewController.swift; path = ../NewSocialViewController.swift; sourceTree = "<group>"; };
 		D104D4FC1F7AF36000C416C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D104D4FE1F7CA14500C416C0 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D104D5001F7CA24500C416C0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				D104D4C11F7AF17B00C416C0 /* AppDelegate.swift */,
+				D104D4FE1F7CA14500C416C0 /* Event.swift */,
+				D104D5001F7CA24500C416C0 /* User.swift */,
 				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
 				D104D4F41F7AF2CD00C416C0 /* SignupViewController.swift */,
 				D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */,
@@ -484,9 +490,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D104D4C41F7AF17B00C416C0 /* LoginViewController.swift in Sources */,
+				D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */,
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
 				D104D4F71F7AF2E800C416C0 /* FeedViewController.swift in Sources */,
 				D104D4FB1F7AF2FE00C416C0 /* NewSocialViewController.swift in Sources */,
+				D104D5011F7CA24500C416C0 /* User.swift in Sources */,
 				D104D4F51F7AF2CD00C416C0 /* SignupViewController.swift in Sources */,
 				D104D4CA1F7AF17B00C416C0 /* mdb_socials.xcdatamodeld in Sources */,
 				D104D4F91F7AF2F000C416C0 /* DetailsViewController.swift in Sources */,
@@ -740,6 +748,7 @@
 				D104D4EB1F7AF17C00C416C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D104D4EC1F7AF17C00C416C0 /* Build configuration list for PBXNativeTarget "mdb-socialsTests" */ = {
 			isa = XCConfigurationList;
@@ -748,6 +757,7 @@
 				D104D4EE1F7AF17C00C416C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D104D4EF1F7AF17C00C416C0 /* Build configuration list for PBXNativeTarget "mdb-socialsUITests" */ = {
 			isa = XCConfigurationList;
@@ -756,6 +766,7 @@
 				D104D4F11F7AF17C00C416C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
