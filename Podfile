@@ -22,5 +22,6 @@ target 'mdb-socials' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
 
-  # pod 'HanekeSwift'
-end
+  pod ‘HanekeSwift’, :git => ‘https://github.com/Haneke/HanekeSwift.git', :branch => ‘feature/swift-3’
+
+  end
