@@ -11,37 +11,42 @@ import Firebase
 
 class FeedViewController: UIViewController {
     
-    var newEventButton: UIButton!
+    /* UI elements */
     var tableView: UITableView!
-    var allEvents: [Event] = []
+    
+    /* SWIFT data */
+    var allEvents = [Event]()
     var eventToPass: Event!
     
+    /* FIREBASE variables */
     var auth = Auth.auth()
-    var eventsRef: DatabaseReference = Database.database().reference().child("Events")
     var storage: StorageReference = Storage.storage().reference()
     var currentUser: User?
-    var navBar: UINavigationBar!
-    
-    
+
     //For sample post
     let sampleEvent = Event()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicator.startAnimating()
+        
+
+        
         allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        
+        setupTableView()
+        setupNavBar()
+
+        /* FUNC: set up UI for current user */
         fetchUser {
             self.fetchEvents() {
-                print("done")
-                self.setupButton()
                 
                 self.setupTableView()
                 self.setupNavBar()
                 
-                
-                
-                activityIndicator.stopAnimating()
+//                activityIndicator.stopAnimating()
             }
         }
     }
@@ -52,16 +57,16 @@ class FeedViewController: UIViewController {
     }
     
     func setupNavBar() {
-        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.2))
-        let navItem = UINavigationItem(title: "Feed");
         let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
-        navItem.rightBarButtonItem = logOutButton
-        navBar.setItems([navItem], animated: false)
-        self.view.addSubview(navBar)
+        let newEventButton = UIBarButtonItem(title: "Create Event", style: .plain, target: self, action: #selector(goToNewEvent))
+        
+        navigationItem.leftBarButtonItem = logOutButton
+        navigationItem.rightBarButtonItem = newEventButton
+        navigationItem.title = "Feed"
     }
     
     func logOut() {
-        print("logging out")
+        print("Logging out.")
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -69,31 +74,17 @@ class FeedViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        
-        
-    }
-    
-    /* setting up button to add a newEvent */
-    func setupButton() {
-        newEventButton = UIButton(frame: CGRect(x: -10, y: 10, width: UIScreen.main.bounds.width - 20, height: 50))
-        newEventButton.setTitle("Add Event", for: .normal)
-        newEventButton.setTitleColor(UIColor.blue, for: .normal)
-        newEventButton.layoutIfNeeded()
-        newEventButton.layer.borderWidth = 2.0
-        newEventButton.layer.cornerRadius = 3.0
-        newEventButton.layer.borderColor = UIColor.blue.cgColor
-        newEventButton.layer.masksToBounds = true
-        newEventButton.addTarget(self, action: #selector(goToNewEvent), for: .touchUpInside)
-        view.addSubview(newEventButton)
     }
     
     /* presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
-        let newEvent = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewEventViewController.self)) as! NewEventViewController
-        newEvent.delegate = self
-        newEvent.currentUser = currentUser
-        newEvent.eventsRef = eventsRef
-        self.present(newEvent, animated: true, completion: nil)
+        performSegue(withIdentifier: "segueToNewEvents", sender: self)
+        
+        
+//        let newEvent = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewEventViewController.self)) as! NewEventViewController
+//        newEvent.delegate = self
+//        newEvent.currentUser = currentUser
+//        self.present(newEvent, animated: true, completion: nil)
     }
     
     /* protocol to present NewEventVC modally */
@@ -108,7 +99,7 @@ class FeedViewController: UIViewController {
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
             let event = Event(id: snapshot.key, eventDict: snapshot.value as! [String : Any]?)
-            self.allEvents.append(event)
+//            self.allEvents.append(event)
             
             withBlock()
         })
@@ -128,11 +119,12 @@ class FeedViewController: UIViewController {
     
     /* Initializing table view, and adding it to view */
     func setupTableView(){
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.height ?? 0
+        let statusBarHeight = UIApplication.shared.statusBarFrame.maxY
         tableView = UITableView(frame:
             CGRect(x: 0,
-                   y: UIApplication.shared.statusBarFrame.maxY + view.frame.height * 0.1 + 10,
-                   width: view.frame.width,
-                   height: view.frame.height - UIApplication.shared.statusBarFrame.maxY))
+                   y: navigationBarHeight + statusBarHeight,                   width: view.frame.width,
+                   height: view.frame.height - statusBarHeight))
         
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
         tableView.delegate = self
@@ -182,15 +174,24 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
          2.) name of event
          3.) picture of event
          4.) number of people who RSVP’d “Interested”*/
-        cell.creatorName.text = event.creator
+        cell.creatorName.text = "By: " + event.creator!
         cell.eventName.text = event.eventName
-        Utils.getImage(url: event.imageUrl) { img in
+        Utils.getImage(url: event.imageUrl!) { img in
             cell.eventPic.image = img
         }
         if cell.eventPic.image == nil {
-            cell.eventPic.image = #imageLiteral(resourceName: "pokeball")
+            cell.eventPic.image = #imageLiteral(resourceName: "default")
         }
-        cell.numInterested.text = String(event.numInterested)
+        
+        let num: Int = event.numInterested!
+        var noun: String!
+        if num == 1 {
+            noun = " person"
+        } else {
+            noun = " people"
+        }
+        
+        cell.numInterested.text = String(num) + noun
         
         return cell
     }
@@ -204,7 +205,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     /* sets each row to be 1/10 of frame view */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height / 10
+        return view.frame.height / 5
     }
     
 }
