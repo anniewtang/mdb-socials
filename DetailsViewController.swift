@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailsViewController: UIViewController {
     
@@ -15,42 +16,58 @@ class DetailsViewController: UIViewController {
     let darkGray = UIColor(red:0.17, green:0.25, blue:0.30, alpha:1.0)
     
     var event: Event!
+    var eventImageView: UIImageView!
+    
+    var eventName: UILabel!
+    var creator: UILabel!
+    var numInterested: UILabel!
+    
+    var interestedButton: UIButton!
+    
+    var navBar: UINavigationBar!
+    var logOutButton: UIButton!
+    
+    
+    let ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupImage()
-        setupLabels()
+        
+        setupLabelsAndButtons()
+        setupImageView()
         setupDesc()
-        rsvpInterested()
     }
     
-    func setupImage() {
-        let eventImageView = UIImageView(frame:
+    /* UI: setting up ImageView and populates .image */
+    func setupImageView() {
+        eventImageView = UIImageView(frame:
             CGRect(x: view.frame.width * 0.1,
                    y: view.frame.width * 0.15,
                    width: view.frame.width * 0.4,
                    height: view.frame.width * 0.5))
-        eventImageView.contentMode = .scaleAspectFit
+        eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         view.addSubview(eventImageView)
         
-        Utils.getImage(url: event.imageUrl) { img in
+        Utils.getImage(url: event.imageUrl!) { img in
             self.eventImageView.image = img
         }
-        if eventImageView.image == nil {
-            eventImageView.image = #imageLiteral(resourceName: "default")
+        if self.eventImageView.image == nil {
+            self.eventImageView.image = #imageLiteral(resourceName: "default")
         }
+        
     }
     
-    func setupLabels() {
-        let OFFSET: CGFloat = 0.1
+    /* UI: eventName, creator, number interested, RSVP button */
+    func setupLabelsAndButtons() {
+        let OFFSET: CGFloat = view.frame.height * 0.1
         let HEIGHT: CGFloat = view.frame.height * 0.08
         let WIDTH: CGFloat = view.frame.width * 0.495
         let Y: CGFloat = view.frame.width * 0.47
         let X: CGFloat = view.frame.width * 0.505
         
-        let eventName = UILabel(frame:
+        eventName = UILabel(frame:
             CGRect(x: X,
                    y: Y - OFFSET*3,
                    width: WIDTH,
@@ -61,7 +78,7 @@ class DetailsViewController: UIViewController {
         eventName.font = eventName.font.withSize(20)
         view.addSubview(eventName)
         
-        let creator = UILabel(frame:
+        creator = UILabel(frame:
             CGRect(x: X,
                    y: Y - OFFSET*2,
                    width: WIDTH,
@@ -72,7 +89,7 @@ class DetailsViewController: UIViewController {
         creator.font = creator.font.withSize(14)
         view.addSubview(creator)
         
-        let numInterested = UILabel(frame:
+        numInterested = UILabel(frame:
             CGRect(x: X,
                    y: Y - OFFSET,
                    width: WIDTH,
@@ -83,11 +100,12 @@ class DetailsViewController: UIViewController {
         numInterested.font = numInterested.font.withSize(14)
         view.addSubview(numInterested)
         
-        let interestedButton = UIButton(frame:
+        
+        interestedButton = UIButton(frame:
             CGRect(x: X,
                    y: Y,
                    width: WIDTH,
-                   height: view.frame.height * 0.08))
+                   height: view.frame.height * 0.1))
         interestedButton.layer.cornerRadius = 3
         interestedButton.backgroundColor = lightGrayBlue
         interestedButton.setTitle("RSVP: Interested", for: .normal)
@@ -100,10 +118,10 @@ class DetailsViewController: UIViewController {
         interestedButton.addTarget(self,
                                    action: #selector(rsvpInterested),
                                    for: .touchUpInside)
-        
-        view.addSubview(interestedButton)
+//        view.addSubview(interestedButton)
     }
     
+    /* UI: set up description */
     func setupDesc() {
         let desc: UILabel = UILabel(frame:
             CGRect(x: view.frame.width * 0.1,
@@ -118,7 +136,9 @@ class DetailsViewController: UIViewController {
 
     }
     
+    /* FUNC: updates rsvp amnt locally & in firebase */
     func rsvpInterested() {
-        event.numInterested += 1
+        event.numInterested! += 1
+        ref.child("Events/\(String(describing: event.id))/numInterested").setValue(event.numInterested)
     }
 }
