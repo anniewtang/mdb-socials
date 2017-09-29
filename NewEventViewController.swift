@@ -154,7 +154,7 @@ class NewEventViewController: UIViewController {
         //For date formate
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        formatter.timeStyle = .medium
+//        formatter.timeStyle = .medium
         txtDatePicker.text = formatter.string(from: datePicker.date)
         //dismiss date picker dialog
         self.view.endEditing(true)

@@ -42,11 +42,9 @@ class FeedViewController: UIViewController {
         /* FUNC: set up UI for current user */
         fetchUser {
             self.fetchEvents() {
-                
-                self.setupTableView()
-                self.setupNavBar()
-                
-//                activityIndicator.stopAnimating()
+                DispatchQueue.main.async {
+                   self.tableView.reloadData()
+                }
             }
         }
     }
@@ -123,7 +121,8 @@ class FeedViewController: UIViewController {
         let statusBarHeight = UIApplication.shared.statusBarFrame.maxY
         tableView = UITableView(frame:
             CGRect(x: 0,
-                   y: navigationBarHeight + statusBarHeight,                   width: view.frame.width,
+                   y: 0,
+                   width: view.frame.width,
                    height: view.frame.height - statusBarHeight))
         
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
