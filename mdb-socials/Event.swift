@@ -12,15 +12,19 @@ import Firebase
 
 
 class Event {
-    var desc: String?
+    
+    var id: String?
+    
     var eventName: String?
     var imageUrl: String?
-    var creatorID: String?
-    var creator: String?
-    var id: String?
-    var numInterested: Int = 0
-    // do something about this numInterested??
+    var desc: String?
     
+    var creator: String?
+    var date: Date?
+    
+    var numInterested: Int!
+    
+    var image: UIImage?
     
     init(id: String, eventDict: [String:Any]?) {
         self.id = id
@@ -34,32 +38,39 @@ class Event {
             if let imageUrl = eventDict!["imageUrl"] as? String {
                 self.imageUrl = imageUrl
             }
-            if let creatorID = eventDict!["creatorID"] as? String {
-                self.creatorID = creatorID
-            }
             if let creator = eventDict!["creator"] as? String {
                 self.creator = creator
+            }
+            if let eventID = eventDict!["eventID"] as? String {
+                self.id = eventID
+            }
+            if let date = eventDict!["date"] as? Date {
+                self.date = date
+            }
+            if let numInterested = eventDict!["interested"] as? Int {
+                self.numInterested = numInterested
             }
         }
     }
     
     init() {
-        self.desc = "This is a god dream"
+        self.desc = "go go"
         self.imageUrl = "https://cmgajcmusic.files.wordpress.com/2016/06/kanye-west2.jpg"
-        self.id = "1"
+        self.numInterested = 1
         self.creator = "Kanye West"
+        self.eventName = "Yeezy concert"
     }
     
-    func getEventPic(withBlock: @escaping () -> ()) {
-        //TODO: Get User's profile picture
-        let ref = Storage.storage().reference().child("/eventpics/\(creatorID!)")
-        ref.data(withMaxSize: 1 * 2048 * 2048) { data, error in
-            if let error = error {
-                print(error)
-            } else {
-                self.image = UIImage(data: data!)
-                withBlock()
-            }
-        }
-    }
+//    func getEventPic(withBlock: @escaping () -> ()) {
+//        //TODO: Get User's profile picture
+//        let ref = Storage.storage().reference().child("/eventPics/\(id!)")
+//        ref.data(withMaxSize: 1 * 2048 * 2048) { data, error in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                self.image = UIImage(data: data!)
+//                withBlock()
+//            }
+//        }
+//    }
 }

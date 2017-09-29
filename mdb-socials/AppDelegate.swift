@@ -14,11 +14,23 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var storyboard: UIStoryboard?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
             FirebaseApp.configure()
+//            
+//            self.storyboard =  UIStoryboard(name: "Main", bundle: Bundle.main)
+//            let currentUser = Auth.auth().currentUser
+//            if currentUser != nil
+//            {
+//                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedVC")
+//            }
+//            else
+//            {
+//                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+//            }
             return true
     }
 

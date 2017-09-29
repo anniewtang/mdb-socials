@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,16 +25,17 @@
                     <connections>
                         <segue destination="a2W-nw-ju6" kind="show" identifier="toSignupFromLogin" id="5zs-ng-HLR"/>
                         <segue destination="CtS-Ie-xTv" kind="show" identifier="toFeedFromLogin" id="OfS-o2-HTM"/>
+                        <segue destination="iWW-K9-e7Z" kind="show" id="doL-qQ-hVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440" y="137"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--FeedVC-->
         <scene sceneID="d1A-0P-0qb">
             <objects>
-                <viewController id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedVC" title="FeedVC" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iUY-fV-I10"/>
                         <viewControllerLayoutGuide type="bottom" id="Afz-v6-se4"/>
@@ -48,6 +49,7 @@
                     <connections>
                         <segue destination="FCa-f3-K4R" kind="show" identifier="toDetails" id="ZxU-rv-c2y"/>
                         <segue destination="PbY-nr-Mxi" kind="presentation" identifier="toNewEvent" id="MFz-Fh-udg"/>
+                        <segue destination="PbY-nr-Mxi" kind="show" identifier="segueToNewEvents" id="bpL-Aq-6FK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWP-Qc-uxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,10 +127,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCw-nJ-ejG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="493"/>
+            <point key="canvasLocation" x="1180" y="493"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3Wf-qc-YWs"/>
         <segue reference="OfS-o2-HTM"/>
+        <segue reference="bpL-Aq-6FK"/>
     </inferredMetricsTieBreakers>
 </document>

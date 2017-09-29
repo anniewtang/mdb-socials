@@ -7,28 +7,45 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
     var titleLabel: UILabel!
-    var loginButton: UIButton!
-    var signupButton: UIButton!
+
     var emailTextField: UITextField!
     var passwordTextField: UITextField!
+    
+    var loginButton: UIButton!
+    var signupButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTitleLabel()
-        setupLoginButton()
-        setupSignupButton()
-        setupTextFields()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let _ = user {
+                self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
+            } else {
+                self.setupTitleLabel()
+                self.setupLoginButton()
+                self.setupSignupButton()
+                self.setupTextFields()
+            }
+        }
         
-//        if FIRAuth.auth()?.currentUser != nil {
+//        setupTitleLabel()
+//        setupLoginButton()
+//        setupSignupButton()
+//        setupTextFields()
+//        
+//        /* FUNC: navigates to Feed with segue, if already signed in */
+//        if Auth.auth().currentUser != nil {
 //            performSegue(withIdentifier: "toFeedFromLogin", sender: self)
 //        }
     }
     
+    
+    /* UI: "MDB SOCIALS" title label */
     func setupTitleLabel() {
         titleLabel = UILabel(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -45,6 +62,7 @@ class LoginViewController: UIViewController {
         view.addSubview(titleLabel)
     }
     
+    /* UI: email and password text fields*/
     func setupTextFields() {
         emailTextField = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -78,7 +96,7 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
     }
     
-    
+    /* UI: login button */
     func setupLoginButton() {
         loginButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -94,10 +112,7 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(selectedLogin), for: .touchUpInside)
     }
     
-    func selectedLogin() {
-        
-    }
-    
+    /* UI: sign up button */
     func setupSignupButton() {
         signupButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -113,6 +128,22 @@ class LoginViewController: UIViewController {
         signupButton.addTarget(self, action: #selector(segueToSignup), for: .touchUpInside)
     }
     
+    /* FUNC: signs in user with the correct information */
+    func selectedLogin(sender: UIButton!) {
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error == nil {
+                self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
+            }
+        }
+    }
+    
+    /* FUNC: segue, toSignupFromLogin */
     func segueToSignup() {
         performSegue(withIdentifier: "toSignupFromLogin", sender: self)
     }

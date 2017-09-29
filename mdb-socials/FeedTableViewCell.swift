@@ -15,6 +15,8 @@ class FeedTableViewCell: UITableViewCell {
     var eventPic: UIImageView!
     var creatorName: UILabel!
     var eventName: UILabel!
+    
+    var rsvpTitle: UILabel!
     var numInterested: UILabel!
     
     override func awakeFromNib() {
@@ -25,6 +27,7 @@ class FeedTableViewCell: UITableViewCell {
         setupNumInterested()
     }
     
+    /* UI: setting up event picture image view */
     func setupEventPic() {
         eventPic = UIImageView(frame:
             CGRect(x: 0,
@@ -36,6 +39,7 @@ class FeedTableViewCell: UITableViewCell {
         contentView.addSubview(eventPic)
     }
     
+    /* UI: setting up event name label */
     func setupEventName() {
         eventName = UILabel(frame:
             CGRect(x: contentView.frame.height * 1.2,
@@ -49,6 +53,7 @@ class FeedTableViewCell: UITableViewCell {
         
     }
     
+    /* UI: setting up "created by" label */
     func setupCreatorName() {
         creatorName = UILabel(frame:
             CGRect(x: contentView.frame.height * 1.2,
@@ -57,16 +62,28 @@ class FeedTableViewCell: UITableViewCell {
                    height: contentView.frame.height * 0.8))
         creatorName.textColor = UIColor.lightGray
         creatorName.textAlignment = .left
-        creatorName.font = creatorName.font.withSize(14)
+        creatorName.font = creatorName.font.withSize(13)
         contentView.addSubview(creatorName)
     }
     
+    /* UI: creating title & number label for RSVP */
     func setupNumInterested() {
+        rsvpTitle = UILabel(frame:
+            CGRect(x: 0,
+                   y: 0,
+                   width: contentView.frame.width * 0.95,
+                   height: contentView.frame.height * 0.7))
+        rsvpTitle.textColor = UIColor.lightGray
+        rsvpTitle.textAlignment = .right
+        rsvpTitle.font = rsvpTitle.font.withSize(14)
+        contentView.addSubview(rsvpTitle)
+        rsvpTitle.text = "RSVP-ed:"
+        
         numInterested = UILabel(frame:
             CGRect(x: 0,
-                   y: contentView.frame.height,
-                   width: contentView.frame.width * 0.9,
-                   height: contentView.frame.height))
+                   y: contentView.frame.height * 0.25,
+                   width: contentView.frame.width * 0.95,
+                   height: contentView.frame.height * 0.8))
         numInterested.textColor = UIColor.lightGray
         numInterested.textAlignment = .right
         numInterested.font = creatorName.font.withSize(14)
