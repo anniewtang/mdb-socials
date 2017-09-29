@@ -56,7 +56,7 @@ class FeedViewController: UIViewController {
     
     func setupNavBar() {
         let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
-        let newEventButton = UIBarButtonItem(title: "Create Event", style: .plain, target: self, action: #selector(goToNewEvent))
+        let newEventButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.compose, target: self, action: #selector(goToNewEvent))
         
         navigationItem.leftBarButtonItem = logOutButton
         navigationItem.rightBarButtonItem = newEventButton
@@ -97,7 +97,9 @@ class FeedViewController: UIViewController {
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
             let event = Event(id: snapshot.key, eventDict: snapshot.value as! [String : Any]?)
-//            self.allEvents.append(event)
+//            if event != nil {
+//                self.allEvents.append(event)
+//            }
             
             withBlock()
         })
@@ -117,7 +119,6 @@ class FeedViewController: UIViewController {
     
     /* Initializing table view, and adding it to view */
     func setupTableView(){
-        let navigationBarHeight = self.navigationController?.navigationBar.frame.height ?? 0
         let statusBarHeight = UIApplication.shared.statusBarFrame.maxY
         tableView = UITableView(frame:
             CGRect(x: 0,

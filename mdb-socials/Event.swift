@@ -60,6 +60,11 @@ class Event {
         self.creator = "Kanye West"
         self.eventName = "Yeezy concert"
     }
+
+    
+//    let childUpdates = ["/\(key)/": newEvent]
+//    let key = eventsRef.childByAutoId().key
+//    eventsRef.updateChildValues(childUpdates)
     
 //    func getEventPic(withBlock: @escaping () -> ()) {
 //        //TODO: Get User's profile picture

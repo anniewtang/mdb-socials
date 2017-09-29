@@ -24,10 +24,14 @@ class NewEventViewController: UIViewController {
     var id: String!
     
     var eventName: UITextField!
-    var eventImageView: UIImageView!
-    
-//    var datePicker: UIDatePicker!
+    var datePickerTextField: UITextField!
+    var datePicker: UIDatePicker!
     var descView: UITextField!
+    var uploadButton: UIButton!
+    
+    let picker = UIImagePickerController()
+    var eventImageView: UIImageView!
+    var imageName: String?
     
     var createEventButton: UIButton!
     var cancelButton: UIButton!
@@ -36,13 +40,32 @@ class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupImageView()
         setupEventName()
-//        setupDatePicker()
-        showDatePicker()
+        setupDatePicker()
         setupDescView()
-        setupButtons()
+        setupUploadButton()
+        
+        setupCreateButton()
+        setupCancelButton()
     }
 
+    /* ------------ USER INPUT FIELDS ------------ */
+    
+    /* UI: setting up ImageView and gives a default image */
+    func setupImageView() {
+        eventImageView = UIImageView(frame:
+            CGRect(x: view.frame.width * 0.1,
+                   y: view.frame.width * 0.15,
+                   width: view.frame.width * 0.4,
+                   height: view.frame.width * 0.5))
+        eventImageView.contentMode = .scaleAspectFill
+        eventImageView.clipsToBounds = true
+        view.addSubview(eventImageView)
+//        eventImageView.image = #imageLiteral(resourceName: "default")
+    }
+    
+    /* UI: setting up text field, event name */
     func setupEventName() {
         eventName = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -60,13 +83,47 @@ class NewEventViewController: UIViewController {
         view.addSubview(eventName) 
     }
     
-    func setupDatePicker() {
-        datePicker = UIDatePicker(frame:
-            CGRect(x: 10, y: 400, w: 300, h: 400))
-        view.addSubview(datePicker)
-
+    /* UI: setting up date picker and toolbar; credits to stack overflow 40484182! */
+    func setupDatePicker(){
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        
+        datePickerTextField = UITextField(frame:
+            CGRect(x: 10,
+                   y: view.frame.height * 0.5,
+                   width: UIScreen.main.bounds.width - 20,
+                   height: view.frame.height * 0.1))
+        datePickerTextField.placeholder = "Event Date"
+        view.addSubview(datePickerTextField)
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelDatePicker))
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+        
+        // add toolbar to textField
+        datePickerTextField.inputAccessoryView = toolbar
+        // add datepicker to textField
+        datePickerTextField.inputView = datePicker
+        
     }
     
+    /* FUNC: done with date picker */
+    func doneDatePicker(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        datePickerTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    /* FUNC: closes and cancels date picker */
+    func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
+
+    /* UI: setting up text field, event description */
     func setupDescView() {
         descView =  UITextField(frame:
             CGRect(x: 10,
@@ -82,8 +139,57 @@ class NewEventViewController: UIViewController {
         view.addSubview(descView)
     }
     
-    /* setting up button to create a newEvent & send it to Firebase */
-    func setupButtons() {
+    /* UI: setting up image picking button */
+    func setupUploadButton() {
+        uploadButton = UIButton(frame:
+            CGRect(x: view.frame.width * 0.1,
+                   y: view.frame.height * 0.5,
+                   width: view.frame.width * 0.3,
+                   height: view.frame.height * 0.05))
+        uploadButton.setTitle("Create Event", for: .normal)
+        uploadButton.setTitleColor(UIColor.blue, for: .normal)
+        uploadButton.layoutIfNeeded()
+        uploadButton.layer.borderWidth = 2.0
+        uploadButton.layer.cornerRadius = 3.0
+        uploadButton.layer.borderColor = UIColor.blue.cgColor
+        uploadButton.layer.masksToBounds = true
+        uploadButton.addTarget(self, action: #selector(addNewEvent), for: .touchUpInside)
+        view.addSubview(uploadButton)
+    }
+    
+    func setupProfileImageView() {
+        uploadButton = UIButton(frame: eventImageView.frame)
+        uploadButton.setTitle("Upload Event Picture from Library", for: .normal)
+        uploadButton.setTitleColor(UIColor.blue, for: .normal)
+        uploadButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+        view.addSubview(uploadButton)
+        view.bringSubview(toFront: uploadButton)
+    }
+    
+    func selectImage(sender: UIButton!) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+    
+    
+    /* ------------ NAVIGATION & FLOW ------------ */
+    
+    
+    // TODO: CHANGE "FEED" TO "CANCEL"
+    /* func setupCancelButton() {
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancelEventCreation(sender:)))
+        navigationItem.leftBarButtonItem = cancelButton
+    } */
+    
+    /* UI: setting up CREATE button */
+    func setupCreateButton() {
         createEventButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.1,
                    y: view.frame.height * 0.5,
@@ -98,7 +204,10 @@ class NewEventViewController: UIViewController {
         createEventButton.layer.masksToBounds = true
         createEventButton.addTarget(self, action: #selector(addNewEvent), for: .touchUpInside)
         view.addSubview(createEventButton)
-
+    }
+    
+    /* UI: setting up CANCEL button */
+    func setupCancelButton() {
         cancelButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.5,
                    y: view.frame.height * 0.5,
@@ -111,64 +220,39 @@ class NewEventViewController: UIViewController {
         cancelButton.layer.cornerRadius = 3.0
         cancelButton.layer.borderColor = UIColor.blue.cgColor
         cancelButton.layer.masksToBounds = true
-        cancelButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelEventCreation), for: .touchUpInside)
         view.addSubview(cancelButton)
     }
     
-    func addNewEvent(sender: UIButton!) {
-        let key = eventsRef.childByAutoId().key
-        let newEvent = ["eventID": key, "desc": descView.text, "creator": currentUser?.name, "imageUrl": currentUser?.imageUrl, "date": datePicker.date, "numInterested": 0] as [String : Any]
-        let childUpdates = ["/\(key)/": newEvent]
-        eventsRef.updateChildValues(childUpdates)
-    }
-    
-    var txtDatePicker: UITextField!
-    var datePicker = UIDatePicker()
-    
-    func showDatePicker(){
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        txtDatePicker = UITextField(frame:
-            CGRect(x: 10,
-                   y: view.frame.height * 0.5,
-                   width: UIScreen.main.bounds.width - 20,
-                   height: view.frame.height * 0.1))
-        txtDatePicker.placeholder = "Event Date & Time"
-        view.addSubview(txtDatePicker)
-        
-        //done button & cancel button
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(donedatePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelDatePicker))
-        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
-        
-        // add toolbar to textField
-        txtDatePicker.inputAccessoryView = toolbar
-        // add datepicker to textField
-        txtDatePicker.inputView = datePicker
-        
-    }
-    
-    func donedatePicker(){
-        //For date formate
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-//        formatter.timeStyle = .medium
-        txtDatePicker.text = formatter.string(from: datePicker.date)
-        //dismiss date picker dialog
-        self.view.endEditing(true)
-    }
-    
-    func cancelDatePicker(){
-        //cancel button dismiss datepicker dialog
-        self.view.endEditing(true)
-    }
-    
-    func goBack(sender: AnyObject) {
+    /* FUNC: cancel event creation for UX purposes */
+    func cancelEventCreation(sender: AnyObject) {
         self.dismiss(animated: true) {
             self.delegate!.dismissViewController()
         }
     }
+    
+    /* FUNC: creating a new Event */
+    // TODO: EDIT THIS PORTION
+    func addNewEvent(sender: UIButton!) {
+        let key: String = "placeholder"
+        let newEvent = ["eventID": key, "desc": descView.text, "creator": currentUser?.name, "imageUrl": currentUser?.imageUrl, "date": datePicker.date.timeIntervalSince1970, "numInterested": 0] as [String : Any]
+        _ = Event(id: key, eventDict: newEvent)
 
+    }
 }
+
+//extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    
+//    func imagePickerController(_ picker: UIImagePickerController,
+//                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        uploadButton.removeFromSuperview()
+//        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        eventImageView.contentMode = .scaleAspectFit
+//        eventImageView.image = chosenImage
+//        dismiss(animated:true, completion: nil)
+//    }
+//    
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        dismiss(animated: true, completion: nil)
+//    }
+//}
