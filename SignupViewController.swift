@@ -25,10 +25,11 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         
         setupTitleLabel()
-        setupButtons()
         setupTextFields()
+        setupButtons()
     }
     
+    /* UI: "SIGNUP" title label */
     func setupTitleLabel() {
         signupLabel = UILabel(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -45,10 +46,14 @@ class SignupViewController: UIViewController {
         view.addSubview(signupLabel)
     }
     
+    /* UI: name, username, email, password text fields */
     func setupTextFields() {
+        let OFFSET: CGFloat = view.frame.height * 0.065
+        let HEIGHT: CGFloat = view.frame.height * 0.45
+        
         nameTextField = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.45,
+                   y: HEIGHT,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.05))
         nameTextField.adjustsFontSizeToFitWidth = true
@@ -63,7 +68,7 @@ class SignupViewController: UIViewController {
         
         usernameTextField = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.45,
+                   y: HEIGHT + OFFSET,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.05))
         usernameTextField.adjustsFontSizeToFitWidth = true
@@ -78,7 +83,7 @@ class SignupViewController: UIViewController {
         
         emailTextField = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.45,
+                   y: HEIGHT + OFFSET * 2,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.05))
         emailTextField.adjustsFontSizeToFitWidth = true
@@ -94,7 +99,7 @@ class SignupViewController: UIViewController {
         
         passwordTextField = UITextField(frame:
             CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.53,
+                   y: HEIGHT + OFFSET * 3,
                    width: view.frame.width * 0.7,
                    height: view.frame.height * 0.05))
         passwordTextField.adjustsFontSizeToFitWidth = true
@@ -108,6 +113,7 @@ class SignupViewController: UIViewController {
         view.addSubview(passwordTextField)
     }
     
+    /* UI: signup, back buttons! */
     func setupButtons() {
         signupButton = UIButton(frame:
             CGRect(x: view.frame.width * 0.15,
@@ -138,21 +144,21 @@ class SignupViewController: UIViewController {
         self.view.addSubview(backButton)
     }
     
+    /* FUNC: creates a user, and puts it into Firebase */
     func signupButtonClicked() {
-        
         let name = nameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil {
                 let ref = Database.database().reference().child("Users").child((Auth.auth().currentUser?.uid)!)
                 ref.setValue(["name": name, "email": email])
                 
+                self.nameTextField.text = ""
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""
-                self.nameTextField.text = ""
+                
                 self.performSegue(withIdentifier: "toFeedFromSignup", sender: self)
             }
             else {
@@ -161,6 +167,7 @@ class SignupViewController: UIViewController {
         }
     }
     
+    /* FUNC: MODALLY goes back to Login view */
     func backButtonClicked() {
         self.dismiss(animated: true, completion: nil)
     }
