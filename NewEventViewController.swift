@@ -32,6 +32,7 @@ class NewEventViewController: UIViewController {
     let picker = UIImagePickerController()
     var eventImageView: UIImageView!
     var imageName: String?
+    var imgURL: String?
     
     var createEventButton: UIButton!
     var cancelButton: UIButton!
@@ -220,12 +221,16 @@ class NewEventViewController: UIViewController {
         cancelButton.layer.cornerRadius = 3.0
         cancelButton.layer.borderColor = UIColor.blue.cgColor
         cancelButton.layer.masksToBounds = true
-        cancelButton.addTarget(self, action: #selector(cancelEventCreation), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         view.addSubview(cancelButton)
     }
     
-    /* FUNC: cancel event creation for UX purposes */
-    func cancelEventCreation(sender: AnyObject) {
+    /* FUNC: returns to Feed modally */
+    func goBack(sender: AnyObject) {
+        eventName.text = ""
+        datePickerTextField.text = ""
+        descView.text = ""
+        
         self.dismiss(animated: true) {
             self.delegate!.dismissViewController()
         }
@@ -234,25 +239,23 @@ class NewEventViewController: UIViewController {
     /* FUNC: creating a new Event */
     // TODO: EDIT THIS PORTION
     func addNewEvent(sender: UIButton!) {
-        let key: String = "placeholder"
-        let newEvent = ["eventID": key, "desc": descView.text, "creator": currentUser?.name, "imageUrl": currentUser?.imageUrl, "date": datePicker.date.timeIntervalSince1970, "numInterested": 0] as [String : Any]
-        _ = Event(id: key, eventDict: newEvent)
-
+        /* Things to pass over
+         1.) eventName
+         2.) desc
+         3.) imageUrl
+         4.) creator
+         5.) date
+         6.) numInterested
+         */
+        let newEvent = ["eventName": eventName.text ?? "[no title]",
+                        "desc": descView.text ?? "[no description]",
+                        "imageUrl": imgURL as Any,
+                        "creator": currentUser?.name,
+                        "date": datePicker.date.timeIntervalSince1970,
+                        "numInterested": 0] as [String : Any]
+        
+        let event = Event(eventDict: newEvent)
+        let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+        FeedVC.allEvents.append(event)
     }
 }
-
-//extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    
-//    func imagePickerController(_ picker: UIImagePickerController,
-//                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        uploadButton.removeFromSuperview()
-//        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        eventImageView.contentMode = .scaleAspectFit
-//        eventImageView.image = chosenImage
-//        dismiss(animated:true, completion: nil)
-//    }
-//    
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        dismiss(animated: true, completion: nil)
-//    }
-//}

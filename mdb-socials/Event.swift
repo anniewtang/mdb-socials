@@ -23,11 +23,20 @@ class Event {
     var date: Date?
     
     var numInterested: Int!
-    
     var image: UIImage?
     
-    init(id: String, eventDict: [String:Any]?) {
-        self.id = id
+    /* Things to pass over 
+     1.) eventName
+     2.) desc
+     3.) imageUrl
+     4.) creator
+     5.) date
+     6.) numInterested
+     */
+    
+    
+    init(eventDict: [String:Any]?) {
+        /* pass in eventDict information */
         if eventDict != nil {
             if let eventName = eventDict!["eventName"] as? String {
                 self.eventName = eventName
@@ -41,9 +50,6 @@ class Event {
             if let creator = eventDict!["creator"] as? String {
                 self.creator = creator
             }
-            if let eventID = eventDict!["eventID"] as? String {
-                self.id = eventID
-            }
             if let date = eventDict!["date"] as? Date {
                 self.date = date
             }
@@ -51,6 +57,7 @@ class Event {
                 self.numInterested = numInterested
             }
         }
+        /*event*/
     }
     
     init() {

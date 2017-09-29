@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="440" y="137"/>
         </scene>
-        <!--FeedVC-->
+        <!--FeedViewController-->
         <scene sceneID="d1A-0P-0qb">
             <objects>
-                <viewController storyboardIdentifier="FeedVC" title="FeedVC" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" title="FeedViewController" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iUY-fV-I10"/>
                         <viewControllerLayoutGuide type="bottom" id="Afz-v6-se4"/>

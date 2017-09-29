@@ -11,8 +11,6 @@ import Firebase
 
 extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
-    
     /* FUNC: sets up picker functionalities */
     func handleSelectEventPicImageView() {
         let picker = UIImagePickerController()
@@ -32,6 +30,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             eventImageView.image = selectedImage
             let imagePath: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             imageName = imagePath.lastPathComponent!
+            storeImageToFirebase()
         }
     }
     
@@ -40,16 +39,17 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
-    func uploadToFirebase() {
-        let storageRef = Storage.storage().reference().child("eventPics/\(imageName)")
+    func storeImageToFirebase() {
+        let storageRef = Storage.storage().reference().child("eventPics/\(String(describing: imageName))")
         
         if let uploadData = UIImagePNGRepresentation(eventImageView.image!) {
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                if error != nil {
-                    print(error)
-                    return
-                }
-            })
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            storageRef.putData(uploadData, metadata: metadata).observe(.success) { (snapshot) in
+                let url = snapshot.metadata?.downloadURL()?.absoluteString
+                self.imgURL = url
+            }
         }
+        
     }
 }
