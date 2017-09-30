@@ -198,10 +198,6 @@ class SignupViewController: UIViewController {
         passwordTextField.text = ""
         
         dismiss(animated: true, completion: nil)
-        
-//        self.dismiss(animated: true) {
-//            self.delegate!.dismissViewController()
-//        }
     }
     
 }

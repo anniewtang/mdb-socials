@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController,SignupViewControllerProtocol {
+class LoginViewController: UIViewController {
 
     var mdbTitle: UILabel!
     var socialsTitle: UILabel!
@@ -179,13 +179,6 @@ class LoginViewController: UIViewController,SignupViewControllerProtocol {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SignupViewController.self)) as! SignupViewController
         signupVC.delegate = self
         self.present(signupVC, animated: true, completion: nil)
-    }
-    
-    /* FUNC: dismissing view controller by re-presenting current one */
-    func dismissViewController() {
-        if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: LoginViewController())){
-            self.present(loginVC, animated: true, completion: nil)
-        }
     }
 
 }
