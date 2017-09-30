@@ -31,10 +31,10 @@ class FeedViewController: UIViewController {
         
 
         
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
+        allEvents.append(sampleEvent)
         
         setupTableView()
         setupNavBar()

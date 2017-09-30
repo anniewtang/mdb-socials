@@ -75,6 +75,7 @@ class NewEventViewController: UIViewController {
     func setupUploadButton() {
         uploadButton = UIButton(frame: eventImageView.frame)
         uploadButton.setTitle("Upload Event Picture from Library", for: .normal)
+        uploadButton.titleLabel?.adjustsFontSizeToFitWidth = true
         uploadButton.setTitleColor(blue, for: .normal)
         uploadButton.layer.borderColor = blue.cgColor
         uploadButton.layer.borderWidth = 3
@@ -258,7 +259,7 @@ class NewEventViewController: UIViewController {
                    w: WIDTH,
                    h: 41))
         createEventButton.setTitle("Create Event", for: .normal)
-        createEventButton.setTitleColor(UIColor.blue, for: .normal)
+        createEventButton.setTitleColor(.white, for: .normal)
         createEventButton.setTitleColor(lightGray, for: .selected)
         createEventButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
         createEventButton.layoutIfNeeded()

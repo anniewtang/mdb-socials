@@ -11,9 +11,10 @@ import Firebase
 
 class DetailsViewController: UIViewController {
     
-    let grayBlue = UIColor(red:0.58, green:0.67, blue:0.75, alpha:1.0)
-    let lightGrayBlue = UIColor(red:0.83, green:0.86, blue:0.88, alpha:1.0)
-    let darkGray = UIColor(red:0.17, green:0.25, blue:0.30, alpha:1.0)
+    let grayBlue = UIColor(hexString: "#6074AC")
+    let brightBlue = UIColor(hexString: "#4C9BD0")
+    let lightGray = UIColor(hexString: "#95989A")
+    let gray = UIColor(hexString: "#95989A")
     
     var event: Event!
     var eventImageView: UIImageView!
@@ -21,7 +22,10 @@ class DetailsViewController: UIViewController {
     var eventName: UILabel!
     var creator: UILabel!
     var numInterested: UILabel!
+    var numInterestedText: UILabel!
     
+    var eventDescTitle: UILabel!
+    var eventDesc: UITextView!
     var interestedButton: UIButton!
     
     var navBar: UINavigationBar!
@@ -33,19 +37,18 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setupLabelsAndButtons()
         setupImageView()
-        setupDesc()
+        setupLabelsAndButtons()
+        
     }
     
     /* UI: setting up ImageView and populates .image */
     func setupImageView() {
         eventImageView = UIImageView(frame:
-            CGRect(x: view.frame.width * 0.1,
-                   y: view.frame.width * 0.15,
-                   width: view.frame.width * 0.4,
-                   height: view.frame.width * 0.5))
+            CGRect(x: 43,
+                   y: 159,
+                   w: 175,
+                   h: 203))
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         view.addSubview(eventImageView)
@@ -59,66 +62,110 @@ class DetailsViewController: UIViewController {
         
     }
     
-    /* UI: eventName, creator, number interested, RSVP button */
+    /* UI: calls to set up all labels and buttons */
     func setupLabelsAndButtons() {
-        let OFFSET: CGFloat = view.frame.height * 0.1
-        let HEIGHT: CGFloat = view.frame.height * 0.08
-        let WIDTH: CGFloat = view.frame.width * 0.495
-        let Y: CGFloat = view.frame.width * 0.47
-        let X: CGFloat = view.frame.width * 0.505
+        setupRightCorner()
+        setupDesc()
+        setupNumInterested()
+        setupBottomHalf()
+    }
+    
+    /* UI: setting up eventName, creator */
+    func setupRightCorner() {
+        let WIDTH: CGFloat = 106
+        let X: CGFloat = 231
         
         eventName = UILabel(frame:
             CGRect(x: X,
-                   y: Y - OFFSET*3,
+                   y: 159,
                    width: WIDTH,
-                   height: HEIGHT))
+                   height: 53))
         eventName.text = event.eventName
-        eventName.textColor = UIColor.darkGray
+        eventName.textColor = grayBlue
         eventName.textAlignment = .left
-        eventName.font = eventName.font.withSize(20)
+        eventName.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         view.addSubview(eventName)
         
         creator = UILabel(frame:
             CGRect(x: X,
-                   y: Y - OFFSET*2,
-                   width: WIDTH,
-                   height: HEIGHT))
-        creator.text = event.creator
-        creator.textColor = .lightGray
+                   y: 212,
+                   w: WIDTH,
+                   h: 34))
+        creator.text = "Host: " + String(describing: event.creator)
+        creator.textColor = lightGray
         creator.textAlignment = .left
-        creator.font = creator.font.withSize(14)
+        creator.font = UIFont(name: "HelveticaNeue", size: 15)
         view.addSubview(creator)
-        
+    }
+    
+    /* UI: sets up NumInterested text */
+    func setupNumInterested() {
         numInterested = UILabel(frame:
-            CGRect(x: X,
-                   y: Y - OFFSET,
-                   width: WIDTH,
-                   height: HEIGHT))
-        numInterested.text = event.creator
-        numInterested.textColor = .lightGray
-        numInterested.textAlignment = .right
-        numInterested.font = numInterested.font.withSize(14)
+            CGRect(x: 230.67,
+                   y: 340.7,
+                   width: 10,
+                   height: 22))
+        numInterested.text = "\(event.numInterested)"
+        numInterested.textColor = brightBlue
+        numInterested.textAlignment = .left
+        numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
         
+        numInterestedText = UILabel(frame:
+            CGRect(x: 243.86,
+                   y: 344.37,
+                   width: 100,
+                   height: 18))
+        numInterestedText.text = "INTERESTED"
+        numInterestedText.textColor = brightBlue
+        numInterestedText.textAlignment = .left
+        numInterestedText.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
+        view.addSubview(numInterestedText)
+    }
+    
+    /* UI: setting up RSVPButton, event desc */
+    func setupBottomHalf() {
+        let WIDTH: CGFloat = 290
+        let X: CGFloat = 43
+        
+        eventDescTitle = UILabel(frame:
+            CGRect(x: X,
+                   y: 159,
+                   width: WIDTH,
+                   height: 53))
+        eventDescTitle.text = event.eventName
+        eventDescTitle.textColor = grayBlue
+        eventDescTitle.textAlignment = .left
+        eventDescTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        view.addSubview(eventDescTitle)
+        
+        eventDesc = UITextView(frame:
+            CGRect(x: X,
+                   y: 372,
+                   width: WIDTH,
+                   height: 22))
+        eventDesc.text = event.desc
+        eventDesc.textColor = gray
+        eventDesc.textAlignment = .left
+        eventDesc.font = UIFont(name: "HelveticaNeue", size: 20)
+        view.addSubview(eventDesc)
         
         interestedButton = UIButton(frame:
             CGRect(x: X,
-                   y: Y,
+                   y: 480,
                    width: WIDTH,
-                   height: view.frame.height * 0.1))
+                   height: 60))
         interestedButton.layer.cornerRadius = 3
-        interestedButton.backgroundColor = lightGrayBlue
-        interestedButton.setTitle("RSVP: Interested", for: .normal)
+        interestedButton.backgroundColor = brightBlue
+        interestedButton.setTitle("RSVP INTERESTED", for: .normal)
         interestedButton.setTitle("RSVP-ed!", for: .selected)
-        interestedButton.setTitleColor(darkGray, for: .normal)
-        interestedButton.setTitleColor(.green, for: .selected)
+        interestedButton.setTitleColor(.white, for: .normal)
         interestedButton.titleLabel?.font = UIFont(
-            name: (interestedButton.titleLabel?.font.fontName)!,
-            size: 14)
-        interestedButton.addTarget(self,
-                                   action: #selector(rsvpInterested),
+            name: "HelveticaNeue-Bold",
+            size: 20)
+        interestedButton.addTarget(self,action: #selector(rsvpInterested),
                                    for: .touchUpInside)
-//        view.addSubview(interestedButton)
+        view.addSubview(interestedButton)
     }
     
     /* UI: set up description */
