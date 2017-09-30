@@ -154,9 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				D104D4C11F7AF17B00C416C0 /* AppDelegate.swift */,
-				D104D5041F7CA5DC00C416C0 /* Utils.swift */,
-				D104D5061F7D476D00C416C0 /* UIColor.swift */,
-				D104D50B1F7DABA600C416C0 /* CGRect.swift */,
 				D104D5081F7D47A200C416C0 /* Utility Files */,
 				D104D5091F7D47B400C416C0 /* Model */,
 				D112E1BC1F80178200B84840 /* View */,
@@ -192,6 +189,9 @@
 		D104D5081F7D47A200C416C0 /* Utility Files */ = {
 			isa = PBXGroup;
 			children = (
+				D104D5041F7CA5DC00C416C0 /* Utils.swift */,
+				D104D5061F7D476D00C416C0 /* UIColor.swift */,
+				D104D50B1F7DABA600C416C0 /* CGRect.swift */,
 			);
 			name = "Utility Files";
 			sourceTree = "<group>";
@@ -210,10 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
-				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
-				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
-				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
 				D112E1C01F80184400B84840 /* SignupViewController.swift */,
+				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
+				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
+				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
