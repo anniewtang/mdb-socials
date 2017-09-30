@@ -39,11 +39,11 @@ class NewEventViewController: UIViewController {
     var imgURL: String?
     
     /* REUSABLE VARIABLES */
-    var red = UIColor(hexString: "#B49795")
+    var blue = UIColor(hexString: "#86A2C7")
     var lightGray = UIColor(hexString: "#BFC3C6")
     var gray = UIColor(hexString: "#C1C2C3")
     
-    let WIDTH: CGFloat = 229.55; let X: CGFloat = 64; let HEIGHT: CGFloat = 35
+    let WIDTH: CGFloat = 244; let X: CGFloat = 66; let HEIGHT: CGFloat = 35
     let OFFSET: CGFloat = 54
     
     override func viewDidLoad() {
@@ -61,10 +61,10 @@ class NewEventViewController: UIViewController {
     /* UI: setting up ImageView */
     func setupImageView() {
         eventImageView = UIImageView(frame:
-            CGRect(x: view.frame.width * 0.1,
-                   y: view.frame.width * 0.15,
-                   width: view.frame.width * 0.4,
-                   height: view.frame.width * 0.5))
+            CGRect(x: X,
+                   y: 117,
+                   w: WIDTH,
+                   h: 155))
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         view.addSubview(eventImageView)
@@ -75,7 +75,9 @@ class NewEventViewController: UIViewController {
     func setupUploadButton() {
         uploadButton = UIButton(frame: eventImageView.frame)
         uploadButton.setTitle("Upload Event Picture from Library", for: .normal)
-        uploadButton.setTitleColor(UIColor.blue, for: .normal)
+        uploadButton.setTitleColor(blue, for: .normal)
+        uploadButton.layer.borderColor = blue.cgColor
+        uploadButton.layer.borderWidth = 3
         uploadButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
         view.addSubview(uploadButton)
         view.bringSubview(toFront: uploadButton)
@@ -136,7 +138,7 @@ class NewEventViewController: UIViewController {
     
     /* UI: setting up the underlines */
     func setupUnderline() {
-        let Y: CGFloat = 316.5
+        let Y: CGFloat = 320
         
         let eventNameLineView = UIView(frame:
             CGRect(x: X,
@@ -247,19 +249,21 @@ class NewEventViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancelButton
     } */
     
+    
     /* UI: setting up CREATE button */
     func setupCreateButton() {
         createEventButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.1,
-                   y: view.frame.height * 0.5,
-                   width: view.frame.width * 0.3,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: 475,
+                   w: WIDTH,
+                   h: 41))
         createEventButton.setTitle("Create Event", for: .normal)
         createEventButton.setTitleColor(UIColor.blue, for: .normal)
+        createEventButton.setTitleColor(lightGray, for: .selected)
+        createEventButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
         createEventButton.layoutIfNeeded()
-        createEventButton.layer.borderWidth = 2.0
-        createEventButton.layer.cornerRadius = 3.0
-        createEventButton.layer.borderColor = UIColor.blue.cgColor
+        createEventButton.layer.cornerRadius = 15
+        createEventButton.layer.backgroundColor = blue.cgColor
         createEventButton.layer.masksToBounds = true
         createEventButton.addTarget(self, action: #selector(addNewEvent), for: .touchUpInside)
         view.addSubview(createEventButton)
@@ -268,16 +272,18 @@ class NewEventViewController: UIViewController {
     /* UI: setting up CANCEL button */
     func setupCancelButton() {
         cancelButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.5,
-                   y: view.frame.height * 0.5,
-                   width: view.frame.width * 0.3,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: 528,
+                   w: WIDTH,
+                   h: 41))
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(UIColor.blue, for: .normal)
+        cancelButton.setTitleColor(blue, for: .normal)
+        cancelButton.setTitleColor(lightGray, for: .selected)
+        cancelButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
         cancelButton.layoutIfNeeded()
         cancelButton.layer.borderWidth = 2.0
-        cancelButton.layer.cornerRadius = 3.0
-        cancelButton.layer.borderColor = UIColor.blue.cgColor
+        createEventButton.layer.cornerRadius = 15
+        cancelButton.layer.borderColor = blue.cgColor
         cancelButton.layer.masksToBounds = true
         cancelButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         view.addSubview(cancelButton)
@@ -295,7 +301,6 @@ class NewEventViewController: UIViewController {
     }
     
     /* FUNC: creating a new Event */
-    // TODO: EDIT THIS PORTION
     func addNewEvent(sender: UIButton!) {
         let newEvent = ["eventName": eventName.text ?? "[no title]",
                         "desc": descTextField.text ?? "[no description]",

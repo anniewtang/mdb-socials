@@ -136,7 +136,7 @@ class SignupViewController: UIViewController {
         self.view.addSubview(passwordLineView)
     }
     
-    /* UI: login button */
+    /* UI: signup button */
     func setupSignupButton() {
         signupButton = UIButton(frame:
             CGRect(x: 78,

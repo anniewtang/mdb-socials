@@ -76,6 +76,7 @@ class FeedViewController: UIViewController {
     
     /* presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
+        print("seguging")
         performSegue(withIdentifier: "segueToNewEvents", sender: self)
         
         
