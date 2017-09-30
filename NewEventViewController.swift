@@ -201,45 +201,6 @@ class NewEventViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    /* UNNEEDED??
-    /* UI: setting up text field, event name */
-    func setupEventName() {
-        eventName = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.2,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
-        eventName.adjustsFontSizeToFitWidth = true
-        eventName.placeholder = "Event name"
-        eventName.textAlignment = .center
-        eventName.layoutIfNeeded()
-        eventName.layer.borderColor = UIColor.lightGray.cgColor
-        eventName.layer.borderWidth = 1.0
-        eventName.layer.masksToBounds = true
-        eventName.textColor = UIColor.black
-        view.addSubview(eventName)
-    }
-    /* UI: setting up text field, event description */
-    func setupdescTextField() {
-        descTextField =  UITextField(frame:
-            CGRect(x: 10,
-                   y: view.frame.height * 0.3,
-                   width: UIScreen.main.bounds.width - 20,
-                   height: view.frame.height * 0.2))
-        descTextField.layoutIfNeeded()
-        descTextField.layer.shadowRadius = 2.0
-        descTextField.layer.masksToBounds = true
-        descTextField.layer.borderColor = UIColor.black.cgColor
-        descTextField.layer.borderWidth = 2
-        descTextField.placeholder = "Describe your social event!"
-        view.addSubview(descTextField)
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-        super.touchesBegan(touches, with: event)
-    }
-     */
-    
     
     /* ------------ NAVIGATION & FLOW ------------ */
     
