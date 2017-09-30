@@ -159,7 +159,8 @@
 				D104D50B1F7DABA600C416C0 /* CGRect.swift */,
 				D104D5081F7D47A200C416C0 /* Utility Files */,
 				D104D5091F7D47B400C416C0 /* Model */,
-				D104D50A1F7D47C400C416C0 /* ViewController */,
+				D112E1BC1F80178200B84840 /* View */,
+				D104D50A1F7D47C400C416C0 /* Controller */,
 				D104D4CB1F7AF17B00C416C0 /* Assets.xcassets */,
 				D104D4C51F7AF17B00C416C0 /* Main.storyboard */,
 				D104D4CD1F7AF17B00C416C0 /* LaunchScreen.storyboard */,
@@ -205,7 +206,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D104D50A1F7D47C400C416C0 /* ViewController */ = {
+		D104D50A1F7D47C400C416C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
@@ -213,9 +214,16 @@
 				D104D4F61F7AF2E800C416C0 /* FeedViewController.swift */,
 				D104D4FA1F7AF2FE00C416C0 /* NewEventViewController.swift */,
 				D104D4F81F7AF2F000C416C0 /* DetailsViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D112E1BC1F80178200B84840 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
 			);
-			name = ViewController;
+			name = View;
 			sourceTree = "<group>";
 		};
 		D546CA0AC7057E4586BEAC08 /* Frameworks */ = {
