@@ -27,6 +27,7 @@ class DetailsViewController: UIViewController {
     var eventDescTitle: UILabel!
     var eventDesc: UILabel!
     var interestedButton: UIButton!
+    var rsvpStatus: Bool!
     
     var navBar: UINavigationBar!
     var logOutButton: UIButton!
@@ -65,7 +66,6 @@ class DetailsViewController: UIViewController {
     /* UI: calls to set up all labels and buttons */
     func setupLabelsAndButtons() {
         setupRightCorner()
-        setupDesc()
         setupNumInterested()
         setupBottomHalf()
     }
@@ -105,7 +105,7 @@ class DetailsViewController: UIViewController {
     /* UI: sets up NumInterested text */
     func setupNumInterested() {
         numInterestedText = UILabel(frame:
-            CGRect(x: 248.86,
+            CGRect(x: 243.86,
                    y: 344.37,
                    width: 100,
                    height: 18))
@@ -120,12 +120,11 @@ class DetailsViewController: UIViewController {
                    y: 340.7,
                    width: 15,
                    height: 22))
-        numInterested.text = "\(event.numInterested)"
+        numInterested.text = "\(event.numInterested!)"
         numInterested.textColor = brightBlue
         numInterested.textAlignment = .left
         numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
-        view.bringSubview(toFront: numInterested)
     }
     
     /* UI: setting up RSVPButton, event desc */
@@ -157,6 +156,8 @@ class DetailsViewController: UIViewController {
         eventDesc.font = UIFont(name: "HelveticaNeue", size: 20)
         view.addSubview(eventDesc)
         
+        rsvpStatus = false
+        
         interestedButton = UIButton(frame:
             CGRect(x: X,
                    y: 480,
@@ -165,7 +166,6 @@ class DetailsViewController: UIViewController {
         interestedButton.layer.cornerRadius = 3
         interestedButton.backgroundColor = brightBlue
         interestedButton.setTitle("RSVP INTERESTED", for: .normal)
-        interestedButton.setTitle("RSVP-ed!", for: .selected)
         interestedButton.setTitleColor(.white, for: .normal)
         interestedButton.titleLabel?.font = UIFont(
             name: "HelveticaNeue-Bold",
@@ -177,9 +177,15 @@ class DetailsViewController: UIViewController {
     
     /* FUNC: updates rsvp amnt locally & in firebase */
     func rsvpInterested() {
-        event.numInterested! += 1
-        ref.child("Events/\(String(describing: event.id))/numInterested").setValue(event.numInterested)
-        numInterested.text = "\(event.numInterested)"
-        print("interested")
+        if !rsvpStatus {
+            event.numInterested! += 1
+            ref.child("Events/\(String(describing: event.id))/numInterested").setValue(event.numInterested)
+            numInterested.text = "\(event.numInterested!)"
+            interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)
+            interestedButton.backgroundColor = grayBlue
+            rsvpStatus = true
+        } else {
+            print("Already RSVP-ed!")
+        }
     }
 }

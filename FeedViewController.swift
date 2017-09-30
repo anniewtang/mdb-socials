@@ -39,11 +39,21 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavBar()
 
-        /* FUNC: set up UI for current user */
+        /* FUNC: fetch data for table view */
         fetchUser {
             self.fetchEvents() {
                 DispatchQueue.main.async {
                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchUser {
+            self.fetchEvents() {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
         }

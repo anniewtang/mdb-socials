@@ -273,10 +273,11 @@ class NewEventViewController: UIViewController {
                         "creator": currentUser?.name ?? "[no user]",
                         "date": datePicker.date.timeIntervalSince1970 ,
                         "numInterested": 0] as [String : Any]
-        
+        print(newEvent["eventName"])
         let event = Event(eventDict: newEvent)
         let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
         FeedVC.allEvents.append(event)
+        print(event.id)
         goBack()
     }
 }
