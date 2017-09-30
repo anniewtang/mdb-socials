@@ -105,7 +105,7 @@ class DetailsViewController: UIViewController {
     /* UI: sets up NumInterested text */
     func setupNumInterested() {
         numInterestedText = UILabel(frame:
-            CGRect(x: 250.86,
+            CGRect(x: 248.86,
                    y: 344.37,
                    width: 100,
                    height: 18))
@@ -118,7 +118,7 @@ class DetailsViewController: UIViewController {
         numInterested = UILabel(frame:
             CGRect(x: 230.67,
                    y: 340.7,
-                   width: 10,
+                   width: 15,
                    height: 22))
         numInterested.text = "\(event.numInterested)"
         numInterested.textColor = brightBlue
@@ -175,24 +175,11 @@ class DetailsViewController: UIViewController {
         view.addSubview(interestedButton)
     }
     
-    /* UI: set up description */
-    func setupDesc() {
-        let desc: UILabel = UILabel(frame:
-            CGRect(x: view.frame.width * 0.1,
-                   y: view.frame.width * 0.7,
-                   width: view.frame.width * 0.8,
-                   height: view.frame.width * 0.25))
-        desc.text = event.desc
-        desc.textColor = .darkGray
-        desc.textAlignment = .left
-        desc.font = desc.font.withSize(16)
-        view.addSubview(desc)
-
-    }
-    
     /* FUNC: updates rsvp amnt locally & in firebase */
     func rsvpInterested() {
         event.numInterested! += 1
         ref.child("Events/\(String(describing: event.id))/numInterested").setValue(event.numInterested)
+        numInterested.text = "\(event.numInterested)"
+        print("interested")
     }
 }
