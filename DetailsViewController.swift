@@ -104,6 +104,17 @@ class DetailsViewController: UIViewController {
     
     /* UI: sets up NumInterested text */
     func setupNumInterested() {
+        numInterestedText = UILabel(frame:
+            CGRect(x: 250.86,
+                   y: 344.37,
+                   width: 100,
+                   height: 18))
+        numInterestedText.text = "INTERESTED"
+        numInterestedText.textColor = brightBlue
+        numInterestedText.textAlignment = .left
+        numInterestedText.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
+        view.addSubview(numInterestedText)
+        
         numInterested = UILabel(frame:
             CGRect(x: 230.67,
                    y: 340.7,
@@ -115,17 +126,6 @@ class DetailsViewController: UIViewController {
         numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
         view.bringSubview(toFront: numInterested)
-        
-        numInterestedText = UILabel(frame:
-            CGRect(x: 243.86,
-                   y: 344.37,
-                   width: 100,
-                   height: 18))
-        numInterestedText.text = "INTERESTED"
-        numInterestedText.textColor = brightBlue
-        numInterestedText.textAlignment = .left
-        numInterestedText.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
-        view.addSubview(numInterestedText)
     }
     
     /* UI: setting up RSVPButton, event desc */

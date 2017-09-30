@@ -79,7 +79,7 @@ class NewEventViewController: UIViewController {
         uploadButton.setTitleColor(blue, for: .normal)
         uploadButton.layer.borderColor = blue.cgColor
         uploadButton.layer.borderWidth = 3
-        uploadButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+        uploadButton.addTarget(self, action: #selector(handleSelectEventPicImageView), for: .touchUpInside)
         view.addSubview(uploadButton)
         view.bringSubview(toFront: uploadButton)
     }

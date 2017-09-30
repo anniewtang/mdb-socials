@@ -15,6 +15,9 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     func handleSelectEventPicImageView() {
         let picker = UIImagePickerController()
         picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
     
@@ -30,7 +33,11 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             eventImageView.image = selectedImage
             let imagePath: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             imageName = imagePath.lastPathComponent!
+            
+            print(info)
+            
             storeImageToFirebase()
+            dismiss(animated: true, completion: nil)
         }
     }
     
