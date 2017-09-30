@@ -305,6 +305,7 @@
 				TargetAttributes = {
 					D104D4BD1F7AF17B00C416C0 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = E8JH6P8ZTE;
 						ProvisioningStyle = Automatic;
 					};
 					D104D4D41F7AF17C00C416C0 = {
@@ -696,6 +697,7 @@
 			baseConfigurationReference = 17AFE6FF4C19FB17C9FF87FE /* Pods-mdb-socials.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E8JH6P8ZTE;
 				INFOPLIST_FILE = "mdb-socials/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Development.mdb-socials";
@@ -709,6 +711,7 @@
 			baseConfigurationReference = CF2A67457B93ABF39EFDC67F /* Pods-mdb-socials.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E8JH6P8ZTE;
 				INFOPLIST_FILE = "mdb-socials/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Development.mdb-socials";

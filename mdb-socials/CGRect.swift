@@ -27,5 +27,4 @@ extension CGRect {
         
         self.init(x:x, y:y, width:width, height:height)
     }
-
 }

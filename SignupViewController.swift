@@ -9,139 +9,163 @@
 import UIKit
 import Firebase
 
+/* FUNC: protocol to help dismiss */
+protocol SignupViewControllerProtocol {
+    func dismissViewController()
+}
+
 class SignupViewController: UIViewController {
+    /* NAVIGATION ELEMENTS */
+    var delegate: LoginViewController!
     
-    var signupLabel: UILabel!
+    /* UI ELEMENTS */
+    var signupTitleLabel: UILabel!
     
     var nameTextField: UITextField!
-    var usernameTextField: UITextField!
     var emailTextField: UITextField!
     var passwordTextField: UITextField!
     
     var signupButton: UIButton!
     var backButton: UIButton!
     
+    /* REUSABLE VARIABLES */
+    var blue = UIColor(hexString: "#4C9BD0")
+    var lightGray = UIColor(hexString: "#BFC3C6")
+    let WIDTH: CGFloat = 229.55; let X: CGFloat = 64; let HEIGHT: CGFloat = 35
+    let OFFSET: CGFloat = 54
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTitleLabel()
         setupTextFields()
-        setupButtons()
+        setupSignupButton()
+        setupBackButton()
     }
     
     /* UI: "SIGNUP" title label */
     func setupTitleLabel() {
-        signupLabel = UILabel(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.1,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.2))
-        signupLabel.text = "SIGNUP"
-        signupLabel.numberOfLines = 2
-        signupLabel.textAlignment = .center
-        signupLabel.textColor = .black
-        signupLabel.font = UIFont(name:signupLabel.font.fontName, size: 40)
-        signupLabel.layer.borderWidth = 2
-        signupLabel.layer.borderColor = UIColor.black.cgColor
-        view.addSubview(signupLabel)
+        signupTitleLabel = UILabel(frame:
+            CGRect(x: 59,
+                   y: 175,
+                   w: 253,
+                   h: 85))
+        signupTitleLabel.text = "SIGNUP"
+        signupTitleLabel.textAlignment = .center
+        signupTitleLabel.textColor = blue
+        signupTitleLabel.font = UIFont(name: "HelveticaNeue-BoldItalic", size: 50)
+        signupTitleLabel.layer.borderWidth = 2
+        signupTitleLabel.layer.borderColor = blue.cgColor
+        view.addSubview(signupTitleLabel)
     }
     
-    /* UI: name, username, email, password text fields */
+    /* UI: name, username, email, password text fields & underlines */
     func setupTextFields() {
-        let OFFSET: CGFloat = view.frame.height * 0.065
-        let HEIGHT: CGFloat = view.frame.height * 0.45
-        
+        let Y: CGFloat = 292
         nameTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: HEIGHT,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: Y,
+                   w: WIDTH,
+                   h: HEIGHT))
         nameTextField.adjustsFontSizeToFitWidth = true
         nameTextField.placeholder = "Full Name"
-        nameTextField.textAlignment = .center
+        nameTextField.textAlignment = .left
         nameTextField.layoutIfNeeded()
-        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
-        nameTextField.layer.borderWidth = 1.0
         nameTextField.layer.masksToBounds = true
-        nameTextField.textColor = UIColor.black
+        nameTextField.textColor = lightGray
         view.addSubview(nameTextField)
-        
-        usernameTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: HEIGHT + OFFSET,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
-        usernameTextField.adjustsFontSizeToFitWidth = true
-        usernameTextField.placeholder = "Username"
-        usernameTextField.textAlignment = .center
-        usernameTextField.layoutIfNeeded()
-        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
-        usernameTextField.layer.borderWidth = 1.0
-        usernameTextField.layer.masksToBounds = true
-        usernameTextField.textColor = UIColor.black
-        view.addSubview(usernameTextField)
-        
+    
         emailTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: HEIGHT + OFFSET * 2,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: Y + OFFSET,
+                   w: WIDTH,
+                   h: HEIGHT))
         emailTextField.adjustsFontSizeToFitWidth = true
         emailTextField.placeholder = "Email Address"
-        emailTextField.textAlignment = .center
+        emailTextField.textAlignment = .left
         emailTextField.layoutIfNeeded()
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        emailTextField.layer.borderWidth = 1.0
         emailTextField.layer.masksToBounds = true
-        emailTextField.textColor = UIColor.black
+        emailTextField.textColor = lightGray
         view.addSubview(emailTextField)
         
-        
         passwordTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: HEIGHT + OFFSET * 3,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: Y + OFFSET * 2,
+                   w: WIDTH,
+                   h: HEIGHT))
         passwordTextField.adjustsFontSizeToFitWidth = true
         passwordTextField.placeholder = "Password"
-        passwordTextField.textAlignment = .center
-        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordTextField.layer.borderWidth = 1.0
+        passwordTextField.textAlignment = .left
         passwordTextField.layer.masksToBounds = true
-        passwordTextField.textColor = UIColor.black
+        passwordTextField.textColor = lightGray
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
+        
+        setupUnderline()
     }
     
-    /* UI: signup, back buttons! */
-    func setupButtons() {
+    /* UI: setting up the underlines */
+    func setupUnderline() {
+        let Y: CGFloat = 316.5
+        
+        let nameLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y,
+                   w: WIDTH,
+                   h: 1))
+        nameLineView.layer.borderWidth = 2
+        nameLineView.layer.borderColor = UIColor(hexString: "#CACCCE").cgColor
+        self.view.addSubview(nameLineView)
+        
+        let emailLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET,
+                   w: WIDTH,
+                   h: 1))
+        emailLineView.layer.borderWidth = 2
+        emailLineView.layer.borderColor = UIColor(hexString: "#CACCCE").cgColor
+        self.view.addSubview(emailLineView)
+        
+        let passwordLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET * 2,
+                   w: WIDTH,
+                   h: 1))
+        passwordLineView.layer.borderWidth = 2
+        passwordLineView.layer.borderColor = UIColor(hexString: "#CACCCE").cgColor
+        self.view.addSubview(passwordLineView)
+    }
+    
+    /* UI: login button */
+    func setupSignupButton() {
         signupButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.70,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.06))
+            CGRect(x: 78,
+                   y: 464,
+                   w: 239,
+                   h: 48))
         signupButton.setTitle("SIGNUP", for: .normal)
         signupButton.setTitleColor(.black, for: .normal)
-        signupButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
-        signupButton.layer.borderColor = UIColor.black.cgColor
-        signupButton.layer.borderWidth = 1
+        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        signupButton.setTitleColor(.white, for: .normal)
+        signupButton.setTitleColor(.lightGray, for: .selected)
+        signupButton.layer.backgroundColor = UIColor(hexString: "#4C9BD0").cgColor
         view.addSubview(signupButton)
         signupButton.addTarget(self, action: #selector(signupButtonClicked), for: .touchUpInside)
-        
+    }
+    
+    /* UI: setting up BACK button */
+    func setupBackButton() {
         backButton = UIButton(frame:
-            CGRect(x: 10,
-                   y: 0.8 * UIScreen.main.bounds.height + 40,
-                   width: UIScreen.main.bounds.width - 20,
-                   height: 30))
-        backButton.layoutIfNeeded()
-        backButton.setTitle("Go Back", for: .normal)
-        backButton.setTitleColor(UIColor.blue, for: .normal)
-        backButton.layer.borderWidth = 2.0
-        backButton.layer.cornerRadius = 3.0
-        backButton.layer.borderColor = UIColor.blue.cgColor
-        backButton.layer.masksToBounds = true
+            CGRect(x: 143,
+                   y: 521,
+                   w: 90,
+                   h: 22))
+        backButton.setTitle("GO BACK", for: .normal)
+        backButton.setTitleColor(UIColor(hexString: "#4C9BD0"), for: .normal)
+        backButton.setTitleColor(UIColor(hexString: "#87A9BF"), for: .selected)
+        backButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+        view.addSubview(backButton)
         backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
-        self.view.addSubview(backButton)
     }
     
     /* FUNC: creates a user, and puts it into Firebase */
@@ -169,7 +193,13 @@ class SignupViewController: UIViewController {
     
     /* FUNC: MODALLY goes back to Login view */
     func backButtonClicked() {
-        self.dismiss(animated: true, completion: nil)
+        nameTextField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        
+        self.dismiss(animated: true) {
+            self.delegate!.dismissViewController()
+        }
     }
     
 }

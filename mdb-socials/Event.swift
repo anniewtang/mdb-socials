@@ -18,12 +18,12 @@ class Event {
     var eventName: String?
     var imageUrl: String?
     var desc: String?
-    
     var creator: String?
     var date: Date?
-    
     var numInterested: Int!
+    
     var image: UIImage?
+    let eventRef = Database.database().reference().child("Events")
     
     /* Things to pass over 
      1.) eventName
@@ -57,7 +57,11 @@ class Event {
                 self.numInterested = numInterested
             }
         }
-        /*event*/
+        
+        /* uploading to Firebase database & saving id */
+        id = eventRef.childByAutoId().key
+        let childUpdates = ["/\(id)/": eventDict]
+        eventRef.updateChildValues(childUpdates)
     }
     
     init() {

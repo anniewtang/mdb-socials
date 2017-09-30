@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,7 +25,6 @@
                     <connections>
                         <segue destination="a2W-nw-ju6" kind="show" identifier="toSignupFromLogin" id="5zs-ng-HLR"/>
                         <segue destination="CtS-Ie-xTv" kind="show" identifier="toFeedFromLogin" id="OfS-o2-HTM"/>
-                        <segue destination="iWW-K9-e7Z" kind="show" id="doL-qQ-hVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -59,7 +58,7 @@
         <!--New Event View Controller-->
         <scene sceneID="Oon-dl-P4Y">
             <objects>
-                <viewController id="PbY-nr-Mxi" customClass="NewEventViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewEventViewController" id="PbY-nr-Mxi" customClass="NewEventViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uzR-jN-CX9"/>
                         <viewControllerLayoutGuide type="bottom" id="6NI-YX-tB8"/>
@@ -74,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="861"/>
         </scene>
-        <!--Details View Controller-->
+        <!--DetailsViewController-->
         <scene sceneID="wEn-io-JFJ">
             <objects>
-                <viewController id="FCa-f3-K4R" customClass="DetailsViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="DetailsViewController" id="FCa-f3-K4R" customClass="DetailsViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3o7-hf-ldS"/>
                         <viewControllerLayoutGuide type="bottom" id="5ab-Rg-4dA"/>
@@ -92,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="137"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--SignupViewController-->
         <scene sceneID="41T-s1-8yn">
             <objects>
-                <viewController id="a2W-nw-ju6" customClass="SignupViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" title="SignupViewController" id="a2W-nw-ju6" customClass="SignupViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JPe-od-M37"/>
                         <viewControllerLayoutGuide type="bottom" id="Tbh-Jt-HSU"/>
@@ -111,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTE-9V-xbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="861"/>
+            <point key="canvasLocation" x="440" y="947"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bhy-so-SQN">
@@ -131,7 +130,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Wf-qc-YWs"/>
         <segue reference="OfS-o2-HTM"/>
         <segue reference="bpL-Aq-6FK"/>
     </inferredMetricsTieBreakers>

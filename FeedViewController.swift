@@ -31,10 +31,10 @@ class FeedViewController: UIViewController {
         
 
         
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
         
         setupTableView()
         setupNavBar()
@@ -96,11 +96,10 @@ class FeedViewController: UIViewController {
     func fetchEvents(withBlock: @escaping () -> ()) {
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
-            let event = Event(id: snapshot.key, eventDict: snapshot.value as! [String : Any]?)
-//            if event != nil {
-//                self.allEvents.append(event)
-//            }
-            
+            let event = Event(eventDict: snapshot.value as! [String : Any]?)
+            if event.eventName != nil {
+                self.allEvents.append(event)
+            }
             withBlock()
         })
     }

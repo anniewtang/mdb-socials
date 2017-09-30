@@ -9,9 +9,11 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
-    
-    var titleLabel: UILabel!
+class LoginViewController: UIViewController,SignupViewControllerProtocol {
+
+    var mdbTitle: UILabel!
+    var socialsTitle: UILabel!
+    var iconView: UIImageView!
 
     var emailTextField: UITextField!
     var passwordTextField: UITextField!
@@ -22,92 +24,121 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /* FUNC: segue if already logged in.
+           ELSE: set up icon, title labels, login/sign in buttons, text fields.
+         */
         Auth.auth().addStateDidChangeListener { auth, user in
             if let _ = user {
                 self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
             } else {
-                self.setupTitleLabel()
+                self.setupIconView()
+                self.setupTitleLabels()
+                self.setupTextFields()
                 self.setupLoginButton()
                 self.setupSignupButton()
-                self.setupTextFields()
             }
         }
-        
-//        setupTitleLabel()
-//        setupLoginButton()
-//        setupSignupButton()
-//        setupTextFields()
-//        
-//        /* FUNC: navigates to Feed with segue, if already signed in */
-//        if Auth.auth().currentUser != nil {
-//            performSegue(withIdentifier: "toFeedFromLogin", sender: self)
-//        }
     }
     
+    /* UI: set up icon */
+    func setupIconView() {
+        iconView = UIImageView(frame:
+            CGRect(x: 22,
+                   y: 110,
+                   w: 200,
+                   h: 200))
+        iconView.contentMode = .scaleAspectFill
+        iconView.clipsToBounds = true
+        view.addSubview(iconView)
+        iconView.image = #imageLiteral(resourceName: "mdb")
+    }
     
     /* UI: "MDB SOCIALS" title label */
-    func setupTitleLabel() {
-        titleLabel = UILabel(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.1,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.2))
-        titleLabel.text = "MDB\nSOCIALS"
-        titleLabel.numberOfLines = 2
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont(name:titleLabel.font.fontName, size: 40)
-        titleLabel.layer.borderWidth = 2
-        titleLabel.layer.borderColor = UIColor.black.cgColor
-        view.addSubview(titleLabel)
+    func setupTitleLabels() {
+        mdbTitle = UILabel(frame:
+            CGRect(x: 195,
+                   y: 161,
+                   w: 147,
+                   h: 67))
+        mdbTitle.text = "MDB"
+        mdbTitle.textAlignment = .left
+        mdbTitle.textColor = UIColor(hexString: "#4F99CB")
+        mdbTitle.font = UIFont(name: "HelveticaNeue", size: 60)
+        view.addSubview(mdbTitle)
+        
+        socialsTitle = UILabel(frame:
+            CGRect(x: 195,
+                   y: 221,
+                   w: 147,
+                   h: 38))
+        socialsTitle.text = "SOCIALS"
+        socialsTitle.textAlignment = .left
+        socialsTitle.textColor = UIColor(hexString: "#4F99CB")
+        socialsTitle.font = UIFont(name: "HelveticaNeue", size: 30)
+        view.addSubview(socialsTitle)
     }
     
     /* UI: email and password text fields*/
     func setupTextFields() {
         emailTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.45,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: 78,
+                   y: 333,
+                   w: 243,
+                   h: 28))
         emailTextField.adjustsFontSizeToFitWidth = true
         emailTextField.placeholder = "Email Address"
-        emailTextField.textAlignment = .center
+        emailTextField.textAlignment = .left
         emailTextField.layoutIfNeeded()
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        emailTextField.layer.borderWidth = 1.0
         emailTextField.layer.masksToBounds = true
         emailTextField.textColor = UIColor.black
         view.addSubview(emailTextField)
         
+        let emailLineView = UIView(frame:
+            CGRect(x: 77.5,
+                   y: 360.5,
+                   w: 243,
+                   h: 1))
+        emailLineView.layer.borderWidth = 2
+        emailLineView.layer.borderColor = UIColor(hexString: "#B2C8D6").cgColor
+        self.view.addSubview(emailLineView)
+        
         
         passwordTextField = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.53,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: 78,
+                   y: 390,
+                   w: 243,
+                   h: 25))
         passwordTextField.adjustsFontSizeToFitWidth = true
         passwordTextField.placeholder = "Password"
-        passwordTextField.textAlignment = .center
-        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordTextField.layer.borderWidth = 1.0
+        passwordTextField.textAlignment = .left
         passwordTextField.layer.masksToBounds = true
         passwordTextField.textColor = UIColor.black
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
+        
+        let passwordLineView = UIView(frame:
+            CGRect(x: 77.5,
+                   y: 414.5,
+                   w: 243,
+                   h: 1))
+        passwordLineView.layer.borderWidth = 2
+        passwordLineView.layer.borderColor = UIColor(hexString: "#B2C8D6").cgColor
+        self.view.addSubview(passwordLineView)
     }
     
     /* UI: login button */
     func setupLoginButton() {
         loginButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.63,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.06))
+            CGRect(x: 78,
+                   y: 464,
+                   w: 239,
+                   h: 48))
         loginButton.setTitle("LOGIN", for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
-        loginButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
-        loginButton.layer.borderColor = UIColor.black.cgColor
-        loginButton.layer.borderWidth = 1
+        loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.setTitleColor(.lightGray, for: .selected)
+        loginButton.layer.backgroundColor = UIColor(hexString: "#4C9BD0").cgColor
         view.addSubview(loginButton)
         loginButton.addTarget(self, action: #selector(selectedLogin), for: .touchUpInside)
     }
@@ -115,15 +146,14 @@ class LoginViewController: UIViewController {
     /* UI: sign up button */
     func setupSignupButton() {
         signupButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.70,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.06))
+            CGRect(x: 147,
+                   y: 521,
+                   w: 82,
+                   h: 22))
         signupButton.setTitle("SIGNUP", for: .normal)
-        signupButton.setTitleColor(.black, for: .normal)
-        signupButton.titleLabel?.font = UIFont(name:"Lato", size: 40)
-        signupButton.layer.borderColor = UIColor.black.cgColor
-        signupButton.layer.borderWidth = 1
+        signupButton.setTitleColor(UIColor(hexString: "#4C9BD0"), for: .normal)
+        signupButton.setTitleColor(UIColor(hexString: "#87A9BF"), for: .selected)
+        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
         view.addSubview(signupButton)
         signupButton.addTarget(self, action: #selector(segueToSignup), for: .touchUpInside)
     }
@@ -145,7 +175,17 @@ class LoginViewController: UIViewController {
     
     /* FUNC: segue, toSignupFromLogin */
     func segueToSignup() {
-        performSegue(withIdentifier: "toSignupFromLogin", sender: self)
+//        performSegue(withIdentifier: "toSignupFromLogin", sender: self)
+        let signupVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SignupViewController.self)) as! SignupViewController
+        signupVC.delegate = self
+        self.present(signupVC, animated: true, completion: nil)
+    }
+    
+    /* FUNC: dismissing view controller by re-presenting current one */
+    func dismissViewController() {
+        if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: LoginViewController())){
+            self.present(loginVC, animated: true, completion: nil)
+        }
     }
 
 }

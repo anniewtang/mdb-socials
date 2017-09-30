@@ -16,44 +16,49 @@ protocol NewEventViewControllerProtocol {
 
 class NewEventViewController: UIViewController {
     
+    /* FUNCTIONAL */
     var delegate: FeedViewController!
-    
-    var eventsRef: DatabaseReference = Database.database().reference().child("Events")
     var currentUser: User?
     
-    var id: String!
     
+    /* UI ELEMENTS */
     var eventName: UITextField!
     var datePickerTextField: UITextField!
     var datePicker: UIDatePicker!
-    var descView: UITextField!
+    var descTextField: UITextField!
+
+    /* BUTTONS */
     var uploadButton: UIButton!
+    var createEventButton: UIButton!
+    var cancelButton: UIButton!
     
+    /* IMAGE UPLOADING */
     let picker = UIImagePickerController()
     var eventImageView: UIImageView!
     var imageName: String?
     var imgURL: String?
     
-    var createEventButton: UIButton!
-    var cancelButton: UIButton!
+    /* REUSABLE VARIABLES */
+    var red = UIColor(hexString: "#B49795")
+    var lightGray = UIColor(hexString: "#BFC3C6")
+    var gray = UIColor(hexString: "#C1C2C3")
     
+    let WIDTH: CGFloat = 229.55; let X: CGFloat = 64; let HEIGHT: CGFloat = 35
+    let OFFSET: CGFloat = 54
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupImageView()
-        setupEventName()
-        setupDatePicker()
-        setupDescView()
         setupUploadButton()
-        
+        setupTextFields()
         setupCreateButton()
         setupCancelButton()
     }
 
     /* ------------ USER INPUT FIELDS ------------ */
     
-    /* UI: setting up ImageView and gives a default image */
+    /* UI: setting up ImageView */
     func setupImageView() {
         eventImageView = UIImageView(frame:
             CGRect(x: view.frame.width * 0.1,
@@ -63,41 +68,110 @@ class NewEventViewController: UIViewController {
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         view.addSubview(eventImageView)
-//        eventImageView.image = #imageLiteral(resourceName: "default")
     }
     
-    /* UI: setting up text field, event name */
-    func setupEventName() {
+    
+    /* UI: setting up uploadButton */
+    func setupUploadButton() {
+        uploadButton = UIButton(frame: eventImageView.frame)
+        uploadButton.setTitle("Upload Event Picture from Library", for: .normal)
+        uploadButton.setTitleColor(UIColor.blue, for: .normal)
+        uploadButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+        view.addSubview(uploadButton)
+        view.bringSubview(toFront: uploadButton)
+    }
+    
+    /* FUNC: selecting an image */
+    func selectImage(sender: UIButton!) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
+    
+    /* UI: name, username, email, password text fields & underlines */
+    func setupTextFields() {
+        let Y: CGFloat = 292
         eventName = UITextField(frame:
-            CGRect(x: view.frame.width * 0.15,
-                   y: view.frame.height * 0.2,
-                   width: view.frame.width * 0.7,
-                   height: view.frame.height * 0.05))
+            CGRect(x: X,
+                   y: Y,
+                   w: WIDTH,
+                   h: HEIGHT))
         eventName.adjustsFontSizeToFitWidth = true
-        eventName.placeholder = "Event name"
-        eventName.textAlignment = .center
+        eventName.placeholder = "EVENT NAME"
+        eventName.textAlignment = .left
         eventName.layoutIfNeeded()
-        eventName.layer.borderColor = UIColor.lightGray.cgColor
-        eventName.layer.borderWidth = 1.0
         eventName.layer.masksToBounds = true
-        eventName.textColor = UIColor.black
-        view.addSubview(eventName) 
+        eventName.textColor = gray
+        view.addSubview(eventName)
+        
+        descTextField = UITextField(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET,
+                   w: WIDTH,
+                   h: HEIGHT))
+        descTextField.adjustsFontSizeToFitWidth = true
+        descTextField.placeholder = "EVENT DESCRIPTION"
+        descTextField.textAlignment = .left
+        descTextField.layoutIfNeeded()
+        descTextField.layer.masksToBounds = true
+        descTextField.textColor = lightGray
+        view.addSubview(descTextField)
+        
+        datePickerTextField = UITextField(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET * 2,
+                   w: WIDTH,
+                   h: HEIGHT))
+        datePickerTextField.adjustsFontSizeToFitWidth = true
+        datePickerTextField.placeholder = "DATE"
+        datePickerTextField.textAlignment = .left
+        datePickerTextField.layer.masksToBounds = true
+        datePickerTextField.textColor = lightGray
+        view.addSubview(datePickerTextField)
+        setupDatePicker()
+        
+        setupUnderline()
     }
     
-    /* UI: setting up date picker and toolbar; credits to stack overflow 40484182! */
+    /* UI: setting up the underlines */
+    func setupUnderline() {
+        let Y: CGFloat = 316.5
+        
+        let eventNameLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y,
+                   w: WIDTH,
+                   h: 1))
+        eventNameLineView.layer.borderWidth = 2
+        eventNameLineView.layer.borderColor = gray.cgColor
+        self.view.addSubview(eventNameLineView)
+        
+        let descLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET,
+                   w: WIDTH,
+                   h: 1))
+        descLineView.layer.borderWidth = 2
+        descLineView.layer.borderColor = gray.cgColor
+        self.view.addSubview(descLineView)
+        
+        let dateLineView = UIView(frame:
+            CGRect(x: X,
+                   y: Y + OFFSET * 2,
+                   w: WIDTH,
+                   h: 1))
+        dateLineView.layer.borderWidth = 2
+        dateLineView.layer.borderColor = gray.cgColor
+        self.view.addSubview(dateLineView)
+    }
+
+    /* UI: setting up date picker and toolbar; credits to stack overflow 40484182 */
     func setupDatePicker(){
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        
-        datePickerTextField = UITextField(frame:
-            CGRect(x: 10,
-                   y: view.frame.height * 0.5,
-                   width: UIScreen.main.bounds.width - 20,
-                   height: view.frame.height * 0.1))
-        datePickerTextField.placeholder = "Event Date"
-        view.addSubview(datePickerTextField)
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
@@ -123,61 +197,45 @@ class NewEventViewController: UIViewController {
     func cancelDatePicker(){
         self.view.endEditing(true)
     }
-
+    
+    /* UNNEEDED??
+    /* UI: setting up text field, event name */
+    func setupEventName() {
+        eventName = UITextField(frame:
+            CGRect(x: view.frame.width * 0.15,
+                   y: view.frame.height * 0.2,
+                   width: view.frame.width * 0.7,
+                   height: view.frame.height * 0.05))
+        eventName.adjustsFontSizeToFitWidth = true
+        eventName.placeholder = "Event name"
+        eventName.textAlignment = .center
+        eventName.layoutIfNeeded()
+        eventName.layer.borderColor = UIColor.lightGray.cgColor
+        eventName.layer.borderWidth = 1.0
+        eventName.layer.masksToBounds = true
+        eventName.textColor = UIColor.black
+        view.addSubview(eventName)
+    }
     /* UI: setting up text field, event description */
-    func setupDescView() {
-        descView =  UITextField(frame:
+    func setupdescTextField() {
+        descTextField =  UITextField(frame:
             CGRect(x: 10,
                    y: view.frame.height * 0.3,
                    width: UIScreen.main.bounds.width - 20,
                    height: view.frame.height * 0.2))
-        descView.layoutIfNeeded()
-        descView.layer.shadowRadius = 2.0
-        descView.layer.masksToBounds = true
-        descView.layer.borderColor = UIColor.black.cgColor
-        descView.layer.borderWidth = 2
-        descView.placeholder = "Describe your social event!"
-        view.addSubview(descView)
+        descTextField.layoutIfNeeded()
+        descTextField.layer.shadowRadius = 2.0
+        descTextField.layer.masksToBounds = true
+        descTextField.layer.borderColor = UIColor.black.cgColor
+        descTextField.layer.borderWidth = 2
+        descTextField.placeholder = "Describe your social event!"
+        view.addSubview(descTextField)
     }
-    
-    /* UI: setting up image picking button */
-    func setupUploadButton() {
-        uploadButton = UIButton(frame:
-            CGRect(x: view.frame.width * 0.1,
-                   y: view.frame.height * 0.5,
-                   width: view.frame.width * 0.3,
-                   height: view.frame.height * 0.05))
-        uploadButton.setTitle("Create Event", for: .normal)
-        uploadButton.setTitleColor(UIColor.blue, for: .normal)
-        uploadButton.layoutIfNeeded()
-        uploadButton.layer.borderWidth = 2.0
-        uploadButton.layer.cornerRadius = 3.0
-        uploadButton.layer.borderColor = UIColor.blue.cgColor
-        uploadButton.layer.masksToBounds = true
-        uploadButton.addTarget(self, action: #selector(addNewEvent), for: .touchUpInside)
-        view.addSubview(uploadButton)
-    }
-    
-    func setupProfileImageView() {
-        uploadButton = UIButton(frame: eventImageView.frame)
-        uploadButton.setTitle("Upload Event Picture from Library", for: .normal)
-        uploadButton.setTitleColor(UIColor.blue, for: .normal)
-        uploadButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
-        view.addSubview(uploadButton)
-        view.bringSubview(toFront: uploadButton)
-    }
-    
-    func selectImage(sender: UIButton!) {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
+     */
     
     
     /* ------------ NAVIGATION & FLOW ------------ */
@@ -226,36 +284,29 @@ class NewEventViewController: UIViewController {
     }
     
     /* FUNC: returns to Feed modally */
-    func goBack(sender: AnyObject) {
+    func goBack() {
         eventName.text = ""
         datePickerTextField.text = ""
-        descView.text = ""
+        descTextField.text = ""
         
         self.dismiss(animated: true) {
             self.delegate!.dismissViewController()
-        }
+        } 
     }
     
     /* FUNC: creating a new Event */
     // TODO: EDIT THIS PORTION
     func addNewEvent(sender: UIButton!) {
-        /* Things to pass over
-         1.) eventName
-         2.) desc
-         3.) imageUrl
-         4.) creator
-         5.) date
-         6.) numInterested
-         */
         let newEvent = ["eventName": eventName.text ?? "[no title]",
-                        "desc": descView.text ?? "[no description]",
+                        "desc": descTextField.text ?? "[no description]",
                         "imageUrl": imgURL as Any,
-                        "creator": currentUser?.name,
-                        "date": datePicker.date.timeIntervalSince1970,
+                        "creator": currentUser?.name ?? "[no user]",
+                        "date": datePicker.date.timeIntervalSince1970 ,
                         "numInterested": 0] as [String : Any]
         
         let event = Event(eventDict: newEvent)
         let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
         FeedVC.allEvents.append(event)
+        goBack()
     }
 }
