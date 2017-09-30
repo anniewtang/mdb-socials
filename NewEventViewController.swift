@@ -42,6 +42,7 @@ class NewEventViewController: UIViewController {
     var blue = UIColor(hexString: "#86A2C7")
     var lightGray = UIColor(hexString: "#BFC3C6")
     var gray = UIColor(hexString: "#C1C2C3")
+    var darkGray = UIColor(hexString: "#8F9091")
     
     let WIDTH: CGFloat = 244; let X: CGFloat = 66; let HEIGHT: CGFloat = 35
     let OFFSET: CGFloat = 54
@@ -101,11 +102,12 @@ class NewEventViewController: UIViewController {
                    w: WIDTH,
                    h: HEIGHT))
         eventName.adjustsFontSizeToFitWidth = true
-        eventName.placeholder = "EVENT NAME"
+//        eventName.placeholder = "EVENT NAME"
+        eventName.attributedPlaceholder = NSAttributedString(string: "EVENT NAME", attributes: [NSForegroundColorAttributeName : gray])
         eventName.textAlignment = .left
         eventName.layoutIfNeeded()
         eventName.layer.masksToBounds = true
-        eventName.textColor = gray
+        eventName.textColor = darkGray
         view.addSubview(eventName)
         
         descTextField = UITextField(frame:
@@ -114,11 +116,11 @@ class NewEventViewController: UIViewController {
                    w: WIDTH,
                    h: HEIGHT))
         descTextField.adjustsFontSizeToFitWidth = true
-        descTextField.placeholder = "EVENT DESCRIPTION"
+        descTextField.attributedPlaceholder = NSAttributedString(string: "EVENT DESCRIPTION", attributes: [NSForegroundColorAttributeName : gray])
         descTextField.textAlignment = .left
         descTextField.layoutIfNeeded()
         descTextField.layer.masksToBounds = true
-        descTextField.textColor = lightGray
+        descTextField.textColor = darkGray
         view.addSubview(descTextField)
         
         datePickerTextField = UITextField(frame:
@@ -127,10 +129,10 @@ class NewEventViewController: UIViewController {
                    w: WIDTH,
                    h: HEIGHT))
         datePickerTextField.adjustsFontSizeToFitWidth = true
-        datePickerTextField.placeholder = "DATE"
+        datePickerTextField.attributedPlaceholder = NSAttributedString(string: "DATE", attributes: [NSForegroundColorAttributeName : gray])
         datePickerTextField.textAlignment = .left
         datePickerTextField.layer.masksToBounds = true
-        datePickerTextField.textColor = lightGray
+        datePickerTextField.textColor = darkGray
         view.addSubview(datePickerTextField)
         setupDatePicker()
         
@@ -191,7 +193,7 @@ class NewEventViewController: UIViewController {
     /* FUNC: done with date picker */
     func doneDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         datePickerTextField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
@@ -256,10 +258,11 @@ class NewEventViewController: UIViewController {
         eventName.text = ""
         datePickerTextField.text = ""
         descTextField.text = ""
-        
-        self.dismiss(animated: true) {
-            self.delegate!.dismissViewController()
-        } 
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true) {
+//            self.delegate!.dismissViewController()
+//        } 
     }
     
     /* FUNC: creating a new Event */

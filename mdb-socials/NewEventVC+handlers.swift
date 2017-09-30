@@ -33,8 +33,8 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             eventImageView.image = selectedImage
             let imagePath: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             imageName = imagePath.lastPathComponent!
-            
-            print(info)
+            uploadButton.setTitle("", for: .normal)
+            uploadButton.layer.borderColor = UIColor.white.cgColor
             
             storeImageToFirebase()
             dismiss(animated: true, completion: nil)
@@ -58,6 +58,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             storageRef.putData(uploadData, metadata: metadata).observe(.success) { (snapshot) in
                 let url = snapshot.metadata?.downloadURL()?.absoluteString
                 self.imgURL = url
+                print(self.imgURL)
             }
         }
         

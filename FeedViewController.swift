@@ -86,9 +86,9 @@ class FeedViewController: UIViewController {
         self.present(newEvent, animated: true, completion: nil)
     }
     
-    /* protocol to present NewEventVC modally */
+    /* protocol to dismiss NewEventVC & represent FeedVC modally */
     func dismissViewController() {
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: FeedViewController())){
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedViewController"){
             self.present(viewController, animated: true, completion: nil)
         }
     }

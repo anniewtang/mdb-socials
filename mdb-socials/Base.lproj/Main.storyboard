@@ -34,7 +34,7 @@
         <!--Social Feed-->
         <scene sceneID="d1A-0P-0qb">
             <objects>
-                <viewController storyboardIdentifier="FeedViewController" title="Social Feed" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" title="Social Feed" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iUY-fV-I10"/>
                         <viewControllerLayoutGuide type="bottom" id="Afz-v6-se4"/>
