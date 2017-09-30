@@ -25,7 +25,7 @@ class DetailsViewController: UIViewController {
     var numInterestedText: UILabel!
     
     var eventDescTitle: UILabel!
-    var eventDesc: UITextView!
+    var eventDesc: UILabel!
     var interestedButton: UIButton!
     
     var navBar: UINavigationBar!
@@ -83,6 +83,8 @@ class DetailsViewController: UIViewController {
         eventName.text = event.eventName
         eventName.textColor = grayBlue
         eventName.textAlignment = .left
+        eventName.lineBreakMode = NSLineBreakMode.byWordWrapping
+        eventName.numberOfLines = 2
         eventName.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         view.addSubview(eventName)
         
@@ -90,10 +92,12 @@ class DetailsViewController: UIViewController {
             CGRect(x: X,
                    y: 212,
                    w: WIDTH,
-                   h: 34))
-        creator.text = "Host: " + String(describing: event.creator)
+                   h: 40))
+        creator.text = "By: " + String(describing: event.creator!)
         creator.textColor = lightGray
         creator.textAlignment = .left
+        creator.lineBreakMode = NSLineBreakMode.byWordWrapping
+        creator.numberOfLines = 2
         creator.font = UIFont(name: "HelveticaNeue", size: 15)
         view.addSubview(creator)
     }
@@ -110,6 +114,7 @@ class DetailsViewController: UIViewController {
         numInterested.textAlignment = .left
         numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
+        view.bringSubview(toFront: numInterested)
         
         numInterestedText = UILabel(frame:
             CGRect(x: 243.86,
@@ -130,23 +135,25 @@ class DetailsViewController: UIViewController {
         
         eventDescTitle = UILabel(frame:
             CGRect(x: X,
-                   y: 159,
+                   y: 372,
                    width: WIDTH,
-                   height: 53))
-        eventDescTitle.text = event.eventName
+                   height: 22))
+        eventDescTitle.text = "EVENT DESCRIPTION"
         eventDescTitle.textColor = grayBlue
         eventDescTitle.textAlignment = .left
         eventDescTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(eventDescTitle)
         
-        eventDesc = UITextView(frame:
+        eventDesc = UILabel(frame:
             CGRect(x: X,
-                   y: 372,
+                   y: 394,
                    width: WIDTH,
                    height: 22))
         eventDesc.text = event.desc
         eventDesc.textColor = gray
         eventDesc.textAlignment = .left
+        eventDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
+        eventDesc.numberOfLines = 2
         eventDesc.font = UIFont(name: "HelveticaNeue", size: 20)
         view.addSubview(eventDesc)
         

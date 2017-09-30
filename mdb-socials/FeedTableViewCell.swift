@@ -42,10 +42,10 @@ class FeedTableViewCell: UITableViewCell {
     /* UI: setting up event name label */
     func setupEventName() {
         eventName = UILabel(frame:
-            CGRect(x: contentView.frame.height * 1.2,
-                   y: 0,
-                   width: contentView.frame.width - contentView.frame.height * 1.2,
-                   height: contentView.frame.height * 0.7))
+            CGRect(x: contentView.frame.height * 1.08,
+                   y: contentView.frame.height * 0.25,
+                   width: contentView.frame.width - contentView.frame.height,
+                   height: contentView.frame.height * 0.5))
         eventName.textColor = UIColor.black
         eventName.textAlignment = .left
         eventName.font = eventName.font.withSize(18)
@@ -56,7 +56,7 @@ class FeedTableViewCell: UITableViewCell {
     /* UI: setting up "created by" label */
     func setupCreatorName() {
         creatorName = UILabel(frame:
-            CGRect(x: contentView.frame.height * 1.2,
+            CGRect(x: contentView.frame.height * 1.08,
                    y: contentView.frame.height * 0.25,
                    width: contentView.frame.width * 0.5,
                    height: contentView.frame.height * 0.8))
@@ -70,9 +70,9 @@ class FeedTableViewCell: UITableViewCell {
     func setupNumInterested() {
         rsvpTitle = UILabel(frame:
             CGRect(x: 0,
-                   y: 0,
+                   y: contentView.frame.height * 0.25,
                    width: contentView.frame.width * 0.95,
-                   height: contentView.frame.height * 0.7))
+                   height: contentView.frame.height * 0.5))
         rsvpTitle.textColor = UIColor.lightGray
         rsvpTitle.textAlignment = .right
         rsvpTitle.font = rsvpTitle.font.withSize(14)

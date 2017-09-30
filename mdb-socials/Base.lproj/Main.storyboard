@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LoginViewController-->
+        <!--Login Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login Screen" id="BYZ-38-t0r" customClass="LoginViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="440" y="137"/>
         </scene>
-        <!--FeedViewController-->
+        <!--Social Feed-->
         <scene sceneID="d1A-0P-0qb">
             <objects>
-                <viewController storyboardIdentifier="FeedViewController" title="FeedViewController" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" title="Social Feed" id="iWW-K9-e7Z" customClass="FeedViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iUY-fV-I10"/>
                         <viewControllerLayoutGuide type="bottom" id="Afz-v6-se4"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1849" y="493"/>
         </scene>
-        <!--New Event View Controller-->
+        <!--Create a New Event-->
         <scene sceneID="Oon-dl-P4Y">
             <objects>
-                <viewController storyboardIdentifier="NewEventViewController" id="PbY-nr-Mxi" customClass="NewEventViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewEventViewController" title="Create a New Event" id="PbY-nr-Mxi" customClass="NewEventViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uzR-jN-CX9"/>
                         <viewControllerLayoutGuide type="bottom" id="6NI-YX-tB8"/>
@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="861"/>
         </scene>
-        <!--DetailsViewController-->
+        <!--Event Details-->
         <scene sceneID="wEn-io-JFJ">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" title="DetailsViewController" id="FCa-f3-K4R" customClass="DetailsViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="Event Details" id="FCa-f3-K4R" customClass="DetailsViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3o7-hf-ldS"/>
                         <viewControllerLayoutGuide type="bottom" id="5ab-Rg-4dA"/>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="137"/>
         </scene>
-        <!--SignupViewController-->
+        <!--Signup Screen-->
         <scene sceneID="41T-s1-8yn">
             <objects>
-                <viewController storyboardIdentifier="SignupViewController" title="SignupViewController" id="a2W-nw-ju6" customClass="SignupViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" title="Signup Screen" id="a2W-nw-ju6" customClass="SignupViewController" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JPe-od-M37"/>
                         <viewControllerLayoutGuide type="bottom" id="Tbh-Jt-HSU"/>
@@ -130,7 +130,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OfS-o2-HTM"/>
+        <segue reference="650-41-kOp"/>
         <segue reference="bpL-Aq-6FK"/>
     </inferredMetricsTieBreakers>
 </document>
