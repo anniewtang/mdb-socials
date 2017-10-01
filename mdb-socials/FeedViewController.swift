@@ -60,13 +60,14 @@ class FeedViewController: UIViewController {
     
     /* FUNC: fetching current user from firebase */
     func fetchUser(withBlock: @escaping () -> ()) {
-        let ref = Database.database().reference().child("Users")
-//        let uid = self.auth.
-        
-        ref.child("Users").child((self.auth.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let user = User(id: snapshot.key, userDict: snapshot.value as! [String : Any]?)
+        let ref = Database.database().reference()
+        let uid = (self.auth.currentUser?.uid)!
+        ref.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let user = User()
+            let userDict = snapshot.value as! [String: Any]!
+            user.setValuesForKeys(userDict!)
             self.currentUser = user
-            withBlock()
+        withBlock()
             
         })
     }
@@ -74,8 +75,10 @@ class FeedViewController: UIViewController {
     /* FUNC: fetching events from firebase */
     func fetchEvents(withBlock: @escaping () -> ()) {
         let ref = Database.database().reference()
+        
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
-            let event = Event(eventDict: snapshot.value as! [String : Any]!)
+            let eventDict = (snapshot.value as! [String : Any])
+            let event = Event(eventDict: eventDict)
             if event.eventName != nil {
                 self.allEvents.append(event)
             }
@@ -108,11 +111,11 @@ class FeedViewController: UIViewController {
         }
     }
     
-    /* presents NewEventVC modally */
+    /* TRANSITION: presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
         let newEvent = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewEventViewController.self)) as! NewEventViewController
         newEvent.currentUser = currentUser
-        self.present(newEvent, animated: true, completion: nil)
+        present(newEvent, animated: true, completion: nil)
     }
 
 

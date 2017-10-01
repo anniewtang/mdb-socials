@@ -199,14 +199,6 @@ class NewEventViewController: UIViewController {
     
     /* ------------ NAVIGATION & FLOW ------------ */
     
-    
-    // TODO: CHANGE "FEED" TO "CANCEL"
-    /* func setupCancelButton() {
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancelEventCreation(sender:)))
-        navigationItem.leftBarButtonItem = cancelButton
-    } */
-    
-    
     /* UI: setting up CREATE button */
     func setupCreateButton() {
         createEventButton = UIButton(frame:
@@ -239,7 +231,7 @@ class NewEventViewController: UIViewController {
         cancelButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
         cancelButton.layoutIfNeeded()
         cancelButton.layer.borderWidth = 2.0
-        createEventButton.layer.cornerRadius = 15
+        cancelButton.layer.cornerRadius = 15
         cancelButton.layer.borderColor = blue.cgColor
         cancelButton.layer.masksToBounds = true
         cancelButton.addTarget(self, action: #selector(goBackToFeed), for: .touchUpInside)

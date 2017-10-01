@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 extension NewEventViewController {
-    func uploadToFirebase() {
-        self.id = eventRef.childByAutoId().key
-        let childUpdates = ["/\(id)/": eventDict]
-        eventRef.updateChildValues(childUpdates)
-    }
+//    func uploadToFirebase() {
+//        self.id = eventRef.childByAutoId().key
+//        let childUpdates = ["/\(id)/": eventDict]
+//        eventRef.updateChildValues(childUpdates)
+//    }
 }

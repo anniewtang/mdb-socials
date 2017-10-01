@@ -26,8 +26,8 @@
 		D112E1C21F80184400B84840 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1BE1F80184400B84840 /* FeedViewController.swift */; };
 		D112E1C31F80184400B84840 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1BF1F80184400B84840 /* NewEventViewController.swift */; };
 		D112E1C41F80184400B84840 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1C01F80184400B84840 /* SignupViewController.swift */; };
-		D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338091F81975C00CE5152 /* LoginVC+Handler.swift */; };
-		D113380C1F8197DA00CE5152 /* SignupVC+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */; };
+		D113380A1F81975C00CE5152 /* Login+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338091F81975C00CE5152 /* Login+Handler.swift */; };
+		D113380C1F8197DA00CE5152 /* Signup+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380B1F8197DA00CE5152 /* Signup+handler.swift */; };
 		D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* Signup+client.swift */; };
 		D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338101F81AFF900CE5152 /* NewEvent+client.swift */; };
 		D1AEE6F71F817F16003B5C79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */; };
@@ -85,8 +85,8 @@
 		D112E1BE1F80184400B84840 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D112E1BF1F80184400B84840 /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		D112E1C01F80184400B84840 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		D11338091F81975C00CE5152 /* LoginVC+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Handler.swift"; sourceTree = "<group>"; };
-		D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupVC+handler.swift"; sourceTree = "<group>"; };
+		D11338091F81975C00CE5152 /* Login+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Handler.swift"; sourceTree = "<group>"; };
+		D113380B1F8197DA00CE5152 /* Signup+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+handler.swift"; sourceTree = "<group>"; };
 		D113380D1F81AC3800CE5152 /* Signup+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+client.swift"; sourceTree = "<group>"; };
 		D11338101F81AFF900CE5152 /* NewEvent+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewEvent+client.swift"; sourceTree = "<group>"; };
 		D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 		D104D50A1F7D47C400C416C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D11338091F81975C00CE5152 /* LoginVC+Handler.swift */,
-				D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */,
+				D11338091F81975C00CE5152 /* Login+Handler.swift */,
+				D113380B1F8197DA00CE5152 /* Signup+handler.swift */,
 				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
 				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
 				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
@@ -560,11 +560,11 @@
 				D104D4C41F7AF17B00C416C0 /* LoginViewController.swift in Sources */,
 				D1E0C5811F7E9A1500B04C3D /* NewEventVC+handlers.swift in Sources */,
 				D104D5071F7D476D00C416C0 /* UIColor.swift in Sources */,
-				D113380C1F8197DA00CE5152 /* SignupVC+handler.swift in Sources */,
+				D113380C1F8197DA00CE5152 /* Signup+handler.swift in Sources */,
 				D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */,
 				D104D50C1F7DABA600C416C0 /* CGRect.swift in Sources */,
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
-				D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */,
+				D113380A1F81975C00CE5152 /* Login+Handler.swift in Sources */,
 				D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */,
 				D112E1C31F80184400B84840 /* NewEventViewController.swift in Sources */,
 				D112E1C21F80184400B84840 /* FeedViewController.swift in Sources */,

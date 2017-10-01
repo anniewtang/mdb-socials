@@ -26,8 +26,9 @@ extension SignupViewController {
         Auth.auth().createUser(withEmail: email, password: password, completion:{ (user, error) in
             if error == nil {
                 let ref = Database.database().reference()
-                let usersRef = ref.child("Users").child((user?.uid)!)
-                let userDict = ["name": name, "email": email]
+                let uid = (user?.uid)!
+                let usersRef = ref.child("Users").child(uid)
+                let userDict = ["id": uid, "name": name, "email": email]
                 usersRef.setValue(userDict, withCompletionBlock: { (error, usersRef) in
                     if error != nil {
                         print(error.debugDescription)
