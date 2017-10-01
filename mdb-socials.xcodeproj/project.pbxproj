@@ -202,7 +202,6 @@
 			children = (
 				D104D5001F7CA24500C416C0 /* User.swift */,
 				D104D4FE1F7CA14500C416C0 /* Event.swift */,
-				D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -215,6 +214,7 @@
 				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
 				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
 				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
+				D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

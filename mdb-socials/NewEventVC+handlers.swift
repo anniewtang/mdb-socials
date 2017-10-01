@@ -11,6 +11,53 @@ import Firebase
 
 extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /* FUNC: returns to Feed modally */
+    func goBackToFeed() {
+        eventName.text = ""
+        datePickerTextField.text = ""
+        descTextField.text = ""
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    /* FUNC: returns true if all three text fields have inputs */
+    func checkForCompletion() -> Bool {
+        return true
+        return eventName.hasText && descTextField.hasText && datePickerTextField.hasText
+    }
+    
+    /* FUNC: presents popup alert if incomplete name, desc, or date fields */
+    func showAlertForIncompleteFields() {
+        let alert = UIAlertController(title: "WARNING: Incomplete Fields",
+                                      message: "Please fill out all the text fields in order to create your event!",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    /* FUNC: creating a new Event */
+    func addNewEvent(sender: UIButton!) {
+        let eventsRef = Database.database().reference().child("Events")
+        if checkForCompletion() {
+            let id = eventsRef.childByAutoId().key
+            let newEvent = ["eventID": id,
+                            "eventName": eventName.text ?? "[no title]",
+                            "desc": descTextField.text ?? "[no description]",
+                            "imageUrl": imgURL as Any,
+                            "creator": currentUser?.name ?? "[no user]",
+                            "date": datePicker.date.timeIntervalSince1970,
+                            "numInterested": 0] as [String : Any]
+//            let event = Event(eventDict: newEvent)
+            let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+//            FeedVC.allEvents.append(event)
+            goBackToFeed()
+        } else {
+            showAlertForIncompleteFields()
+        }
+    }
+
+    
     /* FUNC: sets up picker functionalities */
     func handleSelectEventPicImageView() {
         let picker = UIImagePickerController()

@@ -85,12 +85,7 @@ class FeedViewController: UIViewController {
     
     /* presents NewEventVC modally */
     func goToNewEvent(sender: UIButton!) {
-        print("seguging")
-//        performSegue(withIdentifier: "segueToNewEvents", sender: self)
-        
-        
         let newEvent = self.storyboard?.instantiateViewController(withIdentifier: String(describing: NewEventViewController.self)) as! NewEventViewController
-        newEvent.delegate = self
         newEvent.currentUser = currentUser
         self.present(newEvent, animated: true, completion: nil)
     }
