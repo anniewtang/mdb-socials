@@ -41,9 +41,9 @@ class FeedViewController: UIViewController {
         /* FUNC: fetch data for table view */
         fetchUser {
             self.fetchEvents() {
-//                DispatchQueue.main.async {
+                DispatchQueue.main.async {
                    self.tableView.reloadData()
-//                }
+                }
             }
         }
     }
@@ -51,9 +51,9 @@ class FeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchUser {
             self.fetchEvents() {
-//                DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
-//                }
+                }
             }
         }
     }
