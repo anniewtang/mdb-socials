@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 
-class Event {
+class Event: NSObject {
     
     var id: String!
     
@@ -62,7 +62,7 @@ class Event {
 
     }
     
-    init() {
+    override init() {
         self.desc = "go go"
         self.imageUrl = "https://cmgajcmusic.files.wordpress.com/2016/06/kanye-west2.jpg"
         self.numInterested = 1
