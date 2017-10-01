@@ -28,6 +28,7 @@
 		D112E1C41F80184400B84840 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1C01F80184400B84840 /* SignupViewController.swift */; };
 		D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338091F81975C00CE5152 /* LoginVC+Handler.swift */; };
 		D113380C1F8197DA00CE5152 /* SignupVC+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */; };
+		D113380E1F81AC3800CE5152 /* SignupVC+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* SignupVC+client.swift */; };
 		D1AEE6F71F817F16003B5C79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */; };
 		D1E0C5811F7E9A1500B04C3D /* NewEventVC+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */; };
 		D9203DABFC8F59E3584CF039 /* Pods_mdb_socials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7620B59AA1D9DC3EF6D4BE61 /* Pods_mdb_socials.framework */; };
@@ -85,6 +86,7 @@
 		D112E1C01F80184400B84840 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D11338091F81975C00CE5152 /* LoginVC+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Handler.swift"; sourceTree = "<group>"; };
 		D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupVC+handler.swift"; sourceTree = "<group>"; };
+		D113380D1F81AC3800CE5152 /* SignupVC+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupVC+client.swift"; sourceTree = "<group>"; };
 		D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewEventVC+handlers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 				D104D4C51F7AF17B00C416C0 /* Main.storyboard */,
 				D104D4CD1F7AF17B00C416C0 /* LaunchScreen.storyboard */,
 				D104D5081F7D47A200C416C0 /* Utility Files */,
+				D113380F1F81AC4000CE5152 /* Client */,
 				D104D5091F7D47B400C416C0 /* Model */,
 				D112E1BC1F80178200B84840 /* View */,
 				D104D50A1F7D47C400C416C0 /* Controller */,
@@ -227,6 +230,14 @@
 				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D113380F1F81AC4000CE5152 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				D113380D1F81AC3800CE5152 /* SignupVC+client.swift */,
+			);
+			name = Client;
 			sourceTree = "<group>";
 		};
 		D546CA0AC7057E4586BEAC08 /* Frameworks */ = {
@@ -551,6 +562,7 @@
 				D104D50C1F7DABA600C416C0 /* CGRect.swift in Sources */,
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
 				D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */,
+				D113380E1F81AC3800CE5152 /* SignupVC+client.swift in Sources */,
 				D112E1C31F80184400B84840 /* NewEventViewController.swift in Sources */,
 				D112E1C21F80184400B84840 /* FeedViewController.swift in Sources */,
 				D104D5011F7CA24500C416C0 /* User.swift in Sources */,
