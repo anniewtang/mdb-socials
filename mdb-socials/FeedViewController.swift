@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 class FeedViewController: UIViewController {
-    
     /* UI elements */
     var tableView: UITableView!
     
@@ -42,9 +41,9 @@ class FeedViewController: UIViewController {
         /* FUNC: fetch data for table view */
         fetchUser {
             self.fetchEvents() {
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                    self.tableView.reloadData()
-                }
+//                }
             }
         }
     }
@@ -52,9 +51,9 @@ class FeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchUser {
             self.fetchEvents() {
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.tableView.reloadData()
-                }
+//                }
             }
         }
     }
@@ -107,7 +106,7 @@ class FeedViewController: UIViewController {
     func fetchEvents(withBlock: @escaping () -> ()) {
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
-            let event = Event(eventDict: snapshot.value as! [String : Any]?)
+            let event = Event(eventDict: snapshot.value as! [String : Any]!)
             if event.eventName != nil {
                 self.allEvents.append(event)
             }

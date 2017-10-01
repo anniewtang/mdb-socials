@@ -27,12 +27,12 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         var selectedImageFromPicker: UIImage?
         
         if let originalImage = info["UIImagePickerControllerOriginalImage"] {
-            selectedImageFromPicker = originalImage as? UIImage
+            selectedImageFromPicker = originalImage as! UIImage
         }
         if let selectedImage = selectedImageFromPicker {
             eventImageView.image = selectedImage
             let imagePath: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-            imageName = imagePath.lastPathComponent!
+            imageName = NSUUID().uuidString
             uploadButton.setTitle("", for: .normal)
             uploadButton.layer.borderColor = UIColor.white.cgColor
             
@@ -47,10 +47,10 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     /* FUNC: stores image that is uploaded to Firebase 
-       1.) puts image into FIRStorage
-       2.) takes the data and retrieves the imgURL stored in Firebase for Event */
+       1.) puts image into Storage
+       2.) takes the data and retrieves the imgURL stored in Firebase for Event object */
     func storeImageToFirebase() {
-        let storageRef = Storage.storage().reference().child("eventPics/\(String(describing: imageName))")
+        let storageRef = Storage.storage().reference().child("eventPics").child(imageName!)
         
         if let uploadData = UIImagePNGRepresentation(eventImageView.image!) {
             let metadata = StorageMetadata()

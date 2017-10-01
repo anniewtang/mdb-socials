@@ -13,16 +13,17 @@ import Firebase
 
 class Event {
     
-    var id: String?
+    var id: String!
     
-    var eventName: String?
-    var imageUrl: String?
-    var desc: String?
-    var creator: String?
-    var date: Date?
+    var eventName: String!
+    var imageUrl: String!
+    var desc: String!
+    var creator: String!
+    var date: Date!
     var numInterested: Int!
     
     var image: UIImage?
+    var eventDict: [String: Any]!
     let eventRef = Database.database().reference().child("Events")
     
     /* Things to pass over 
@@ -35,33 +36,43 @@ class Event {
      */
     
     
-    init(eventDict: [String:Any]?) {
+    init(eventDict: [String:Any]) {
         /* pass in eventDict information */
-        if eventDict != nil {
-            if let eventName = eventDict!["eventName"] as? String {
+        self.eventDict = eventDict
+//        if eventDict != nil {
+            if let eventName = eventDict["eventName"] as? String {
                 self.eventName = eventName
             }
-            if let desc = eventDict!["desc"] as? String {
+            if let desc = eventDict["desc"] as? String {
                 self.desc = desc
             }
-            if let imageUrl = eventDict!["imageUrl"] as? String {
+            if let imageUrl = eventDict["imageUrl"] as? String {
                 self.imageUrl = imageUrl
             }
-            if let creator = eventDict!["creator"] as? String {
+            if let creator = eventDict["creator"] as? String {
                 self.creator = creator
             }
-            if let date = eventDict!["date"] as? Date {
+            if let date = eventDict["date"] as? Date {
                 self.date = date
             }
-            if let numInterested = eventDict!["interested"] as? Int {
+            if let numInterested = eventDict["interested"] as? Int {
                 self.numInterested = numInterested
             }
-        }
+//        }
         
         /* uploading to Firebase database & saving id */
-        id = eventRef.childByAutoId().key
-        let childUpdates = ["/\(id)/": eventDict]
-        eventRef.updateChildValues(childUpdates)
+        if let id = eventDict["id"] {
+            self.id = id as! String
+        } else {
+            uploadToFirebase()
+        }
+
+    }
+    
+    func uploadToFirebase() {
+            self.id = eventRef.childByAutoId().key
+            let childUpdates = ["/\(id)/": eventDict]
+            eventRef.updateChildValues(childUpdates)
     }
     
     init() {

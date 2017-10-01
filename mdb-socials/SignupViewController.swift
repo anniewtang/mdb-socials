@@ -167,38 +167,7 @@ class SignupViewController: UIViewController {
         view.addSubview(backButton)
         backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
     }
-    
-    /* FUNC: creates a user, and puts it into Firebase */
-    func signupButtonClicked() {
-        let name = nameTextField.text!
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error == nil {
-                let ref = Database.database().reference().child("Users").child((Auth.auth().currentUser?.uid)!)
-                ref.setValue(["name": name, "email": email])
-                
-                self.nameTextField.text = ""
-                self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-                
-                self.performSegue(withIdentifier: "toFeedFromSignup", sender: self)
-            }
-            else {
-                print(error.debugDescription)
-            }
-        }
-    }
-    
-    /* FUNC: MODALLY goes back to Login view */
-    func backButtonClicked() {
-        nameTextField.text = ""
-        emailTextField.text = ""
-        passwordTextField.text = ""
-        
-        dismiss(animated: true, completion: nil)
-    }
+
     
 }
 

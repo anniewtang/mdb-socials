@@ -158,28 +158,5 @@ class LoginViewController: UIViewController {
         signupButton.addTarget(self, action: #selector(segueToSignup), for: .touchUpInside)
     }
     
-    /* FUNC: signs in user with the correct information */
-    func selectedLogin(sender: UIButton!) {
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-        
-        emailTextField.text = ""
-        passwordTextField.text = ""
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if error == nil {
-                self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
-            }
-        }
-    }
-    
-    /* FUNC: segue, toSignupFromLogin */
-    func segueToSignup() {
-//        performSegue(withIdentifier: "toSignupFromLogin", sender: self)
-        let signupVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: SignupViewController.self)) as! SignupViewController
-        signupVC.delegate = self
-        self.present(signupVC, animated: true, completion: nil)
-    }
-
 }
 

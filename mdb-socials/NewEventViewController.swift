@@ -267,17 +267,36 @@ class NewEventViewController: UIViewController {
     
     /* FUNC: creating a new Event */
     func addNewEvent(sender: UIButton!) {
-        let newEvent = ["eventName": eventName.text ?? "[no title]",
-                        "desc": descTextField.text ?? "[no description]",
-                        "imageUrl": imgURL as Any,
-                        "creator": currentUser?.name ?? "[no user]",
-                        "date": datePicker.date.timeIntervalSince1970 ,
-                        "numInterested": 0] as [String : Any]
-        print(newEvent["eventName"])
-        let event = Event(eventDict: newEvent)
-        let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
-        FeedVC.allEvents.append(event)
-        print(event.id)
-        goBack()
+        if checkForCompletion() {
+            let newEvent = ["eventName": eventName.text ?? "[no title]",
+                            "desc": descTextField.text ?? "[no description]",
+                            "imageUrl": imgURL as Any,
+                            "creator": currentUser?.name ?? "[no user]",
+                            "date": datePicker.date.timeIntervalSince1970,
+                            "numInterested": 0] as [String : Any]
+            print(newEvent["eventName"])
+            let event = Event(eventDict: newEvent)
+            let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+            FeedVC.allEvents.append(event)
+            print(event.id)
+            goBack()
+        } else {
+            showAlertForIncompleteFields()
+        }
+    }
+    
+    /* FUNC: returns true if all three text fields have inputs */
+    func checkForCompletion() -> Bool {
+        return true
+        return eventName.hasText && descTextField.hasText && datePickerTextField.hasText
+    }
+    
+    /* FUNC: presents popup alert if incomplete name, desc, or date fields */
+    func showAlertForIncompleteFields() {
+        let alert = UIAlertController(title: "WARNING: Incomplete Fields",
+                                      message: "Please fill out all the text fields in order to create your event!",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
