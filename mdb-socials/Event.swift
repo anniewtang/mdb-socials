@@ -59,20 +59,7 @@ class Event {
                 self.numInterested = numInterested
             }
 //        }
-        
-        /* uploading to Firebase database & saving id */
-        if let id = eventDict["id"] {
-            self.id = id as! String
-        } else {
-            uploadToFirebase()
-        }
 
-    }
-    
-    func uploadToFirebase() {
-            self.id = eventRef.childByAutoId().key
-            let childUpdates = ["/\(id)/": eventDict]
-            eventRef.updateChildValues(childUpdates)
     }
     
     init() {

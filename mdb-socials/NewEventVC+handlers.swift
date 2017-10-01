@@ -23,7 +23,6 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     
     /* FUNC: returns true if all three text fields have inputs */
     func checkForCompletion() -> Bool {
-        return true
         return eventName.hasText && descTextField.hasText && datePickerTextField.hasText
     }
     

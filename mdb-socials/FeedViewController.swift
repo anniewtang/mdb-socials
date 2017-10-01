@@ -27,9 +27,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        
         allEvents.append(sampleEvent)
         allEvents.append(sampleEvent)
         allEvents.append(sampleEvent)
@@ -38,7 +36,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavBar()
 
-        /* FUNC: fetch data for table view */
+        /* FUNC: fetch data for table view, asynchronously */
         fetchUser {
             self.fetchEvents() {
                 DispatchQueue.main.async {
@@ -48,6 +46,7 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /* FUNC: fetch data for updated tableview, asynchronously */
     override func viewWillAppear(_ animated: Bool) {
         fetchUser {
             self.fetchEvents() {
@@ -56,6 +55,32 @@ class FeedViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    /* FUNC: fetching current user from firebase */
+    func fetchUser(withBlock: @escaping () -> ()) {
+        let ref = Database.database().reference().child("Users")
+//        let uid = self.auth.
+        
+        ref.child("Users").child((self.auth.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let user = User(id: snapshot.key, userDict: snapshot.value as! [String : Any]?)
+            self.currentUser = user
+            withBlock()
+            
+        })
+    }
+    
+    /* FUNC: fetching events from firebase */
+    func fetchEvents(withBlock: @escaping () -> ()) {
+        let ref = Database.database().reference()
+        ref.child("Events").observe(.childAdded, with: { (snapshot) in
+            let event = Event(eventDict: snapshot.value as! [String : Any]!)
+            if event.eventName != nil {
+                self.allEvents.append(event)
+            }
+            withBlock()
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,36 +114,7 @@ class FeedViewController: UIViewController {
         newEvent.currentUser = currentUser
         self.present(newEvent, animated: true, completion: nil)
     }
-    
-    /* protocol to dismiss NewEventVC & represent FeedVC modally */
-    func dismissViewController() {
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedViewController"){
-            self.present(viewController, animated: true, completion: nil)
-        }
-    }
-    
-    /* fetching events from firebase */
-    func fetchEvents(withBlock: @escaping () -> ()) {
-        let ref = Database.database().reference()
-        ref.child("Events").observe(.childAdded, with: { (snapshot) in
-            let event = Event(eventDict: snapshot.value as! [String : Any]!)
-            if event.eventName != nil {
-                self.allEvents.append(event)
-            }
-            withBlock()
-        })
-    }
-    
-    /* fetching current user from firebase */
-    func fetchUser(withBlock: @escaping () -> ()) {
-        let ref = Database.database().reference()
-        ref.child("Users").child((self.auth.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let user = User(id: snapshot.key, userDict: snapshot.value as! [String : Any]?)
-            self.currentUser = user
-            withBlock()
-            
-        })
-    }
+
 
     
     /* Initializing table view, and adding it to view */

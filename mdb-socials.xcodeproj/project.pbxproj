@@ -28,7 +28,8 @@
 		D112E1C41F80184400B84840 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1C01F80184400B84840 /* SignupViewController.swift */; };
 		D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338091F81975C00CE5152 /* LoginVC+Handler.swift */; };
 		D113380C1F8197DA00CE5152 /* SignupVC+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */; };
-		D113380E1F81AC3800CE5152 /* SignupVC+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* SignupVC+client.swift */; };
+		D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* Signup+client.swift */; };
+		D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338101F81AFF900CE5152 /* NewEvent+client.swift */; };
 		D1AEE6F71F817F16003B5C79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */; };
 		D1E0C5811F7E9A1500B04C3D /* NewEventVC+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */; };
 		D9203DABFC8F59E3584CF039 /* Pods_mdb_socials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7620B59AA1D9DC3EF6D4BE61 /* Pods_mdb_socials.framework */; };
@@ -86,7 +87,8 @@
 		D112E1C01F80184400B84840 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D11338091F81975C00CE5152 /* LoginVC+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Handler.swift"; sourceTree = "<group>"; };
 		D113380B1F8197DA00CE5152 /* SignupVC+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupVC+handler.swift"; sourceTree = "<group>"; };
-		D113380D1F81AC3800CE5152 /* SignupVC+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupVC+client.swift"; sourceTree = "<group>"; };
+		D113380D1F81AC3800CE5152 /* Signup+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+client.swift"; sourceTree = "<group>"; };
+		D11338101F81AFF900CE5152 /* NewEvent+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewEvent+client.swift"; sourceTree = "<group>"; };
 		D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewEventVC+handlers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,7 +237,8 @@
 		D113380F1F81AC4000CE5152 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				D113380D1F81AC3800CE5152 /* SignupVC+client.swift */,
+				D113380D1F81AC3800CE5152 /* Signup+client.swift */,
+				D11338101F81AFF900CE5152 /* NewEvent+client.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -322,7 +325,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Annie Tang";
 				TargetAttributes = {
 					D104D4BD1F7AF17B00C416C0 = {
@@ -562,11 +565,12 @@
 				D104D50C1F7DABA600C416C0 /* CGRect.swift in Sources */,
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
 				D113380A1F81975C00CE5152 /* LoginVC+Handler.swift in Sources */,
-				D113380E1F81AC3800CE5152 /* SignupVC+client.swift in Sources */,
+				D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */,
 				D112E1C31F80184400B84840 /* NewEventViewController.swift in Sources */,
 				D112E1C21F80184400B84840 /* FeedViewController.swift in Sources */,
 				D104D5011F7CA24500C416C0 /* User.swift in Sources */,
 				D104D5051F7CA5DC00C416C0 /* Utils.swift in Sources */,
+				D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */,
 				D104D5031F7CA2A700C416C0 /* FeedTableViewCell.swift in Sources */,
 				D112E1C11F80184400B84840 /* DetailsViewController.swift in Sources */,
 			);
@@ -633,7 +637,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -641,7 +647,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -683,7 +693,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -691,7 +703,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
