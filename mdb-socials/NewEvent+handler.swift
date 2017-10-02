@@ -11,6 +11,8 @@ import Firebase
 
 extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /* ------------ BUTTON FUNCTIONS ------------ */
+    
     /* FUNC: done with date picker */
     func doneDatePicker(){
         let formatter = DateFormatter()
@@ -24,18 +26,30 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         self.view.endEditing(true)
     }
     
+    /* FUNC: ensures all fields are completed, then adds the Event to Firebase */
+    func addNewEvent(sender: UIButton!) {
+        if !checkForCompletion() {
+            showAlertForIncompleteFields()
+        } else {
+            addEventToFirebase()
+        }
+    }
+    /* ------------ APP TRANSITIONS ------------ */
+    
     /* FUNC: resets text fields & returns to Feed modally */
     func goBackToFeed() {
-        eventName.text = ""
+        eventNameTextField.text = ""
         datePickerTextField.text = ""
         descTextField.text = ""
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
+    /* ------------ HELPER FUNCTIONS ------------ */
+    
     /* FUNC: returns true if all three text fields have inputs */
     func checkForCompletion() -> Bool {
-        return eventName.hasText && descTextField.hasText && datePickerTextField.hasText
+        return eventNameTextField.hasText && descTextField.hasText && datePickerTextField.hasText
     }
     
     /* FUNC: presents popup alert if incomplete name, desc, or date fields */
@@ -47,6 +61,8 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         self.present(alert, animated: true, completion: nil)
     }
     
+    /* ------------ IMAGE PICKING FUNCTIONS ------------ */
+    
     /* FUNC: sets up picker functionalities */
     func handleSelectEventPicImageView() {
         let picker = UIImagePickerController()
@@ -56,47 +72,26 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
-    
-    /* FUNC: dismissing picker controller */
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    /* FUNC: grabs image from picker */
+
+    /* FUNC: gets & uses image from picker */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var selectedImageFromPicker: UIImage?
         
         if let originalImage = info["UIImagePickerControllerOriginalImage"] {
-            selectedImageFromPicker = originalImage as! UIImage
+            selectedImageFromPicker = originalImage as? UIImage
         }
         if let selectedImage = selectedImageFromPicker {
             eventImageView.image = selectedImage
-            let imagePath: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-            imageName = NSUUID().uuidString
+            storeImageToFirebase()
             uploadButton.setTitle("", for: .normal)
             uploadButton.layer.borderColor = UIColor.white.cgColor
-            
-            storeImageToFirebase()
             dismiss(animated: true, completion: nil)
         }
     }
     
-    /* FUNC: stores image that is uploaded to Firebase 
-       1.) puts image into Storage
-       2.) takes the data and retrieves the imgURL stored in Firebase for Event object */
-    func storeImageToFirebase() {
-        let storageRef = Storage.storage().reference().child("eventPics").child(imageName!)
-        
-        if let uploadData = UIImagePNGRepresentation(eventImageView.image!) {
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            storageRef.putData(uploadData, metadata: metadata).observe(.success) { (snapshot) in
-                let url = snapshot.metadata?.downloadURL()?.absoluteString
-                self.imgURL = url
-                print(self.imgURL)
-            }
-        }
-        
+    /* FUNC: dismisses picker controller */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
+    
 }

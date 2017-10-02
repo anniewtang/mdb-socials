@@ -30,6 +30,7 @@ extension FeedViewController {
         eventsRef.observe(.childAdded, with: { (snapshot) in
             let event = Event()
             let eventDict = (snapshot.value as! [String : Any])
+            event.eventDict = eventDict
             event.setValuesForKeys(eventDict)
             self.allEvents.append(event)
             

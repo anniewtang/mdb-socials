@@ -179,7 +179,8 @@ class DetailsViewController: UIViewController {
     func rsvpInterested() {
         if !rsvpStatus {
             event.numInterested! += 1
-            ref.child("Events/\(String(describing: event.id))/numInterested").setValue(event.numInterested)
+            event.eventDict["numInterested"] = event.numInterested
+            ref.child("Events").child(String(describing: event.id)).setValue(event.eventDict)
             numInterested.text = "\(event.numInterested!)"
             interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)
             interestedButton.backgroundColor = grayBlue

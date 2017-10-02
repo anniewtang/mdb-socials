@@ -23,15 +23,15 @@ class FeedViewController: UIViewController {
     var currentUser: User!
 
     //For sample post
-    let sampleEvent = Event("sample")
+//    let sampleEvent = Event(default: "sample")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
-        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
+//        allEvents.append(sampleEvent)
         
         setupTableView()
         setupNavBar()

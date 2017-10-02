@@ -13,6 +13,7 @@ class NewEventViewController: UIViewController {
     
     /* FUNCTIONAL */
     var currentUser: User!
+    var eventID: String!
     
     /* UI ELEMENTS */
     var eventNameTextField: UITextField!
@@ -28,8 +29,7 @@ class NewEventViewController: UIViewController {
     /* IMAGE UPLOADING */
     let picker = UIImagePickerController()
     var eventImageView: UIImageView!
-    var imageName: String!
-    var imgURL: String!
+    var imgURL: String = "https://imgur.com/a/y5yxE" // default image
     
     /* REUSABLE VARIABLES */
     var blue = UIColor(hexString: "#86A2C7")
