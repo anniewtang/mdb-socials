@@ -106,7 +106,7 @@ class SignupViewController: UIViewController {
     
     /* UI: setting up the underlines */
     func setupUnderline() {
-        let Y: CGFloat = 316.5
+        let Y: CGFloat = 320
         
         let nameLineView = UIView(frame:
             CGRect(x: X,
