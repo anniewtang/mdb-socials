@@ -77,11 +77,11 @@ class FeedViewController: UIViewController {
         let ref = Database.database().reference()
         
         ref.child("Events").observe(.childAdded, with: { (snapshot) in
+            let event = Event()
             let eventDict = (snapshot.value as! [String : Any])
-            let event = Event(eventDict: eventDict)
-            if event.eventName != nil {
-                self.allEvents.append(event)
-            }
+            event.setValuesForKeys(eventDict)
+            self.allEvents.append(event)
+            
             withBlock()
         })
     }

@@ -31,7 +31,7 @@
 		D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* Signup+client.swift */; };
 		D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338101F81AFF900CE5152 /* NewEvent+client.swift */; };
 		D1AEE6F71F817F16003B5C79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */; };
-		D1E0C5811F7E9A1500B04C3D /* NewEventVC+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */; };
+		D1E0C5811F7E9A1500B04C3D /* NewEvent+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */; };
 		D9203DABFC8F59E3584CF039 /* Pods_mdb_socials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7620B59AA1D9DC3EF6D4BE61 /* Pods_mdb_socials.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		D113380D1F81AC3800CE5152 /* Signup+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+client.swift"; sourceTree = "<group>"; };
 		D11338101F81AFF900CE5152 /* NewEvent+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewEvent+client.swift"; sourceTree = "<group>"; };
 		D1AEE6F61F817DD9003B5C79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewEventVC+handlers.swift"; sourceTree = "<group>"; };
+		D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewEvent+handler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,10 +166,10 @@
 				D104D4C51F7AF17B00C416C0 /* Main.storyboard */,
 				D104D4CD1F7AF17B00C416C0 /* LaunchScreen.storyboard */,
 				D104D5081F7D47A200C416C0 /* Utility Files */,
-				D113380F1F81AC4000CE5152 /* Client */,
 				D104D5091F7D47B400C416C0 /* Model */,
 				D112E1BC1F80178200B84840 /* View */,
 				D104D50A1F7D47C400C416C0 /* Controller */,
+				D113380F1F81AC4000CE5152 /* Client */,
 			);
 			path = "mdb-socials";
 			sourceTree = "<group>";
@@ -218,8 +218,7 @@
 				D113380B1F8197DA00CE5152 /* Signup+handler.swift */,
 				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
 				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
-				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
-				D1E0C5801F7E9A1500B04C3D /* NewEventVC+handlers.swift */,
+				D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -230,6 +229,7 @@
 				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
 				D112E1C01F80184400B84840 /* SignupViewController.swift */,
 				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
+				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -558,7 +558,7 @@
 			files = (
 				D112E1C41F80184400B84840 /* SignupViewController.swift in Sources */,
 				D104D4C41F7AF17B00C416C0 /* LoginViewController.swift in Sources */,
-				D1E0C5811F7E9A1500B04C3D /* NewEventVC+handlers.swift in Sources */,
+				D1E0C5811F7E9A1500B04C3D /* NewEvent+handler.swift in Sources */,
 				D104D5071F7D476D00C416C0 /* UIColor.swift in Sources */,
 				D113380C1F8197DA00CE5152 /* Signup+handler.swift in Sources */,
 				D104D4FF1F7CA14500C416C0 /* Event.swift in Sources */,

@@ -64,7 +64,6 @@ class NewEventViewController: UIViewController {
         view.addSubview(eventImageView)
     }
     
-    
     /* UI: setting up uploadButton */
     func setupUploadButton() {
         uploadButton = UIButton(frame: eventImageView.frame)
@@ -77,15 +76,7 @@ class NewEventViewController: UIViewController {
         view.addSubview(uploadButton)
         view.bringSubview(toFront: uploadButton)
     }
-    
-    /* FUNC: selecting an image */
-    func selectImage(sender: UIButton!) {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
-    }
-    
+
     /* UI: name, username, email, password text fields & underlines */
     func setupTextFields() {
         let Y: CGFloat = 292
@@ -95,7 +86,6 @@ class NewEventViewController: UIViewController {
                    w: WIDTH,
                    h: HEIGHT))
         eventName.adjustsFontSizeToFitWidth = true
-//        eventName.placeholder = "EVENT NAME"
         eventName.attributedPlaceholder = NSAttributedString(string: "EVENT NAME", attributes: [NSForegroundColorAttributeName : gray])
         eventName.textAlignment = .left
         eventName.layoutIfNeeded()
@@ -174,28 +164,15 @@ class NewEventViewController: UIViewController {
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelDatePicker))
+        
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
         // add toolbar to textField
         datePickerTextField.inputAccessoryView = toolbar
         // add datepicker to textField
         datePickerTextField.inputView = datePicker
-        
     }
-    
-    /* FUNC: done with date picker */
-    func doneDatePicker(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        datePickerTextField.text = formatter.string(from: datePicker.date)
-        self.view.endEditing(true)
-    }
-    
-    /* FUNC: closes and cancels date picker */
-    func cancelDatePicker(){
-        self.view.endEditing(true)
-    }
-    
+
     
     /* ------------ NAVIGATION & FLOW ------------ */
     

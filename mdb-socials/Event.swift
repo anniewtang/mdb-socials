@@ -35,32 +35,31 @@ class Event: NSObject {
      6.) numInterested
      */
     
-    
-    init(eventDict: [String:Any]) {
-        /* pass in eventDict information */
-        self.eventDict = eventDict
-//        if eventDict != nil {
-            if let eventName = eventDict["eventName"] as? String {
-                self.eventName = eventName
-            }
-            if let desc = eventDict["desc"] as? String {
-                self.desc = desc
-            }
-            if let imageUrl = eventDict["imageUrl"] as? String {
-                self.imageUrl = imageUrl
-            }
-            if let creator = eventDict["creator"] as? String {
-                self.creator = creator
-            }
-            if let date = eventDict["date"] as? Date {
-                self.date = date
-            }
-            if let numInterested = eventDict["interested"] as? Int {
-                self.numInterested = numInterested
-            }
+//init(eventDict: [String:Any]) {
+//    /* pass in eventDict information */
+//    self.eventDict = eventDict
+////        if eventDict != nil {
+//        if let eventName = eventDict["eventName"] as? String {
+//            self.eventName = eventName
 //        }
-
-    }
+//        if let desc = eventDict["desc"] as? String {
+//            self.desc = desc
+//        }
+//        if let imageUrl = eventDict["imageUrl"] as? String {
+//            self.imageUrl = imageUrl
+//        }
+//        if let creator = eventDict["creator"] as? String {
+//            self.creator = creator
+//        }
+//        if let date = eventDict["date"] as? Date {
+//            self.date = date
+//        }
+//        if let numInterested = eventDict["interested"] as? Int {
+//            self.numInterested = numInterested
+//        }
+////        }
+//
+//}
     
     override init() {
         self.desc = "go go"

@@ -57,9 +57,14 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         present(picker, animated: true, completion: nil)
     }
     
+    /* FUNC: dismissing picker controller */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     /* FUNC: grabs image from picker */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         var selectedImageFromPicker: UIImage?
         
         if let originalImage = info["UIImagePickerControllerOriginalImage"] {
@@ -75,11 +80,6 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             storeImageToFirebase()
             dismiss(animated: true, completion: nil)
         }
-    }
-    
-    /* FUNC: dismissing picker controller */
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
     }
     
     /* FUNC: stores image that is uploaded to Firebase 
