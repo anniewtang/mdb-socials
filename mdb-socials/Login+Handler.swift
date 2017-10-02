@@ -28,6 +28,9 @@ extension LoginViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil {
                 self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
+            } else {
+                let alert = Utils.showAlertForIncompleteFields(warningMessage: error!.localizedDescription)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

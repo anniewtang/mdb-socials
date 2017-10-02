@@ -29,7 +29,9 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     /* FUNC: ensures all fields are completed, then adds the Event to Firebase */
     func addNewEvent(sender: UIButton!) {
         if !checkForCompletion() {
-            showAlertForIncompleteFields()
+            let msg = "Please fill out all the text fields in order to create your event!"
+            let alert = Utils.showAlertForIncompleteFields(warningMessage: msg)
+            self.present(alert, animated: true, completion: nil)
         } else {
             addEventToFirebase()
         }
@@ -51,15 +53,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     func checkForCompletion() -> Bool {
         return eventNameTextField.hasText && descTextField.hasText && datePickerTextField.hasText
     }
-    
-    /* FUNC: presents popup alert if incomplete name, desc, or date fields */
-    func showAlertForIncompleteFields() {
-        let alert = UIAlertController(title: "WARNING: Incomplete Fields",
-                                      message: "Please fill out all the text fields in order to create your event!",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+
     
     /* ------------ IMAGE PICKING FUNCTIONS ------------ */
     

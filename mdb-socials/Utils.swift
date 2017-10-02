@@ -18,5 +18,14 @@ class Utils {
             })
         }
     }
+    
+    /* FUNC: presents popup alert if incomplete name, desc, or date fields */
+    static func showAlertForIncompleteFields(warningMessage: String) -> UIAlertController {
+        let alert = UIAlertController(title: "WARNING:",
+                                      message: warningMessage,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        return alert
+    }
 }
 

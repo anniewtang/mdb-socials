@@ -16,10 +16,12 @@ extension SignupViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         if name == "" {
+            var msg = "You must provide a name to register a profile with MDB Socials!"
             if email == "" || password == "" {
-                showAlertForIncompleteFields(warningMessage: "Please fill out the text fields to register for a profile with MDB Socials!")
+                msg = "Please fill out the text fields to register for a profile with MDB Socials!"
             }
-            showAlertForIncompleteFields(warningMessage: "You must provide a name to register a profile with MDB Socials!")
+            let alert = Utils.showAlertForIncompleteFields(warningMessage: msg)
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
@@ -38,7 +40,8 @@ extension SignupViewController {
                 self.segueToFeed()
             }
             else {
-                self.showAlertForIncompleteFields(warningMessage: error!.localizedDescription)
+                let alert = Utils.showAlertForIncompleteFields(warningMessage: error!.localizedDescription)
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }

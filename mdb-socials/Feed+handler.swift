@@ -28,12 +28,13 @@ extension FeedViewController {
     func fetchEvents(withBlock: @escaping () -> ()) {
         let eventsRef = Database.database().reference().child("Events")
         eventsRef.observe(.childAdded, with: { (snapshot) in
-            let event = Event()
             let eventDict = (snapshot.value as! [String : Any])
-            event.eventDict = eventDict
-            event.setValuesForKeys(eventDict)
-            self.allEvents.append(event)
-            
+            if let event = self.loadedEvents[eventDict["id"] as! String] {
+                event.setupAttributes()
+            } else {
+                let event = Event(eventDict: eventDict)
+                self.allEvents.append(event)
+            }
             withBlock()
         })
     }

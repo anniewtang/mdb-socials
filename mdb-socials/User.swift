@@ -23,7 +23,6 @@ class User: NSObject {
 //            if let email = userDict!["email"] as? String {
 //                self.email = email
 //            }
-//
 //        }
 //    }
     

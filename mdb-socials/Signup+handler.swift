@@ -10,14 +10,6 @@ import UIKit
 import Firebase
 
 extension SignupViewController {
-    /* FUNC: presents popup alert if incomplete text fields */
-    func showAlertForIncompleteFields(warningMessage: String) {
-        let alert = UIAlertController(title: "WARNING:",
-                                      message: warningMessage,
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     
     /* FUNC: resets text fields & segues to Feed */
     func segueToFeed() {

@@ -1,3 +1,4 @@
+
 //
 //  NewEvent+client.swift
 //  mdb-socials
@@ -10,6 +11,12 @@ import UIKit
 import Firebase
 
 extension NewEventViewController {
+    
+    /* FUNC: creates & sets event ID */
+    func getEventID() {
+        let eventsRef = Database.database().reference().child("Events")
+        self.eventID = eventsRef.childByAutoId().key
+    }
     
     /* FUNC: puts uploaded image into Firebase Storage (using eventID), and saves imgURL */
     func storeImageToFirebase() {
@@ -40,8 +47,8 @@ extension NewEventViewController {
     func addEventToFirebase() {
         let eventsRef = Database.database().reference().child("Events")
         
+        print(imgURL)
         /* creating the dict for Firebase */
-        eventID = eventsRef.childByAutoId().key
         let eventDict = ["id": eventID,
                         "imageUrl": imgURL,
                         "eventName": eventNameTextField.text!,
@@ -49,9 +56,9 @@ extension NewEventViewController {
                         "desc": descTextField.text!,
                         "date": datePicker.date.timeIntervalSince1970,
                         "numInterested": 0] as [String : Any]
-        
+        print(eventDict["imageUrl"])
         /* add the event to Firebase Database */
-        eventsRef.child(eventID).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
+        eventsRef.child(self.eventID).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
             if error != nil {
                 print(error.debugDescription)
                 return

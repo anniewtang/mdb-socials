@@ -29,7 +29,7 @@ class NewEventViewController: UIViewController {
     /* IMAGE UPLOADING */
     let picker = UIImagePickerController()
     var eventImageView: UIImageView!
-    var imgURL: String = "https://imgur.com/a/y5yxE" // default image
+    var imgURL: String = "https://i.imgur.com/95BGbRP.png" // default image
     
     /* REUSABLE VARIABLES */
     var blue = UIColor(hexString: "#86A2C7")
@@ -43,6 +43,7 @@ class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getEventID()
         setupImageView()
         setupUploadButton()
         setupTextFields()
