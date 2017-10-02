@@ -10,30 +10,41 @@ import UIKit
 import Firebase
 
 extension NewEventViewController {
-    /* FUNC: creating a new Event */
+    
+    /* FUNC: adding the new event to Firebase */
     func addNewEvent(sender: UIButton!) {
         let eventsRef = Database.database().reference().child("Events")
         if checkForCompletion() {
+            
+            /* creating the dict for Firebase */
             let id = eventsRef.childByAutoId().key
-            let newEvent = ["eventID": id,
-                            "eventName": eventName.text ?? "[no title]",
-                            "desc": descTextField.text ?? "[no description]",
-                            "imageUrl": imgURL as Any,
-                            "creator": currentUser?.name ?? "[no user]",
+            let eventDict = ["id": id,
+                            "imageUrl": imgURL!,
+                            "eventName": eventNameTextField.text!,
+                            "creator": currentUser.name,
+                            "desc": descTextField.text!,
                             "date": datePicker.date.timeIntervalSince1970,
                             "numInterested": 0] as [String : Any]
-            //            let event = Event(eventDict: newEvent)
-            let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
-            //            FeedVC.allEvents.append(event)
+            
+            /* add the event to Firebase Database */
+            eventsRef.child(id).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+            })
+            
+            /* return user to the Feed */
             goBackToFeed()
+            
+            /* create and add the Event object to the tableview -- UNNEEDED? because of the fetchData code?
+             let event = Event()
+             event.setValuesForKeys(eventDict)
+             let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+            FeedVC.allEvents.append(event)
+            */
         } else {
             showAlertForIncompleteFields()
         }
-    }
-    
-    func uploadToFirebase() {
-        self.id = eventRef.childByAutoId().key
-        let childUpdates = ["/\(id)/": eventDict]
-        eventRef.updateChildValues(childUpdates)
     }
 }

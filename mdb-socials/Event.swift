@@ -14,11 +14,10 @@ import Firebase
 class Event: NSObject {
     
     var id: String!
-    
-    var eventName: String!
     var imageUrl: String!
-    var desc: String!
+    var eventName: String!
     var creator: String!
+    var desc: String!
     var date: Date!
     var numInterested: Int!
     
@@ -61,7 +60,7 @@ class Event: NSObject {
 //
 //}
     
-    override init() {
+    init(default: String) {
         self.desc = "go go"
         self.imageUrl = "https://cmgajcmusic.files.wordpress.com/2016/06/kanye-west2.jpg"
         self.numInterested = 1

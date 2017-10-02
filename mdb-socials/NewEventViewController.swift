@@ -15,7 +15,7 @@ class NewEventViewController: UIViewController {
     var currentUser: User!
     
     /* UI ELEMENTS */
-    var eventName: UITextField!
+    var eventNameTextField: UITextField!
     var datePickerTextField: UITextField!
     var datePicker: UIDatePicker!
     var descTextField: UITextField!
@@ -28,8 +28,8 @@ class NewEventViewController: UIViewController {
     /* IMAGE UPLOADING */
     let picker = UIImagePickerController()
     var eventImageView: UIImageView!
-    var imageName: String?
-    var imgURL: String?
+    var imageName: String!
+    var imgURL: String!
     
     /* REUSABLE VARIABLES */
     var blue = UIColor(hexString: "#86A2C7")
@@ -80,18 +80,18 @@ class NewEventViewController: UIViewController {
     /* UI: name, username, email, password text fields & underlines */
     func setupTextFields() {
         let Y: CGFloat = 292
-        eventName = UITextField(frame:
+        eventNameTextField = UITextField(frame:
             CGRect(x: X,
                    y: Y,
                    w: WIDTH,
                    h: HEIGHT))
-        eventName.adjustsFontSizeToFitWidth = true
-        eventName.attributedPlaceholder = NSAttributedString(string: "EVENT NAME", attributes: [NSForegroundColorAttributeName : gray])
-        eventName.textAlignment = .left
-        eventName.layoutIfNeeded()
-        eventName.layer.masksToBounds = true
-        eventName.textColor = darkGray
-        view.addSubview(eventName)
+        eventNameTextField.adjustsFontSizeToFitWidth = true
+        eventNameTextField.attributedPlaceholder = NSAttributedString(string: "EVENT NAME", attributes: [NSForegroundColorAttributeName : gray])
+        eventNameTextField.textAlignment = .left
+        eventNameTextField.layoutIfNeeded()
+        eventNameTextField.layer.masksToBounds = true
+        eventNameTextField.textColor = darkGray
+        view.addSubview(eventNameTextField)
         
         descTextField = UITextField(frame:
             CGRect(x: X,
