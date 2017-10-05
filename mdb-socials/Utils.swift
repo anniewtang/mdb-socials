@@ -10,7 +10,10 @@ import Foundation
 import Haneke
 
 class Utils {
-    static var rsvpStatus: Bool = false
+    static let grayBlue = UIColor(hexString: "#6074AC")
+    static let brightBlue = UIColor(hexString: "#4C9BD0")
+    static let lightGray = UIColor(hexString: "#95989A")
+    static let gray = UIColor(hexString: "#95989A")
     
     /* FUNC: uses haneke to grab image from url */
     static func getImage(url: String, withBlock: @escaping (UIImage) -> Void) {

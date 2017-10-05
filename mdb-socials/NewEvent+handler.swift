@@ -85,6 +85,11 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
 
     
     /* ------------ IMAGE PICKING FUNCTIONS ------------ */
+    /* FUNC: creates & sets event ID */
+    func getEventID() {
+        let eventsRef = Database.database().reference().child("Events")
+        self.eventID = eventsRef.childByAutoId().key
+    }
     
     /* FUNC: sets up picker functionalities */
     func handleSelectEventPicImageView() {
@@ -105,8 +110,8 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         }
         if let selectedImage = selectedImageFromPicker {
             eventImageView.image = selectedImage
-            self.eventID = Event.getEventID()
-            self.imgURL = Event.storeImageToFirebase(eventID: self.eventID, image: eventImageView.image!)
+            getEventID()
+            storeImageToFirebase(eventID: self.eventID, image: eventImageView.image!)
             uploadButton.setTitle("", for: .normal)
             uploadButton.layer.borderColor = UIColor.white.cgColor
             dismiss(animated: true, completion: nil)
@@ -118,4 +123,21 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
+    /* FUNC: stores event image to FirebaseStorage (using eventID), and saves imgURL */
+    func storeImageToFirebase(eventID: String, image: UIImage) {
+        let storageRef = Storage.storage().reference().child("EventPics").child(eventID)
+        print(image)
+        if let uploadData = UIImagePNGRepresentation(image) {
+            print("here")
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+                if let url = metadata?.downloadURL()?.absoluteString {
+                    self.imgURL = url
+                }
+            }
+        }
+    }
 }

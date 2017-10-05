@@ -21,7 +21,6 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     /* FUNC: dequeue & activate each cell */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cell for item")
         
         /* dequeue cell and remove/reset from subview; initialize new cell */
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! FeedTableViewCell
@@ -67,8 +66,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     /* UI: sets height of each row */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("height")
-        return 100
+        return view.frame.height / 5
     }
     
 }

@@ -10,12 +10,7 @@ import UIKit
 import Firebase
 
 class DetailsViewController: UIViewController {
-    
-    let grayBlue = UIColor(hexString: "#6074AC")
-    let brightBlue = UIColor(hexString: "#4C9BD0")
-    let lightGray = UIColor(hexString: "#95989A")
-    let gray = UIColor(hexString: "#95989A")
-    
+
     var event: Event!
     var eventImage: UIImage!
     var eventImageView: UIImageView!
@@ -73,7 +68,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 53))
         eventName.text = event.eventName
-        eventName.textColor = grayBlue
+        eventName.textColor = Utils.grayBlue
         eventName.textAlignment = .left
         eventName.lineBreakMode = NSLineBreakMode.byWordWrapping
         eventName.numberOfLines = 2
@@ -86,7 +81,7 @@ class DetailsViewController: UIViewController {
                    w: WIDTH,
                    h: 40))
         creator.text = "By: " + String(describing: event.creator!)
-        creator.textColor = lightGray
+        creator.textColor = Utils.lightGray
         creator.textAlignment = .left
         creator.lineBreakMode = NSLineBreakMode.byWordWrapping
         creator.numberOfLines = 2
@@ -102,7 +97,7 @@ class DetailsViewController: UIViewController {
                    width: 100,
                    height: 18))
         numInterestedText.text = "INTERESTED"
-        numInterestedText.textColor = brightBlue
+        numInterestedText.textColor = Utils.brightBlue
         numInterestedText.textAlignment = .left
         numInterestedText.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
         view.addSubview(numInterestedText)
@@ -113,7 +108,7 @@ class DetailsViewController: UIViewController {
                    width: 15,
                    height: 22))
         numInterested.text = "\(event.numInterested!)"
-        numInterested.textColor = brightBlue
+        numInterested.textColor = Utils.brightBlue
         numInterested.textAlignment = .left
         numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
@@ -130,7 +125,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 22))
         eventDescTitle.text = "EVENT DESCRIPTION"
-        eventDescTitle.textColor = grayBlue
+        eventDescTitle.textColor = Utils.grayBlue
         eventDescTitle.textAlignment = .left
         eventDescTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(eventDescTitle)
@@ -141,7 +136,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 22))
         eventDesc.text = event.desc
-        eventDesc.textColor = gray
+        eventDesc.textColor = Utils.gray
         eventDesc.textAlignment = .left
         eventDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
         eventDesc.numberOfLines = 2
@@ -154,7 +149,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 60))
         interestedButton.layer.cornerRadius = 3
-        interestedButton.backgroundColor = brightBlue
+        interestedButton.backgroundColor = Utils.brightBlue
         interestedButton.setTitle("RSVP INTERESTED", for: .normal)
         interestedButton.setTitleColor(.white, for: .normal)
         interestedButton.titleLabel?.font = UIFont(

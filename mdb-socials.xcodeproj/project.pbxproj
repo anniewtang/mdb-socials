@@ -230,10 +230,10 @@
 				D104D4C31F7AF17B00C416C0 /* LoginViewController.swift */,
 				D112E1C01F80184400B84840 /* SignupViewController.swift */,
 				D112E1BE1F80184400B84840 /* FeedViewController.swift */,
-				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
-				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
-				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
 				D11338141F81EEA100CE5152 /* FeedTableView.swift */,
+				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
+				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
+				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
