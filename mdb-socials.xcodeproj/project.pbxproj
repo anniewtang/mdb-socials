@@ -225,7 +225,6 @@
 				D11338121F81EB7900CE5152 /* Feed+handler.swift */,
 				D1AEDEDB1F85E72000ECBF57 /* Details+Handler.swift */,
 				D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */,
-				D11338141F81EEA100CE5152 /* FeedTableView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -239,6 +238,7 @@
 				D112E1BF1F80184400B84840 /* NewEventViewController.swift */,
 				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
 				D104D5021F7CA2A700C416C0 /* FeedTableViewCell.swift */,
+				D11338141F81EEA100CE5152 /* FeedTableView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

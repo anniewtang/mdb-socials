@@ -45,11 +45,6 @@ class FeedViewController: UIViewController {
     /* FUNC: fetch Events again for updated tableview (asynchronously) */
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-//        fetchEvents {
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
