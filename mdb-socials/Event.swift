@@ -79,7 +79,5 @@ class Event: NSObject {
                 return
             }
         })
-        
-//        ref.child("Events").setValue(self.eventDict)
     }
 }

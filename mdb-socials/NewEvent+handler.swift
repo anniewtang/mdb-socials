@@ -41,6 +41,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     func sendEventToFirebase() {
         /* creating the dict for Firebase */
         let interestedUsers: [String] = [currentUser.id]
+        print(eventID)
         let eventDict = ["id": eventID,
                          "imageUrl": imgURL,
                          "eventName": eventNameTextField.text!,
@@ -55,7 +56,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         let event = Event(eventDict: eventDict)
         event.setupAttributes()
         let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
-        FeedVC.allEvents.append(event)
+        FeedVC.allEvents.insert(event, at: 0)
         
         /* add event to firebase */
         event.sendToFirebase()
