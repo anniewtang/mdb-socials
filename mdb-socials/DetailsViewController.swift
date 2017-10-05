@@ -173,7 +173,7 @@ class DetailsViewController: UIViewController {
             event.numInterested! += 1
             event.eventDict["numInterested"] = event.numInterested
             ref.child("Events").child(String(describing: event.id!)).setValue(event.eventDict)
-            user.userDict["rsvped"] = currentUser.rsvped
+            currentUser.userDict["rsvped"] = currentUser.rsvped
             ref.child("Users").child(String(describing: currentUser.id!)).setValue(currentUser.userDict)
             numInterested.text = "\(event.numInterested!)"
             interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)

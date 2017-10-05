@@ -24,9 +24,9 @@ class User: NSObject {
     }
     
     func setupAttributes() {
-        self.name = userDict["name"]
-        self.email = userDict["email"]
-        self.id = userDict["id"]
-        self.rsvped = userDict["rsvped"]
+        self.name = userDict["name"] as! String
+        self.email = userDict["email"] as! String
+        self.id = userDict["id"] as! String
+        self.rsvped = userDict["rsvped"] as! [String]
     }
 }

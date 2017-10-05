@@ -30,7 +30,7 @@ extension SignupViewController {
                 let ref = Database.database().reference()
                 let uid = (user?.uid)!
                 let usersRef = ref.child("Users").child(uid)
-                let rsvped = [Event]()
+                let rsvped = [String]()
                 let userDict = ["id": uid, "name": name, "email": email, "rsvped": rsvped] as [String : Any]
                 usersRef.setValue(userDict, withCompletionBlock: { (error, usersRef) in
                     if error != nil {

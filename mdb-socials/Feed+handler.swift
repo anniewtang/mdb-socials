@@ -16,9 +16,8 @@ extension FeedViewController {
         let ref = Database.database().reference()
         let uid = (self.auth.currentUser?.uid)!
         ref.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            let user = User()
             let userDict = snapshot.value as! [String: Any]!
-            user.setValuesForKeys(userDict!)
+            let user = User(userDict: userDict!)
             self.currentUser = user
             withBlock()
         })
