@@ -29,8 +29,7 @@ class SignupViewController: UIViewController {
     var backButton: UIButton!
     
     /* REUSABLE VARIABLES */
-    let WIDTH: CGFloat = 229.55; let X: CGFloat = 64; let HEIGHT: CGFloat = 35
-    let OFFSET: CGFloat = 54
+    let WIDTH: CGFloat = 229.55; let X: CGFloat = 64
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +49,10 @@ class SignupViewController: UIViewController {
                    h: 85))
         signupTitleLabel.text = "SIGNUP"
         signupTitleLabel.textAlignment = .center
-        signupTitleLabel.textColor = Utils.blue
+        signupTitleLabel.textColor = Constants.blue
         signupTitleLabel.font = UIFont(name: "HelveticaNeue-BoldItalic", size: 50)
         signupTitleLabel.layer.borderWidth = 2
-        signupTitleLabel.layer.borderColor = Utils.blue.cgColor
+        signupTitleLabel.layer.borderColor = Constants.blue.cgColor
         view.addSubview(signupTitleLabel)
     }
     
@@ -64,7 +63,7 @@ class SignupViewController: UIViewController {
             CGRect(x: X,
                    y: Y,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         nameTextField.adjustsFontSizeToFitWidth = true
         nameTextField.placeholder = "Full Name"
         nameTextField.textAlignment = .left
@@ -75,9 +74,9 @@ class SignupViewController: UIViewController {
     
         emailTextField = UITextField(frame:
             CGRect(x: X,
-                   y: Y + OFFSET,
+                   y: Y + Constants.OFFSET,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         emailTextField.adjustsFontSizeToFitWidth = true
         emailTextField.placeholder = "Email Address"
         emailTextField.textAlignment = .left
@@ -88,9 +87,9 @@ class SignupViewController: UIViewController {
         
         passwordTextField = UITextField(frame:
             CGRect(x: X,
-                   y: Y + OFFSET * 2,
+                   y: Y + Constants.OFFSET * 2,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         passwordTextField.adjustsFontSizeToFitWidth = true
         passwordTextField.placeholder = "Password"
         passwordTextField.textAlignment = .left
@@ -117,7 +116,7 @@ class SignupViewController: UIViewController {
         
         let emailLineView = UIView(frame:
             CGRect(x: X,
-                   y: Y + OFFSET,
+                   y: Y + Constants.OFFSET,
                    w: WIDTH,
                    h: 1))
         emailLineView.layer.borderWidth = 2
@@ -126,7 +125,7 @@ class SignupViewController: UIViewController {
         
         let passwordLineView = UIView(frame:
             CGRect(x: X,
-                   y: Y + OFFSET * 2,
+                   y: Y + Constants.OFFSET * 2,
                    w: WIDTH,
                    h: 1))
         passwordLineView.layer.borderWidth = 2

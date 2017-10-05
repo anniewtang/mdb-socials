@@ -68,7 +68,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 53))
         eventName.text = event.eventName
-        eventName.textColor = Utils.grayBlue
+        eventName.textColor = Constants.grayBlue
         eventName.textAlignment = .left
         eventName.lineBreakMode = NSLineBreakMode.byWordWrapping
         eventName.numberOfLines = 2
@@ -81,7 +81,7 @@ class DetailsViewController: UIViewController {
                    w: WIDTH,
                    h: 40))
         creator.text = "By: " + String(describing: event.creator!)
-        creator.textColor = Utils.lightGray
+        creator.textColor = Constants.lightGray
         creator.textAlignment = .left
         creator.lineBreakMode = NSLineBreakMode.byWordWrapping
         creator.numberOfLines = 2
@@ -97,7 +97,7 @@ class DetailsViewController: UIViewController {
                    width: 100,
                    height: 18))
         numInterestedText.text = "INTERESTED"
-        numInterestedText.textColor = Utils.brightBlue
+        numInterestedText.textColor = Constants.brightBlue
         numInterestedText.textAlignment = .left
         numInterestedText.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
         view.addSubview(numInterestedText)
@@ -108,7 +108,7 @@ class DetailsViewController: UIViewController {
                    width: 15,
                    height: 22))
         numInterested.text = "\(event.numInterested!)"
-        numInterested.textColor = Utils.brightBlue
+        numInterested.textColor = Constants.brightBlue
         numInterested.textAlignment = .left
         numInterested.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(numInterested)
@@ -125,7 +125,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 22))
         eventDescTitle.text = "EVENT DESCRIPTION"
-        eventDescTitle.textColor = Utils.grayBlue
+        eventDescTitle.textColor = Constants.grayBlue
         eventDescTitle.textAlignment = .left
         eventDescTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         view.addSubview(eventDescTitle)
@@ -136,7 +136,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 22))
         eventDesc.text = event.desc
-        eventDesc.textColor = Utils.gray
+        eventDesc.textColor = Constants.gray
         eventDesc.textAlignment = .left
         eventDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
         eventDesc.numberOfLines = 2
@@ -149,7 +149,7 @@ class DetailsViewController: UIViewController {
                    width: WIDTH,
                    height: 60))
         interestedButton.layer.cornerRadius = 3
-        interestedButton.backgroundColor = Utils.brightBlue
+        interestedButton.backgroundColor = Constants.brightBlue
         interestedButton.setTitle("RSVP INTERESTED", for: .normal)
         interestedButton.setTitleColor(.white, for: .normal)
         interestedButton.titleLabel?.font = UIFont(

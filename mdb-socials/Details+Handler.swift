@@ -37,7 +37,7 @@ extension DetailsViewController {
             event.sendToFirebase()
             numInterested.text = "\(event.numInterested!)"
             interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)
-            interestedButton.backgroundColor = Utils.grayBlue
+            interestedButton.backgroundColor = Constants.grayBlue
         }
     }
 }

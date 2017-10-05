@@ -37,8 +37,7 @@ class NewEventViewController: UIViewController {
     var gray = UIColor(hexString: "#C1C2C3")
     var darkGray = UIColor(hexString: "#8F9091")
     
-    let WIDTH: CGFloat = 244; let X: CGFloat = 66; let HEIGHT: CGFloat = 35
-    let OFFSET: CGFloat = 54
+    let WIDTH: CGFloat = 244; let X: CGFloat = 66 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +83,7 @@ class NewEventViewController: UIViewController {
             CGRect(x: X,
                    y: Y,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         eventNameTextField.adjustsFontSizeToFitWidth = true
         eventNameTextField.attributedPlaceholder = NSAttributedString(string: "EVENT NAME", attributes: [NSForegroundColorAttributeName : gray])
         eventNameTextField.textAlignment = .left
@@ -95,9 +94,9 @@ class NewEventViewController: UIViewController {
         
         descTextField = UITextField(frame:
             CGRect(x: X,
-                   y: Y + OFFSET,
+                   y: Y + Constants.OFFSET,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         descTextField.adjustsFontSizeToFitWidth = true
         descTextField.attributedPlaceholder = NSAttributedString(string: "EVENT DESCRIPTION", attributes: [NSForegroundColorAttributeName : gray])
         descTextField.textAlignment = .left
@@ -108,9 +107,9 @@ class NewEventViewController: UIViewController {
         
         datePickerTextField = UITextField(frame:
             CGRect(x: X,
-                   y: Y + OFFSET * 2,
+                   y: Y + Constants.OFFSET * 2,
                    w: WIDTH,
-                   h: HEIGHT))
+                   h: Constants.HEIGHT))
         datePickerTextField.adjustsFontSizeToFitWidth = true
         datePickerTextField.attributedPlaceholder = NSAttributedString(string: "DATE", attributes: [NSForegroundColorAttributeName : gray])
         datePickerTextField.textAlignment = .left

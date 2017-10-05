@@ -10,12 +10,6 @@ import Foundation
 import Haneke
 
 class Utils {
-    static let grayBlue = UIColor(hexString: "#6074AC")
-    static let brightBlue = UIColor(hexString: "#4C9BD0")
-    static let lightGray = UIColor(hexString: "#95989A")
-    static let gray = UIColor(hexString: "#95989A")
-    static let blue = UIColor(hexString: "#4C9BD0")
-
     /* FUNC: uses haneke to grab image from url */
     static func getImageFromURL(url: String, withBlock: @escaping (UIImage) -> Void) {
         let cache = Shared.imageCache
