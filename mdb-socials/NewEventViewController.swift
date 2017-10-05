@@ -136,7 +136,7 @@ class NewEventViewController: UIViewController {
         
         let descLineView = UIView(frame:
             CGRect(x: X,
-                   y: Y + OFFSET,
+                   y: Y + Constants.OFFSET,
                    w: WIDTH,
                    h: 1))
         descLineView.layer.borderWidth = 2
@@ -145,7 +145,7 @@ class NewEventViewController: UIViewController {
         
         let dateLineView = UIView(frame:
             CGRect(x: X,
-                   y: Y + OFFSET * 2,
+                   y: Y + Constants.OFFSET * 2,
                    w: WIDTH,
                    h: 1))
         dateLineView.layer.borderWidth = 2

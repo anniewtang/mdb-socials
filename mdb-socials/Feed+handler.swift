@@ -47,7 +47,7 @@ extension FeedViewController {
             eventDetails.event = eventToPass
             eventDetails.currentUser = currentUser
             
-            Utils.getImage(url: eventToPass.imageUrl!) { img in
+            Utils.getImageFromURL(url: eventToPass.imageUrl!) { img in
                 eventDetails.eventImage = img
             }
             if eventDetails.eventImage == nil {
