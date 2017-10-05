@@ -126,9 +126,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     /* FUNC: stores event image to FirebaseStorage (using eventID), and saves imgURL */
     func storeImageToFirebase(eventID: String, image: UIImage) {
         let storageRef = Storage.storage().reference().child("EventPics").child(eventID)
-        print(image)
         if let uploadData = UIImagePNGRepresentation(image) {
-            print("here")
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     print(error.debugDescription)

@@ -25,8 +25,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         /* FUNC: segue if already logged in.
-           ELSE: set up icon, title labels, login/sign in buttons, text fields.
-         */
+           ELSE: set up icon, title labels, login/sign in buttons, text fields. */
         Auth.auth().addStateDidChangeListener { auth, user in
             if let _ = user {
                 self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
@@ -38,11 +37,6 @@ class LoginViewController: UIViewController {
                 self.setupSignupButton()
             }
         }
-//        setupIconView()
-//        setupTitleLabels()
-//        setupTextFields()
-//        setupLoginButton()
-//        setupSignupButton()
     }
     
     /* UI: set up icon */

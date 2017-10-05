@@ -20,11 +20,7 @@ class FeedViewController: UIViewController {
     
     /* FIREBASE variables */
     var auth = Auth.auth()
-    var storage: StorageReference = Storage.storage().reference()
     var currentUser: User!
-
-    //For sample post
-//    let sampleEvent = Event(default: "sample")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +28,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavBar()
 
-        /* FUNC: fetch User information, and Events for initial tableview (asynchronously) */
+        /* FUNC: fetch User information, and Events for initial tableview (async) */
         fetchUser {
             self.fetchEvents() {
                 DispatchQueue.main.async {

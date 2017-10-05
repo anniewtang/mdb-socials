@@ -29,8 +29,6 @@ class SignupViewController: UIViewController {
     var backButton: UIButton!
     
     /* REUSABLE VARIABLES */
-    var blue = UIColor(hexString: "#4C9BD0")
-    var lightGray = UIColor(hexString: "#BFC3C6")
     let WIDTH: CGFloat = 229.55; let X: CGFloat = 64; let HEIGHT: CGFloat = 35
     let OFFSET: CGFloat = 54
     
@@ -52,10 +50,10 @@ class SignupViewController: UIViewController {
                    h: 85))
         signupTitleLabel.text = "SIGNUP"
         signupTitleLabel.textAlignment = .center
-        signupTitleLabel.textColor = blue
+        signupTitleLabel.textColor = Utils.blue
         signupTitleLabel.font = UIFont(name: "HelveticaNeue-BoldItalic", size: 50)
         signupTitleLabel.layer.borderWidth = 2
-        signupTitleLabel.layer.borderColor = blue.cgColor
+        signupTitleLabel.layer.borderColor = Utils.blue.cgColor
         view.addSubview(signupTitleLabel)
     }
     
@@ -72,7 +70,7 @@ class SignupViewController: UIViewController {
         nameTextField.textAlignment = .left
         nameTextField.layoutIfNeeded()
         nameTextField.layer.masksToBounds = true
-        nameTextField.textColor = lightGray
+        nameTextField.textColor = UIColor.black
         view.addSubview(nameTextField)
     
         emailTextField = UITextField(frame:
@@ -85,7 +83,7 @@ class SignupViewController: UIViewController {
         emailTextField.textAlignment = .left
         emailTextField.layoutIfNeeded()
         emailTextField.layer.masksToBounds = true
-        emailTextField.textColor = lightGray
+        emailTextField.textColor = UIColor.black
         view.addSubview(emailTextField)
         
         passwordTextField = UITextField(frame:
@@ -97,7 +95,7 @@ class SignupViewController: UIViewController {
         passwordTextField.placeholder = "Password"
         passwordTextField.textAlignment = .left
         passwordTextField.layer.masksToBounds = true
-        passwordTextField.textColor = lightGray
+        passwordTextField.textColor = UIColor.black
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         

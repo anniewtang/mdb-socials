@@ -30,15 +30,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         let event: Event = allEvents[indexPath.row]
         cell.event = event
         cell.awakeFromNib()
-        
-        /* setting up the cell; giving it all the info we need
-         1.) name of member who posted
-         2.) name of event
-         3.) picture of event
-         4.) number of people who RSVP’d “Interested”*/
+
         cell.creatorName.text = "By: " + event.creator!
         cell.eventName.text = event.eventName
-        Utils.getImage(url: event.imageUrl!) { img in
+        Utils.getImageFromURL(url: event.imageUrl!) { img in
             cell.eventPic.image = img
         }
         if cell.eventPic.image == nil {
