@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController {
     let gray = UIColor(hexString: "#95989A")
     
     var event: Event!
+    var eventImage: UIImage!
     var eventImageView: UIImageView!
     
     var eventName: UILabel!
@@ -27,12 +28,11 @@ class DetailsViewController: UIViewController {
     var eventDescTitle: UILabel!
     var eventDesc: UILabel!
     var interestedButton: UIButton!
-    var rsvpStatus: Bool!
     
     var navBar: UINavigationBar!
     var logOutButton: UIButton!
     
-    
+    var currentUser: User!
     let ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
@@ -53,14 +53,7 @@ class DetailsViewController: UIViewController {
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         view.addSubview(eventImageView)
-        
-        Utils.getImage(url: event.imageUrl!) { img in
-            self.eventImageView.image = img
-        }
-        if self.eventImageView.image == nil {
-            self.eventImageView.image = #imageLiteral(resourceName: "default")
-        }
-        
+        eventImageView.image = eventImage
     }
     
     /* UI: calls to set up all labels and buttons */
@@ -105,7 +98,7 @@ class DetailsViewController: UIViewController {
     /* UI: sets up NumInterested text */
     func setupNumInterested() {
         numInterestedText = UILabel(frame:
-            CGRect(x: 243.86,
+            CGRect(x: 250.86,
                    y: 344.37,
                    width: 100,
                    height: 18))
@@ -156,8 +149,6 @@ class DetailsViewController: UIViewController {
         eventDesc.font = UIFont(name: "HelveticaNeue", size: 20)
         view.addSubview(eventDesc)
         
-        rsvpStatus = false
-        
         interestedButton = UIButton(frame:
             CGRect(x: X,
                    y: 480,
@@ -177,16 +168,29 @@ class DetailsViewController: UIViewController {
     
     /* FUNC: updates rsvp amnt locally & in firebase */
     func rsvpInterested() {
+        let rsvpStatus = getAndSetRSVPStatus()
         if !rsvpStatus {
             event.numInterested! += 1
             event.eventDict["numInterested"] = event.numInterested
-            ref.child("Events").child(String(describing: event.id)).setValue(event.eventDict)
+            ref.child("Events").child(String(describing: event.id!)).setValue(event.eventDict)
+            user.userDict["rsvped"] = currentUser.rsvped
+            ref.child("Users").child(String(describing: currentUser.id!)).setValue(currentUser.userDict)
             numInterested.text = "\(event.numInterested!)"
             interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)
             interestedButton.backgroundColor = grayBlue
-            rsvpStatus = true
         } else {
-            print("Already RSVP-ed!")
+            let msg = "You already RSVP-ed to this event!"
+            let alert = Utils.createAlert(warningMessage: msg)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func getAndSetRSVPStatus() -> Bool {
+        if currentUser.rsvped.contains(event.id) {
+            return true
+        } else {
+            currentUser.rsvped.append(event.id)
+            return false
         }
     }
 }

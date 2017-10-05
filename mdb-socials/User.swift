@@ -10,21 +10,23 @@ import Foundation
 import UIKit
 
 class User: NSObject {
-    var name: String?
-    var email: String?
-    var id: String?
+    var name: String!
+    var email: String!
+    var id: String!
+    var rsvped = [String]()
     
-//    init(id: String, userDict: [String:Any]?) {
-//        self.id = id
-//        if userDict != nil {
-//            if let name = userDict!["name"] as? String {
-//                self.name = name
-//            }
-//            if let email = userDict!["email"] as? String {
-//                self.email = email
-//            }
-//        }
-//    }
+    var userDict: [String: Any]!
     
+    init(userDict: [String: Any]) {
+        super.init()
+        self.userDict = userDict
+        setupAttributes()
+    }
     
+    func setupAttributes() {
+        self.name = userDict["name"]
+        self.email = userDict["email"]
+        self.id = userDict["id"]
+        self.rsvped = userDict["rsvped"]
+    }
 }

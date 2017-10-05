@@ -10,6 +10,8 @@ import Foundation
 import Haneke
 
 class Utils {
+    static var rsvpStatus: Bool = false
+    
     static func getImage(url: String, withBlock: @escaping (UIImage) -> Void) {
         let cache = Shared.imageCache
         if let imageUrl = URL(string: url) {
@@ -20,7 +22,7 @@ class Utils {
     }
     
     /* FUNC: presents popup alert if incomplete name, desc, or date fields */
-    static func showAlertForIncompleteFields(warningMessage: String) -> UIAlertController {
+    static func createAlert(warningMessage: String) -> UIAlertController {
         let alert = UIAlertController(title: "WARNING:",
                                       message: warningMessage,
                                       preferredStyle: UIAlertControllerStyle.alert)

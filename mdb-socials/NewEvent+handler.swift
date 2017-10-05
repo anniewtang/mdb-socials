@@ -30,7 +30,7 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
     func addNewEvent(sender: UIButton!) {
         if !checkForCompletion() {
             let msg = "Please fill out all the text fields in order to create your event!"
-            let alert = Utils.showAlertForIncompleteFields(warningMessage: msg)
+            let alert = Utils.createAlert(warningMessage: msg)
             self.present(alert, animated: true, completion: nil)
         } else {
             addEventToFirebase()

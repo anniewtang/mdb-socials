@@ -29,7 +29,7 @@ extension LoginViewController {
             if error == nil {
                 self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
             } else {
-                let alert = Utils.showAlertForIncompleteFields(warningMessage: error!.localizedDescription)
+                let alert = Utils.createAlert(warningMessage: error!.localizedDescription)
                 self.present(alert, animated: true, completion: nil)
             }
         }

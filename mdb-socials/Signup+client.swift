@@ -20,7 +20,7 @@ extension SignupViewController {
             if email == "" || password == "" {
                 msg = "Please fill out the text fields to register for a profile with MDB Socials!"
             }
-            let alert = Utils.showAlertForIncompleteFields(warningMessage: msg)
+            let alert = Utils.createAlert(warningMessage: msg)
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -30,7 +30,8 @@ extension SignupViewController {
                 let ref = Database.database().reference()
                 let uid = (user?.uid)!
                 let usersRef = ref.child("Users").child(uid)
-                let userDict = ["id": uid, "name": name, "email": email]
+                let rsvped = [Event]()
+                let userDict = ["id": uid, "name": name, "email": email, "rsvped": rsvped] as [String : Any]
                 usersRef.setValue(userDict, withCompletionBlock: { (error, usersRef) in
                     if error != nil {
                         print(error.debugDescription)
@@ -40,7 +41,7 @@ extension SignupViewController {
                 self.segueToFeed()
             }
             else {
-                let alert = Utils.showAlertForIncompleteFields(warningMessage: error!.localizedDescription)
+                let alert = Utils.createAlert(warningMessage: error!.localizedDescription)
                 self.present(alert, animated: true, completion: nil)
             }
         })

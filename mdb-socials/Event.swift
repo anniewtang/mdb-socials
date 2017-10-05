@@ -30,27 +30,13 @@ class Event: NSObject {
     }
     
     func setupAttributes() {
-        if let id = eventDict["id"] as? String {
-            self.id = id
-        }
-        if let imageUrl = eventDict["imageUrl"] as? String {
-            self.imageUrl = imageUrl
-        }
-        if let eventName = eventDict["eventName"] as? String {
-            self.eventName = eventName
-        }
-        if let creator = eventDict["creator"] as? String {
-            self.creator = creator
-        }
-        if let desc = eventDict["desc"] as? String {
-            self.desc = desc
-        }
-        if let date = eventDict["date"] as? Date {
-            self.date = date
-        }
-        if let numInterested = eventDict["numInterested"] as? Int {
-            self.numInterested = numInterested
-        }
+        self.id = id
+        self.imageUrl = imageUrl
+        self.eventName = eventName
+        self.creator = creator
+        self.desc = desc
+        self.date = date
+        self.numInterested = numInterested
     }
     
 //    init(default: String) {

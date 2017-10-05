@@ -30,6 +30,7 @@ extension NewEventViewController {
                 }
                 if let url = metadata?.downloadURL()?.absoluteString {
                     self.imgURL = url
+                    print("FIREBASE URL: ", self.imgURL)
                 }
             })
             
@@ -56,7 +57,7 @@ extension NewEventViewController {
                         "desc": descTextField.text!,
                         "date": datePicker.date.timeIntervalSince1970,
                         "numInterested": 0] as [String : Any]
-        print(eventDict["imageUrl"])
+        print(eventDict["imageUrl"] as! String)
         /* add the event to Firebase Database */
         eventsRef.child(self.eventID).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
             if error != nil {
@@ -65,14 +66,14 @@ extension NewEventViewController {
             }
         })
             
-            /* return user to the Feed */
-            goBackToFeed()
-            
-            /* create and add the Event object to the tableview -- UNNEEDED? because of the fetchData code?
-             let event = Event()
-             event.setValuesForKeys(eventDict)
-             let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
-            FeedVC.allEvents.append(event)
-            */
+        /* create and add the Event object to the tableview -- UNNEEDED? because of the fetchData code? */
+        let event = Event(eventDict: eventDict)
+        event.setupAttributes()
+        let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+        FeedVC.allEvents.append(event)
+        
+        /* return user to the Feed */
+        goBackToFeed()
+ 
     }
 }

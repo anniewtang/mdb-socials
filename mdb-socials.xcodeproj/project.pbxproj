@@ -221,8 +221,8 @@
 				D11338091F81975C00CE5152 /* Login+Handler.swift */,
 				D113380B1F8197DA00CE5152 /* Signup+handler.swift */,
 				D11338121F81EB7900CE5152 /* Feed+handler.swift */,
-				D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */,
 				D112E1BD1F80184400B84840 /* DetailsViewController.swift */,
+				D1E0C5801F7E9A1500B04C3D /* NewEvent+handler.swift */,
 				D11338141F81EEA100CE5152 /* FeedTableView.swift */,
 			);
 			name = Controller;

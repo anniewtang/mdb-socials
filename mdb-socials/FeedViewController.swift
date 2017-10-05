@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     var tableView: UITableView!
     
     /* SWIFT data */
-    var allEvents: [Event]!
+    var allEvents = [Event]()
     var loadedEvents = [String: Event]()
     var eventToPass: Event!
     
@@ -36,8 +36,6 @@ class FeedViewController: UIViewController {
         
         setupTableView()
         setupNavBar()
-        
-        allEvents = []
 
         /* FUNC: fetch User information, and Events for initial tableview (asynchronously) */
         fetchUser {
@@ -51,11 +49,12 @@ class FeedViewController: UIViewController {
     
     /* FUNC: fetch Events again for updated tableview (asynchronously) */
     override func viewWillAppear(_ animated: Bool) {
-        fetchEvents {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        tableView.reloadData()
+//        fetchEvents {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -85,7 +84,7 @@ class FeedViewController: UIViewController {
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50/2, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50/2, right: 0)
         view.addSubview(tableView)
     }
     

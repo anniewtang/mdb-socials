@@ -44,6 +44,14 @@ extension FeedViewController {
         if segue.identifier == "toDetails" {
             let eventDetails = segue.destination as! DetailsViewController
             eventDetails.event = eventToPass
+            eventDetails.currentUser = currentUser
+            
+            Utils.getImage(url: eventToPass.imageUrl!) { img in
+                eventDetails.eventImage = img
+            }
+            if eventDetails.eventImage == nil {
+                eventDetails.eventImage = #imageLiteral(resourceName: "default")
+            }
         }
     }
     
