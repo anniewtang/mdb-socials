@@ -28,8 +28,6 @@
 		D112E1C41F80184400B84840 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112E1C01F80184400B84840 /* SignupViewController.swift */; };
 		D113380A1F81975C00CE5152 /* Login+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338091F81975C00CE5152 /* Login+Handler.swift */; };
 		D113380C1F8197DA00CE5152 /* Signup+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380B1F8197DA00CE5152 /* Signup+handler.swift */; };
-		D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113380D1F81AC3800CE5152 /* Signup+client.swift */; };
-		D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338101F81AFF900CE5152 /* NewEvent+client.swift */; };
 		D11338131F81EB7900CE5152 /* Feed+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338121F81EB7900CE5152 /* Feed+handler.swift */; };
 		D11338151F81EEA100CE5152 /* FeedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11338141F81EEA100CE5152 /* FeedTableView.swift */; };
 		D1AEDEDC1F85E72000ECBF57 /* Details+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEDEDB1F85E72000ECBF57 /* Details+Handler.swift */; };
@@ -90,8 +88,6 @@
 		D112E1C01F80184400B84840 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D11338091F81975C00CE5152 /* Login+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Handler.swift"; sourceTree = "<group>"; };
 		D113380B1F8197DA00CE5152 /* Signup+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+handler.swift"; sourceTree = "<group>"; };
-		D113380D1F81AC3800CE5152 /* Signup+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup+client.swift"; sourceTree = "<group>"; };
-		D11338101F81AFF900CE5152 /* NewEvent+client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewEvent+client.swift"; sourceTree = "<group>"; };
 		D11338121F81EB7900CE5152 /* Feed+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+handler.swift"; sourceTree = "<group>"; };
 		D11338141F81EEA100CE5152 /* FeedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableView.swift; sourceTree = "<group>"; };
 		D1AEDEDB1F85E72000ECBF57 /* Details+Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Details+Handler.swift"; sourceTree = "<group>"; };
@@ -175,7 +171,6 @@
 				D104D5091F7D47B400C416C0 /* Model */,
 				D112E1BC1F80178200B84840 /* View */,
 				D104D50A1F7D47C400C416C0 /* Controller */,
-				D113380F1F81AC4000CE5152 /* Client */,
 			);
 			path = "mdb-socials";
 			sourceTree = "<group>";
@@ -241,15 +236,6 @@
 				D11338141F81EEA100CE5152 /* FeedTableView.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		D113380F1F81AC4000CE5152 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				D113380D1F81AC3800CE5152 /* Signup+client.swift */,
-				D11338101F81AFF900CE5152 /* NewEvent+client.swift */,
-			);
-			name = Client;
 			sourceTree = "<group>";
 		};
 		D546CA0AC7057E4586BEAC08 /* Frameworks */ = {
@@ -577,12 +563,10 @@
 				D104D4C21F7AF17B00C416C0 /* AppDelegate.swift in Sources */,
 				D113380A1F81975C00CE5152 /* Login+Handler.swift in Sources */,
 				D1AEDEDC1F85E72000ECBF57 /* Details+Handler.swift in Sources */,
-				D113380E1F81AC3800CE5152 /* Signup+client.swift in Sources */,
 				D112E1C31F80184400B84840 /* NewEventViewController.swift in Sources */,
 				D112E1C21F80184400B84840 /* FeedViewController.swift in Sources */,
 				D104D5011F7CA24500C416C0 /* User.swift in Sources */,
 				D104D5051F7CA5DC00C416C0 /* Utils.swift in Sources */,
-				D11338111F81AFF900CE5152 /* NewEvent+client.swift in Sources */,
 				D104D5031F7CA2A700C416C0 /* FeedTableViewCell.swift in Sources */,
 				D112E1C11F80184400B84840 /* DetailsViewController.swift in Sources */,
 			);

@@ -12,6 +12,7 @@ import Haneke
 class Utils {
     static var rsvpStatus: Bool = false
     
+    /* FUNC: uses haneke to grab image from url */
     static func getImage(url: String, withBlock: @escaping (UIImage) -> Void) {
         let cache = Shared.imageCache
         if let imageUrl = URL(string: url) {

@@ -48,6 +48,29 @@ class Event: NSObject {
         }
     }
     
+    /* FUNC: creates & sets event ID */
+    static func getEventID() -> String {
+        let eventsRef = Database.database().reference().child("Events")
+        return eventsRef.childByAutoId().key
+    }
+    
+    /* FUNC: stores event image to FirebaseStorage (using eventID), and saves imgURL */
+    static func storeImageToFirebase(eventID: String, image: UIImage) -> String {
+        let storageRef = Storage.storage().reference().child("EventPics").child(eventID)
+        
+        if let uploadData = UIImagePNGRepresentation(image) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+                if let url = metadata?.downloadURL()?.absoluteString {
+                    return url
+                }
+            })
+        }
+    }
+    
     /* FUNC: returns true if current user is the same as the creator */
     func checkSelfInterest(uid: String) -> Bool {
         return uid == self.creatorID

@@ -43,7 +43,6 @@ class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getEventID()
         setupImageView()
         setupUploadButton()
         setupTextFields()

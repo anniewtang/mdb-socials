@@ -33,9 +33,38 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
             let alert = Utils.createAlert(warningMessage: msg)
             self.present(alert, animated: true, completion: nil)
         } else {
-            addEventToFirebase()
+            sendEventToFirebase()
         }
     }
+    
+    /* FUNC: creats eventDict & adds the new event to Firebase Database */
+    func sendEventToFirebase() {
+        /* creating the dict for Firebase */
+        let interestedUsers: [String] = [currentUser.id]
+        let eventDict = ["id": eventID,
+                         "imageUrl": imgURL,
+                         "eventName": eventNameTextField.text!,
+                         "creator": currentUser.name!,
+                         "creatorID": currentUser.id!,
+                         "desc": descTextField.text!,
+                         "date": datePicker.date.timeIntervalSince1970,
+                         "numInterested": 0,
+                         "interestedUsers": interestedUsers] as [String : Any]
+        
+        /* create and add the Event object to the tableview */
+        let event = Event(eventDict: eventDict)
+        event.setupAttributes()
+        let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
+        FeedVC.allEvents.append(event)
+        
+        /* add event to firebase */
+        event.sendToFirebase()
+        
+        /* return user to the Feed */
+        goBackToFeed()
+        
+    }
+    
     /* ------------ APP TRANSITIONS ------------ */
     
     /* FUNC: resets text fields & returns to Feed modally */
@@ -76,7 +105,8 @@ extension NewEventViewController: UIImagePickerControllerDelegate, UINavigationC
         }
         if let selectedImage = selectedImageFromPicker {
             eventImageView.image = selectedImage
-            storeImageToFirebase()
+            self.eventID = Event.getEventID()
+            self.imgURL = Event.storeImageToFirebase(eventID: self.eventID, image: eventImageView.image!)
             uploadButton.setTitle("", for: .normal)
             uploadButton.layer.borderColor = UIColor.white.cgColor
             dismiss(animated: true, completion: nil)
