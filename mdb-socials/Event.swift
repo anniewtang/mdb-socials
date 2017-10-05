@@ -17,9 +17,11 @@ class Event: NSObject {
     var imageUrl: String!
     var eventName: String!
     var creator: String!
+    var creatorID: String!
     var desc: String!
     var date: Date!
     var numInterested: Int!
+    var interestedUsers: [String]!
 
     var eventDict: [String: Any]!
     
@@ -29,43 +31,55 @@ class Event: NSObject {
         setupAttributes()
     }
     
+    /* FUNC: initialization helper */
     func setupAttributes() {
         self.id = eventDict["id"] as! String
         self.imageUrl = eventDict["imageUrl"] as! String
         self.eventName = eventDict["eventName"] as! String
         self.creator = eventDict["creator"] as! String
+        self.creatorID = eventDict["creatorID"] as! String
         self.desc = eventDict["desc"] as! String
-        self.date = eventDict["date"] as! Date
+        self.date = eventDict["date"] as? Date
         self.numInterested = eventDict["numInterested"] as! Int
+        if let interested = eventDict["interestedUsers"] as? [String] {
+            self.interestedUsers = interested
+        } else {
+            self.interestedUsers = []
+        }
     }
     
-//    init(default: String) {
-//        self.desc = "go go"
-//        self.imageUrl = "https://cmgajcmusic.files.wordpress.com/2016/06/kanye-west2.jpg"
-//        self.numInterested = 1
-//        self.creator = "Kanye West"
-//        self.eventName = "Yeezy concert"
-//    }
+    /* FUNC: returns true if current user is the same as the creator */
+    func checkSelfInterest(uid: String) -> Bool {
+        return uid == self.creatorID
+    }
     
-    override init() {
+    /* FUNC: returns true if User already marked as interested */
+    func isInterestedUser(uid: String) -> Bool {
+        return interestedUsers.contains(uid)
+    }
+    
+    /* FUNC: adds User to [interestedUser] */
+    func addInterestedUser(uid: String) {
+        self.interestedUsers.append(uid)
+        eventDict["interestedUsers"] = self.interestedUsers
+    }
+    
+    /* FUNC: updates number of people interested */
+    func updateNumInterested() {
+        self.numInterested! += 1
+        self.eventDict["numInterested"] = self.numInterested
+    }
+    
+    /* FUNC: sends event to Firebase */
+    func sendToFirebase() {
+        let ref: DatabaseReference = Database.database().reference()
+        ref.child("Events").child(String(describing: self.id!)).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+        })
         
+//        ref.child("Events").setValue(self.eventDict)
     }
-
-    
-//    let childUpdates = ["/\(key)/": newEvent]
-//    let key = eventsRef.childByAutoId().key
-//    eventsRef.updateChildValues(childUpdates)
-    
-//    func getEventPic(withBlock: @escaping () -> ()) {
-//        //TODO: Get User's profile picture
-//        let ref = Storage.storage().reference().child("/eventPics/\(id!)")
-//        ref.data(withMaxSize: 1 * 2048 * 2048) { data, error in
-//            if let error = error {
-//                print(error)
-//            } else {
-//                self.image = UIImage(data: data!)
-//                withBlock()
-//            }
-//        }
-//    }
 }

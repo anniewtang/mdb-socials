@@ -46,31 +46,34 @@ extension NewEventViewController {
     
     /* FUNC: creats eventDict & adds the new event to Firebase Database */
     func addEventToFirebase() {
-        let eventsRef = Database.database().reference().child("Events")
-        
-        print(imgURL)
         /* creating the dict for Firebase */
+        let interestedUsers: [String] = [currentUser.id]
         let eventDict = ["id": eventID,
                         "imageUrl": imgURL,
                         "eventName": eventNameTextField.text!,
                         "creator": currentUser.name!,
+                        "creatorID": currentUser.id!,
                         "desc": descTextField.text!,
                         "date": datePicker.date.timeIntervalSince1970,
-                        "numInterested": 0] as [String : Any]
-        print(eventDict["imageUrl"] as! String)
-        /* add the event to Firebase Database */
-        eventsRef.child(self.eventID).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
-            if error != nil {
-                print(error.debugDescription)
-                return
-            }
-        })
-            
-        /* create and add the Event object to the tableview -- UNNEEDED? because of the fetchData code? */
+                        "numInterested": 0,
+                        "interestedUsers": interestedUsers] as [String : Any]
+
+//        /* add the event to Firebase Database */
+//        eventsRef.child(self.eventID).setValue(eventDict, withCompletionBlock: { (error, eventsRef) in
+//            if error != nil {
+//                print(error.debugDescription)
+//                return
+//            }
+//        })
+        
+        /* create and add the Event object to the tableview */
         let event = Event(eventDict: eventDict)
         event.setupAttributes()
         let FeedVC = storyboard?.instantiateViewController(withIdentifier: "FeedViewController") as! FeedViewController
         FeedVC.allEvents.append(event)
+        
+        /* add event to firebase */
+        event.sendToFirebase()
         
         /* return user to the Feed */
         goBackToFeed()

@@ -33,7 +33,6 @@ class DetailsViewController: UIViewController {
     var logOutButton: UIButton!
     
     var currentUser: User!
-    let ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,33 +163,5 @@ class DetailsViewController: UIViewController {
         interestedButton.addTarget(self,action: #selector(rsvpInterested),
                                    for: .touchUpInside)
         view.addSubview(interestedButton)
-    }
-    
-    /* FUNC: updates rsvp amnt locally & in firebase */
-    func rsvpInterested() {
-        let rsvpStatus = getAndSetRSVPStatus()
-        if !rsvpStatus {
-            event.numInterested! += 1
-            event.eventDict["numInterested"] = event.numInterested
-            ref.child("Events").child(String(describing: event.id!)).setValue(event.eventDict)
-            currentUser.userDict["rsvped"] = currentUser.rsvped
-            ref.child("Users").child(String(describing: currentUser.id!)).setValue(currentUser.userDict)
-            numInterested.text = "\(event.numInterested!)"
-            interestedButton.setTitle("Successfully RSVP-ed!", for: .normal)
-            interestedButton.backgroundColor = grayBlue
-        } else {
-            let msg = "You already RSVP-ed to this event!"
-            let alert = Utils.createAlert(warningMessage: msg)
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func getAndSetRSVPStatus() -> Bool {
-        if currentUser.rsvped.contains(event.id) {
-            return true
-        } else {
-            currentUser.rsvped.append(event.id)
-            return false
-        }
     }
 }

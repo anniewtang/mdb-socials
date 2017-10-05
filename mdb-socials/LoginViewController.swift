@@ -38,6 +38,11 @@ class LoginViewController: UIViewController {
                 self.setupSignupButton()
             }
         }
+//        setupIconView()
+//        setupTitleLabels()
+//        setupTextFields()
+//        setupLoginButton()
+//        setupSignupButton()
     }
     
     /* UI: set up icon */

@@ -13,20 +13,18 @@ class User: NSObject {
     var name: String!
     var email: String!
     var id: String!
-    var rsvped = [String]()
     
-    var userDict: [String: Any]!
+//    var userDict: [String: Any]!
     
-    init(userDict: [String: Any]) {
-        super.init()
-        self.userDict = userDict
-        setupAttributes()
-    }
-    
-    func setupAttributes() {
-        self.name = userDict["name"] as! String
-        self.email = userDict["email"] as! String
-        self.id = userDict["id"] as! String
-        self.rsvped = userDict["rsvped"] as! [String]
-    }
+//    init(userDict: [String: Any]) {
+//        super.init()
+//        self.userDict = userDict
+//        setupAttributes()
+//    }
+//
+//    func setupAttributes() {
+//        self.name = userDict["name"] as! String
+//        self.email = userDict["email"] as! String
+//        self.id = userDict["id"] as! String
+//    }
 }
