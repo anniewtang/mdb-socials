@@ -38,7 +38,7 @@ class FeedViewController: UIViewController {
         }
     }
     
-    /* FUNC: fetch Events again for updated tableview (asynchronously) */
+    /* FUNC: reload tableView data */
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }

@@ -35,8 +35,6 @@ class NewEventViewController: UIViewController {
     var blue = UIColor(hexString: "#86A2C7")
     var lightGray = UIColor(hexString: "#BFC3C6")
     var gray = UIColor(hexString: "#C1C2C3")
-    var darkGray = UIColor(hexString: "#8F9091")
-    
     let WIDTH: CGFloat = 244; let X: CGFloat = 66 
     
     override func viewDidLoad() {
@@ -89,7 +87,7 @@ class NewEventViewController: UIViewController {
         eventNameTextField.textAlignment = .left
         eventNameTextField.layoutIfNeeded()
         eventNameTextField.layer.masksToBounds = true
-        eventNameTextField.textColor = darkGray
+        eventNameTextField.textColor = Constants.darkGray
         view.addSubview(eventNameTextField)
         
         descTextField = UITextField(frame:
@@ -102,7 +100,7 @@ class NewEventViewController: UIViewController {
         descTextField.textAlignment = .left
         descTextField.layoutIfNeeded()
         descTextField.layer.masksToBounds = true
-        descTextField.textColor = darkGray
+        descTextField.textColor = Constants.darkGray
         view.addSubview(descTextField)
         
         datePickerTextField = UITextField(frame:
@@ -114,7 +112,7 @@ class NewEventViewController: UIViewController {
         datePickerTextField.attributedPlaceholder = NSAttributedString(string: "DATE", attributes: [NSForegroundColorAttributeName : gray])
         datePickerTextField.textAlignment = .left
         datePickerTextField.layer.masksToBounds = true
-        datePickerTextField.textColor = darkGray
+        datePickerTextField.textColor = Constants.darkGray
         view.addSubview(datePickerTextField)
         setupDatePicker()
         

@@ -63,7 +63,7 @@ extension FeedViewController {
         present(newEvent, animated: true, completion: nil)
     }
     
-    /* FUNC: logging the user out */
+    /* FUNC: logs the user out */
     func logOut() {
         print("Logging out.")
         let firebaseAuth = Auth.auth()

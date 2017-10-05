@@ -20,7 +20,7 @@ extension SignupViewController {
         performSegue(withIdentifier: "toFeedFromSignup", sender: self)
     }
     
-    /* FUNC: MODALLY goes back to Login view */
+    /* FUNC: MODALLY goes back to Login view & resets text fields */
     func backButtonClicked() {
         nameTextField.text = ""
         emailTextField.text = ""

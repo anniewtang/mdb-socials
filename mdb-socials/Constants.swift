@@ -14,6 +14,7 @@ struct Constants {
     static let lightGray = UIColor(hexString: "#95989A")
     static let gray = UIColor(hexString: "#95989A")
     static let blue = UIColor(hexString: "#4C9BD0")
+    static let darkGray = UIColor(hexString: "#8F9091")
     static let HEIGHT: CGFloat = 35
     static let OFFSET: CGFloat = 54
 }

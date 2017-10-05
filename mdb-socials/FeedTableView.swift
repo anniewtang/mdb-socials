@@ -27,12 +27,17 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
+        
+        /* initialize & awake cell from nib */
         let event: Event = allEvents[indexPath.row]
         cell.event = event
         cell.awakeFromNib()
 
+        /* populate event information */
         cell.creatorName.text = "By: " + event.creator!
         cell.eventName.text = event.eventName
+        
+        /* populate event image */
         Utils.getImageFromURL(url: event.imageUrl!) { img in
             cell.eventPic.image = img
         }
@@ -40,14 +45,16 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.eventPic.image = #imageLiteral(resourceName: "default")
         }
         
+        /* populate number of people interested */
         let num: Int = event.numInterested!
         var noun: String!
-        if num == 1 {
-            noun = " person"
-        } else {
-            noun = " people"
+        switch num {
+            case 1:
+                noun = " person"
+                break
+            default:
+                noun = " people"
         }
-        
         cell.numInterested.text = String(num) + noun
         
         return cell

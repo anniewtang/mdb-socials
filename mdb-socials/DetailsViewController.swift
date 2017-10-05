@@ -11,6 +11,7 @@ import Firebase
 
 class DetailsViewController: UIViewController {
 
+    /* event information */
     var event: Event!
     var eventImage: UIImage!
     var eventImageView: UIImageView!
@@ -22,11 +23,14 @@ class DetailsViewController: UIViewController {
     
     var eventDescTitle: UILabel!
     var eventDesc: UILabel!
+    
+    /* navigation & buttons */
     var interestedButton: UIButton!
     
     var navBar: UINavigationBar!
     var logOutButton: UIButton!
     
+    /* data info */
     var currentUser: User!
     
     override func viewDidLoad() {

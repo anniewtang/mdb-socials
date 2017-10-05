@@ -48,7 +48,6 @@ class Event: NSObject {
         }
     }
     
-    
     /* FUNC: returns true if current user is the same as the creator */
     func checkSelfInterest(uid: String) -> Bool {
         return uid == self.creatorID
