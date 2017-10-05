@@ -9,268 +9,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737546"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528591296.838634"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "1294">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528591296.845382"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "14">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737715"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.84633"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.849171"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "14">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737772"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737826"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.869166"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "14">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.878407"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737876"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.889105"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "187">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616206.894869"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "146">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mdb-socials/FeedViewController.swift"
-            timestampString = "528867036.737926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616215.149759"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "147">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in mdb_socials.FeedViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "mdb-socials"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Annie/classes/mdb/mobile-dev/mdb-socials/mdb-socials/FeedViewController.swift"
-                  timestampString = "528616215.152206"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "219">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.668761"
+            timestampString = "528870260.102927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "addEventToFirebase()"
             landmarkType = "7">
             <Locations>
@@ -310,11 +54,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.66883"
+            timestampString = "528870260.103006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -330,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.668905"
+            timestampString = "528870260.103066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -346,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.668961"
+            timestampString = "528870260.103122"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -362,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.669011"
+            timestampString = "528870260.103174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -378,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/FeedTableView.swift"
-            timestampString = "528862853.657389"
+            timestampString = "528870260.103227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -442,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.669145"
+            timestampString = "528870260.103524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -458,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.6692"
+            timestampString = "528870260.103714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -470,15 +214,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mdb-socials/NewEvent+client.swift"
-            timestampString = "528868694.669249"
+            timestampString = "528870260.103797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "addEventToFirebase()"
             landmarkType = "7">
          </BreakpointContent>

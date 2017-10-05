@@ -44,7 +44,7 @@ class FeedTableViewCell: UITableViewCell {
         eventName = UILabel(frame:
             CGRect(x: contentView.frame.height * 1.08,
                    y: contentView.frame.height * 0.25,
-                   width: contentView.frame.width * 0.4,
+                   width: contentView.frame.width * 0.39,
                    height: contentView.frame.height * 0.5))
         eventName.textColor = UIColor.black
         eventName.textAlignment = .left

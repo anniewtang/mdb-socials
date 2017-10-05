@@ -28,11 +28,6 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
-//        allEvents.append(sampleEvent)
         
         setupTableView()
         setupNavBar()
